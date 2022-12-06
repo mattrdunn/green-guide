@@ -1,7 +1,7 @@
 # PlantDaddy
 
 ## Overview
-PlantPedia (name tbd) is a site to organize every all the answers to every unanswered question that a doting plant parent may ask.
+PlantDaddy (name... tbd) is a site to organize every all the answers to every unanswered question that a doting plant parent may ask.
 
 ## Functional Requirements
 The functional requirements for the project will define the various **features** and **abilities** offered to users of the site. The follow is a non-comprehensive list of features that will be provided.
