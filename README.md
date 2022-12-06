@@ -1,4 +1,4 @@
-# PlantPedia
+# PlantDaddy
 
 ## Overview
 PlantPedia (name tbd) is a site to organize every all the answers to every unanswered question that a doting plant parent may ask.
