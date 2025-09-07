@@ -28,4 +28,8 @@
     "tailwindcss": "^4",
     "typescript": "^5"
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b5fd664 (Initial skeleton for monstera page)

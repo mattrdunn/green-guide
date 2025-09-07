@@ -2,6 +2,10 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Providers from '@/providers';
+<<<<<<< HEAD
+=======
+import Nav from './components/Nav';
+>>>>>>> b5fd664 (Initial skeleton for monstera page)
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -25,11 +29,24 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
+<<<<<<< HEAD
         <html lang='en'>
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
             >
                 <Providers>{children}</Providers>
+=======
+        <html lang="en">
+            <body
+                className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+            >
+                <Providers>
+                    <div className="min-h-screen pt-12 pb-20 font-[family-name:var(--font-geist-sans)] sm:p-20 relative">
+                        <Nav />
+                        {children}
+                    </div>
+                </Providers>
+>>>>>>> b5fd664 (Initial skeleton for monstera page)
             </body>
         </html>
     );
