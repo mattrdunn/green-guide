@@ -1,6 +1,5 @@
 # dependencies
 /node_modules
-<<<<<<< HEAD
 /.pnp
 .pnp.js
 
@@ -18,33 +17,14 @@
 *.log
 
 # local env files
-=======
-
-# production
-/.next
-/out
-
-# testing
-/coverage
-
-# misc
->>>>>>> 7353bed (Add .gitignore)
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
-<<<<<<< HEAD
-=======
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
->>>>>>> 7353bed (Add .gitignore)
 
 # vercel
 .vercel
 
-<<<<<<< HEAD
 # typescript
 *.tsbuildinfo
 
@@ -65,8 +45,3 @@ pnpm-debug.log*
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-=======
-# OS-specific
-.DS_Store
-Thumbs.db
->>>>>>> 7353bed (Add .gitignore)
