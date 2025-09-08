@@ -1,6 +1,11 @@
-// import { useState } from 'react';
+'use client';
+
+import React, { ButtonHTMLAttributes, useState } from 'react';
 import { notFound } from 'next/navigation';
 import ImageCarousel from './components/ImageCarousel';
+import Overview from './components/Overview';
+
+const tabs = ['Overview', 'Care', 'Issues', 'Get Started'];
 
 export default function SpeciesPage({
     params,
@@ -8,9 +13,7 @@ export default function SpeciesPage({
     params: { genus: string; species: string };
 }) {
     const { genus, species } = params;
-    // const [activeTab, setActiveTab] = useState<
-    //     'Overview' | 'Care' | 'Issues' | 'Get Started'
-    // >('Overview');
+    const [activeTab, setActiveTab] = useState('Overview');
 
     // Optional: validate or fetch plant data
     const scientificName = `${genus} ${species}`;
@@ -37,7 +40,18 @@ export default function SpeciesPage({
                     Swiss Cheese Plant
                 </h2>
             </header>
-            <nav className="flex gap-2"></nav>
+            <nav className="px-10 flex gap-2 overflow-x-scroll">
+                {tabs.map((tab) => (
+                    <button
+                        className="px-2 py-1 rounded-full border text-nowrap"
+                        onClick={() => setActiveTab(tab)}
+                    >
+                        {tab}
+                    </button>
+                ))}
+            </nav>
+
+            {activeTab === 'Overview' && <Overview />}
         </div>
     );
 }
