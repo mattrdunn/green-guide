@@ -32,7 +32,7 @@ export default function SpeciesClient({
 
     return (
         <div className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-2 pb-12 pt-0 sm:px-6 sm:pb-16 sm:pt-8 lg:px-0">
-            <section className="bg-linear-to-br from-emerald-800 via-emerald-700 dark:from-emerald-900/90 dark:via-emerald-800/90 dark:to-green-700 px-4 py-6 text-white shadow-none rounded-[36px] sm:p-10 sm:shadow-2xl">
+            <section className="bg-linear-to-br from-emerald-800 via-emerald-700 to-green-700 dark:from-emerald-900/90 dark:via-emerald-800/90 dark:to-green-700 px-4 py-6 text-white shadow-none rounded-[36px] sm:p-10 sm:shadow-2xl">
                 <div className="space-y-6">
                     <div className="inline-flex items-center gap-3 rounded-full bg-white/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.4em] text-white/80">
                         Species profile
