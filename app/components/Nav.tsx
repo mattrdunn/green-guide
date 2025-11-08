@@ -68,7 +68,7 @@ export default function Nav() {
                         <span aria-hidden="true">
                             {mode === 'dark' ? '🌙' : '☀️'}
                         </span>
-                        <span>{mode === 'dark' ? 'Dark' : 'Light'} mode</span>
+                        <span className='max-sm:hidden'>{mode === 'dark' ? 'Dark' : 'Light'} mode</span>
                     </button>
                 </div>
             </div>

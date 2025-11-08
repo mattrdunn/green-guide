@@ -2,60 +2,169 @@ import Image from 'next/image';
 import AccordionItem from './AccordionItem';
 import globeIcon from '@/public/icons/globe.svg';
 import heightIcon from '@/public/icons/height.svg';
-import squareFootIcon from '@/public/icons/square-foot.svg';
 import sunnyIcon from '@/public/icons/sunny.svg';
 import meterIcon from '@/public/icons/speed.svg';
 
+const vitals = [
+    {
+        label: 'USDA Zone',
+        value: '9-11',
+        caption: 'Keep above 60°F year-round.',
+        icon: globeIcon,
+    },
+    {
+        label: 'Light',
+        value: 'Bright, indirect',
+        caption: 'Morning sun, filtered afternoons.',
+        icon: sunnyIcon,
+    },
+    {
+        label: 'Height',
+        value: '3-10 ft indoors',
+        caption: 'Provide a moss pole for climbing.',
+        icon: heightIcon,
+    },
+    {
+        label: 'Difficulty',
+        value: 'Easy',
+        caption: 'Perfect for confident beginners.',
+        icon: meterIcon,
+    },
+];
+
+const careHighlights = [
+    'Rotate the pot every week for even fenestration.',
+    'Water thoroughly, then allow the top 2" of soil to dry.',
+    'Monthly misting or pebble trays keep humidity above 60%.',
+];
+
+const accordionSections = [
+    {
+        label: 'Soil',
+        value: 'Light & airy mix',
+        body: 'Blend chunky bark, perlite, and coco coir for a well-draining aroid mix that still holds gentle moisture.',
+    },
+    {
+        label: 'Semi-hydro Compatible',
+        value: 'Yes',
+        body: 'Switch to LECA or pon with a mild nutrient solution after roots are acclimated to passive hydro.',
+    },
+    {
+        label: 'Fertilizer',
+        value: '4N-2P-1K',
+        body: 'Balanced, foliage-forward fertilizers keep steady growth without leaf burn.',
+    },
+    {
+        label: 'Fertilizer Frequency',
+        value: 'Every 3 months',
+        body: 'Feed lightly during the growing season and pause when light levels dip in winter.',
+    },
+    {
+        label: 'Native Habitat',
+        value: 'Southern Mexico',
+        body: 'Epiphytic vines climbing jungle canopies—mimic with totems or trellises indoors.',
+    },
+    {
+        label: 'Humidity',
+        value: '60%+ ideal',
+        body: 'Leaf edges crisp below 40%; humidifiers or clustering plants together helps.',
+    },
+    {
+        label: 'Temperature',
+        value: '65° – 85°F',
+        body: 'Protect from drafts and sudden drops below 55°F.',
+    },
+    {
+        label: 'Grow Season',
+        value: 'Spring–Fall',
+        body: 'Expect largest jumps in size when daylight exceeds 12 hours.',
+    },
+];
+
 export default function Overview() {
     return (
-        <div className="flex flex-col gap-1 px-10">
-            <div className="flex gap-2">
-                <div className="h-28 w-20 p-2 flex flex-col gap-2 justify-center items-center rounded-lg bg-white dark:bg-zinc-700">
-                    <Image src={globeIcon} alt="globe" className="size-10" />
-                    <p className="text-center p-1">Zone 9</p>
+        <div className="space-y-8">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                {vitals.map((vital) => (
+                    <article
+                        key={vital.label}
+                        className="rounded-3xl border border-stone-200/80 bg-white/90 p-4 shadow-sm dark:border-stone-700/70 dark:bg-zinc-900/40"
+                    >
+                        <div className="flex items-center gap-3">
+                            <div className="rounded-2xl bg-emerald-50 p-2 dark:bg-emerald-900/30">
+                                <Image
+                                    src={vital.icon}
+                                    alt={vital.label}
+                                    className="h-8 w-8"
+                                />
+                            </div>
+                            <div>
+                                <p className="text-xs uppercase tracking-[0.4em] text-stone-500">
+                                    {vital.label}
+                                </p>
+                                <p className="text-lg font-semibold">
+                                    {vital.value}
+                                </p>
+                            </div>
+                        </div>
+                        <p className="mt-4 text-sm text-stone-600 dark:text-stone-300">
+                            {vital.caption}
+                        </p>
+                    </article>
+                ))}
+            </div>
+
+            <div className="grid gap-6 rounded-[28px] border border-stone-200/80 bg-white/90 p-6 shadow-sm dark:border-stone-700/70 dark:bg-zinc-900/40 md:grid-cols-[1.1fr_0.9fr]">
+                <div className="space-y-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.4em] text-emerald-700 dark:text-emerald-300">
+                        Daily rhythm
+                    </p>
+                    <h3 className="text-2xl font-serif">
+                        A slow, steady climb toward the canopy.
+                    </h3>
+                    <p className="text-sm text-stone-600 dark:text-stone-300">
+                        Encourage dramatic leaf splits by pairing bright, indirect
+                        light with a sturdy support. Gentle airflow and regular
+                        cleaning keep foliage photosynthesizing at full tilt.
+                    </p>
+                    <ul className="space-y-3 text-sm text-stone-700 dark:text-stone-200">
+                        {careHighlights.map((tip) => (
+                            <li key={tip} className="flex gap-3">
+                                <span className="mt-1 h-2 w-2 rounded-full bg-emerald-500" />
+                                {tip}
+                            </li>
+                        ))}
+                    </ul>
                 </div>
-                <div className="h-28 w-20 p-2 flex flex-col gap-2 justify-center items-center rounded-lg bg-white dark:bg-zinc-700">
-                    <Image src={sunnyIcon} alt="sunny" className="size-10" />
-                    <p className="text-center">Indirect Light</p>
-                </div>
-                <div className="h-28 w-20 p-2 flex flex-col gap-2 justify-center items-center rounded-lg bg-white dark:bg-zinc-700">                    
-                    <Image src={squareFootIcon} alt="height" className="size-10" />
-                    <p className="text-center">3-4 Ft Tall</p>
-                </div>
-                <div className="h-28 w-20 p-2 flex flex-col gap-2 justify-center items-center rounded-lg bg-white dark:bg-zinc-700">
-                    <Image src={meterIcon} alt="height" className="size-10 transform scale-x-[-1]" />
-                    <p className="text-center">Easy Care</p>
+                <div className="rounded-3xl border border-stone-200/80 bg-gradient-to-br from-emerald-50 via-white to-lime-50 p-6 dark:border-stone-700/70 dark:from-emerald-900/20 dark:via-zinc-900 dark:to-emerald-900/10">
+                    <h4 className="text-sm uppercase tracking-[0.4em] text-stone-500">
+                        Weekly checklist
+                    </h4>
+                    <ul className="mt-4 space-y-4 text-sm text-stone-700 dark:text-stone-200">
+                        <li className="rounded-2xl border border-stone-200/80 bg-white/80 px-4 py-3 dark:border-stone-700/70 dark:bg-zinc-900/40">
+                            Dust leaves with a damp microfiber cloth.
+                        </li>
+                        <li className="rounded-2xl border border-stone-200/80 bg-white/80 px-4 py-3 dark:border-stone-700/70 dark:bg-zinc-900/40">
+                            Inspect aerial roots and tuck into the moss pole.
+                        </li>
+                        <li className="rounded-2xl border border-stone-200/80 bg-white/80 px-4 py-3 dark:border-stone-700/70 dark:bg-zinc-900/40">
+                            Check moisture halfway down the planter.
+                        </li>
+                    </ul>
                 </div>
             </div>
 
-            <div className="mt-4 mb-1 border-t border-stone-300" />
-
-            <AccordionItem label="Soil" value="Well Draining">
-                Details about the best soil types and mixes for this plant will
-                be available soon.
-            </AccordionItem>
-            <AccordionItem label="Semi-hydro Compatible" value="Yes">
-                Semi-hydro compatibility details coming soon.
-            </AccordionItem>
-            <AccordionItem label="Fertilizer" value="4N-2P-1K">
-                Fertilizer recommendations and tips will be added soon.
-            </AccordionItem>
-            <AccordionItem label="Fertilizer Frequency" value="Every 3 Months">
-                Frequency and seasonal feeding info coming soon.
-            </AccordionItem>
-            <AccordionItem label="Native Habitat" value="South Africa">
-                Learn more about the plant's natural habitat and ecological
-                requirements.
-            </AccordionItem>
-            <AccordionItem label="Humidity" value="Bushy">
-                Humidity care instructions will be available soon.
-            </AccordionItem>
-            <AccordionItem label="Temperature" value="50 - 95°F">
-                Advice on ideal temperature ranges will be included here.
-            </AccordionItem>
-            <AccordionItem label="Grow Season" value="Fall">
-                More grow season specifics coming soon.
-            </AccordionItem>
+            <div className="grid gap-4">
+                {accordionSections.map((section) => (
+                    <AccordionItem
+                        key={section.label}
+                        label={section.label}
+                        value={section.value}
+                    >
+                        {section.body}
+                    </AccordionItem>
+                ))}
+            </div>
         </div>
     );
 }
