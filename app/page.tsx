@@ -54,7 +54,7 @@ const previewTasks = [
 
 export default function Home() {
     return (
-        <div className="mx-auto flex w-full max-w-5xl flex-col gap-12">
+        <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-2">
             <section className="grid gap-10 rounded-[32px] bg-gradient-to-br from-emerald-900 via-emerald-700 to-lime-500 p-8 text-white shadow-2xl lg:grid-cols-[1.1fr_0.9fr]">
                 <div className="space-y-6">
                     <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-white/80">
