@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import ImageCarousel from './ImageCarousel';
 import Overview from './Overview';
+import GreenCard from '@/app/components/GreenCard';
 
 const tabs = ['Overview', 'Care', 'Issues', 'Get Started'];
 
@@ -32,7 +33,7 @@ export default function SpeciesClient({
 
     return (
         <div className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-2 pb-12 pt-0 sm:px-6 sm:pb-16 sm:pt-8 lg:px-0">
-            <section className="bg-linear-to-br from-emerald-800 via-emerald-700 to-green-700 dark:from-emerald-900/90 dark:via-emerald-800/90 dark:to-green-700 px-4 py-6 text-white shadow-none rounded-[36px] sm:p-10 sm:shadow-2xl">
+            <GreenCard>
                 <div className="space-y-6">
                     <div className="inline-flex items-center gap-3 rounded-full bg-white/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.4em] text-white/80">
                         Species profile
@@ -92,7 +93,7 @@ export default function SpeciesClient({
                         </ul>
                     </div>
                 </div>
-            </section>
+            </GreenCard>
 
             <section className="rounded-none border-0 bg-transparent p-0 shadow-none dark:bg-transparent sm:rounded-[32px] sm:border sm:border-stone-200/70 sm:bg-white/80 sm:p-8 sm:shadow-sm sm:backdrop-blur sm:dark:border-stone-800/60 sm:dark:bg-zinc-900/40">
                 <nav className="no-scrollbar flex gap-3 overflow-x-auto pb-3">
