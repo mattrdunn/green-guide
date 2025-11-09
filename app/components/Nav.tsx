@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 type ThemeMode = 'light' | 'dark';
@@ -52,11 +53,14 @@ export default function Nav() {
     };
 
     return (
-        <nav className="absolute left-0 right-0 top-0 h-12 px-4 py-2 sm:px-10">
+        <nav className="fixed left-0 right-0 top-0 z-50 h-12 border-b border-stone-200/60 bg-white/70 px-4 py-2 backdrop-blur-md dark:border-stone-800/60 dark:bg-zinc-950/30 sm:px-10">
             <div className="relative flex h-full items-center justify-center">
-                <p className="text-sm font-semibold tracking-[0.35em] text-stone-700 dark:text-stone-200">
+                <Link
+                    href="/"
+                    className="text-sm font-semibold tracking-[0.35em] text-stone-700 transition hover:text-stone-900 dark:text-stone-200 dark:hover:text-white"
+                >
                     GREEN GUIDE
-                </p>
+                </Link>
 
                 <div className="absolute inset-y-0 right-0 flex items-center">
                     <button
