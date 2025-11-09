@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 type ThemeMode = 'light' | 'dark';
 
@@ -35,6 +36,7 @@ function resolveInitialTheme(): ThemeMode {
 }
 
 export default function Nav() {
+    const { t } = useTranslation('translation', { keyPrefix: 'nav' });
     const [mode, setMode] = useState<ThemeMode>('light');
 
     useEffect(() => {
@@ -59,7 +61,7 @@ export default function Nav() {
                     href="/"
                     className="text-sm font-semibold tracking-[0.35em] text-stone-700 transition hover:text-stone-900 dark:text-stone-200 dark:hover:text-white"
                 >
-                    GREEN GUIDE
+                    {t('brand')}
                 </Link>
 
                 <div className="absolute inset-y-0 right-0 flex items-center">
@@ -72,7 +74,11 @@ export default function Nav() {
                         <span aria-hidden="true">
                             {mode === 'dark' ? '🌙' : '☀️'}
                         </span>
-                        <span className='max-sm:hidden'>{mode === 'dark' ? 'Dark' : 'Light'} mode</span>
+                        <span className="max-sm:hidden">
+                            {mode === 'dark'
+                                ? t('theme.dark')
+                                : t('theme.light')}
+                        </span>
                     </button>
                 </div>
             </div>

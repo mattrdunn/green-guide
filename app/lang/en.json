@@ -1,0 +1,59 @@
+{
+    "nav": {
+        "brand": "GREEN GUIDE",
+        "theme": {
+            "light": "Light mode",
+            "dark": "Dark mode"
+        }
+    },
+    "speciesClient": {
+        "badge": "Species profile",
+        "commonName": "Swiss Cheese Plant",
+        "description": "Architectural leaves, forgiving care, and adaptable growth habits make Monstera deliciosa a staple for bright homes and lush patios alike.",
+        "tabs": {
+            "overview": "Overview",
+            "care": "Care",
+            "issues": "Issues",
+            "getStarted": "Get Started"
+        },
+        "emptyStates": {
+            "default": "Details coming soon."
+        },
+        "tabCopy": {
+            "issues": "We are curating a troubleshooting flow to diagnose pests, pathogens, and nutrient deficiencies with quick remedies and product picks.",
+            "getStarted": "Starter kits, accessory recommendations, and potting guides will live here so you can bring your Monstera home with confidence."
+        }
+    },
+    "overview": {
+        "dailyRhythm": {
+            "label": "Daily rhythm",
+            "heading": "A slow, steady climb toward the canopy.",
+            "body": "Encourage dramatic leaf splits by pairing bright, indirect light with a sturdy support. Gentle airflow and regular cleaning keep foliage photosynthesizing at full tilt."
+        },
+        "weeklyChecklist": {
+            "title": "Weekly checklist",
+            "items": [
+                "Dust leaves with a damp microfiber cloth.",
+                "Inspect aerial roots and tuck into the moss pole.",
+                "Check moisture halfway down the planter."
+            ]
+        }
+    },
+    "care": {
+        "wateringRhythm": {
+            "label": "Watering rhythm",
+            "heading": "Water deeply, then wait for the mix to breathe.",
+            "body": "Monstera roots prefer a predictable soak-and-dry cycle. Use room-temperature water, saturate evenly, then empty the cache pot within ten minutes. Pair hydration with a light fertilizer flush every other month during the growing season.",
+            "tips": [
+                "Check moisture with your finger or a probe halfway down the root ball before committing to water.",
+                "Hard water? Collect rainwater or let tap water rest 24 hours so chlorine can dissipate."
+            ]
+        },
+        "seasonalCadence": "Seasonal cadence",
+        "routines": {
+            "weekly": "Weekly touchpoints",
+            "monthly": "Monthly reset"
+        },
+        "toolkit": "Care toolkit"
+    }
+}

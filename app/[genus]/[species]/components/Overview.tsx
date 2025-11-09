@@ -1,4 +1,7 @@
+'use client';
+
 import Image from 'next/image';
+import { useTranslation } from 'react-i18next';
 import AccordionItem from './AccordionItem';
 import globeIcon from '@/public/icons/globe.svg';
 import heightIcon from '@/public/icons/height.svg';
@@ -82,6 +85,11 @@ const accordionSections = [
 ];
 
 export default function Overview() {
+    const { t } = useTranslation('translation', { keyPrefix: 'overview' });
+    const weeklyChecklistItems = t('weeklyChecklist.items', {
+        returnObjects: true,
+    }) as string[];
+
     return (
         <div className="space-y-8">
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -117,15 +125,13 @@ export default function Overview() {
             <div className="grid gap-6 rounded-[28px] border border-stone-200/80 bg-white/90 p-6 shadow-sm dark:border-stone-700/70 dark:bg-zinc-900/40 md:grid-cols-[1.1fr_0.9fr]">
                 <div className="space-y-4">
                     <p className="text-xs font-semibold uppercase tracking-[0.4em] text-emerald-700 dark:text-emerald-300">
-                        Daily rhythm
+                        {t('dailyRhythm.label')}
                     </p>
                     <h3 className="text-2xl font-serif">
-                        A slow, steady climb toward the canopy.
+                        {t('dailyRhythm.heading')}
                     </h3>
                     <p className="text-sm text-stone-600 dark:text-stone-300">
-                        Encourage dramatic leaf splits by pairing bright, indirect
-                        light with a sturdy support. Gentle airflow and regular
-                        cleaning keep foliage photosynthesizing at full tilt.
+                        {t('dailyRhythm.body')}
                     </p>
                     <ul className="space-y-3 text-sm text-stone-700 dark:text-stone-200">
                         {careHighlights.map((tip) => (
@@ -138,18 +144,17 @@ export default function Overview() {
                 </div>
                 <div className="rounded-3xl border border-stone-200/80 bg-gradient-to-br from-emerald-50 via-white to-lime-50 p-6 dark:border-stone-700/70 dark:from-emerald-900/20 dark:via-zinc-900 dark:to-emerald-900/10">
                     <h4 className="text-sm uppercase tracking-[0.4em] text-stone-500">
-                        Weekly checklist
+                        {t('weeklyChecklist.title')}
                     </h4>
                     <ul className="mt-4 space-y-4 text-sm text-stone-700 dark:text-stone-200">
-                        <li className="rounded-2xl border border-stone-200/80 bg-white/80 px-4 py-3 dark:border-stone-700/70 dark:bg-zinc-900/40">
-                            Dust leaves with a damp microfiber cloth.
-                        </li>
-                        <li className="rounded-2xl border border-stone-200/80 bg-white/80 px-4 py-3 dark:border-stone-700/70 dark:bg-zinc-900/40">
-                            Inspect aerial roots and tuck into the moss pole.
-                        </li>
-                        <li className="rounded-2xl border border-stone-200/80 bg-white/80 px-4 py-3 dark:border-stone-700/70 dark:bg-zinc-900/40">
-                            Check moisture halfway down the planter.
-                        </li>
+                        {weeklyChecklistItems.map((item) => (
+                            <li
+                                key={item}
+                                className="rounded-2xl border border-stone-200/80 bg-white/80 px-4 py-3 dark:border-stone-700/70 dark:bg-zinc-900/40"
+                            >
+                                {item}
+                            </li>
+                        ))}
                     </ul>
                 </div>
             </div>
