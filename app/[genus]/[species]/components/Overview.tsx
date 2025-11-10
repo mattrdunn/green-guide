@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useTranslation } from 'react-i18next';
 import AccordionItem from './AccordionItem';
 import globeIcon from '@/public/icons/globe.svg';
-import heightIcon from '@/public/icons/height.svg';
+import waterDropIcon from '@/public/icons/water-drop.svg';
 import sunnyIcon from '@/public/icons/sunny.svg';
 import meterIcon from '@/public/icons/speed.svg';
 
@@ -22,10 +22,10 @@ const vitals = [
         icon: sunnyIcon,
     },
     {
-        label: 'Height',
-        value: '3-10 ft indoors',
-        caption: 'Provide a moss pole for climbing.',
-        icon: heightIcon,
+        label: 'Watering',
+        value: 'Soak & dry out',
+        caption: 'Water until runoff, then wait for the top 2" to dry.',
+        icon: waterDropIcon,
     },
     {
         label: 'Difficulty',
@@ -42,6 +42,11 @@ const careHighlights = [
 ];
 
 const accordionSections = [
+    {
+        label: 'Height',
+        value: '3-10 ft indoors',
+        body: 'Expect the plant to climb once given a moss pole or trellis; prune vines above 10 ft to keep fenestrations manageable.',
+    },
     {
         label: 'Soil',
         value: 'Light & airy mix',
