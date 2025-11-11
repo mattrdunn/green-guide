@@ -1,35 +1,50 @@
 'use client';
 
+import Image from 'next/image';
+import type { StaticImageData } from 'next/image';
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 
 type AccordionItemProps = {
     label: string;
     value: string;
+    icon?: StaticImageData;
     children: React.ReactNode;
 };
 
-const AccordionItem = ({ label, value, children }: AccordionItemProps) => {
+const AccordionItem = ({
+    label,
+    value,
+    icon,
+    children,
+}: AccordionItemProps) => {
     const [open, setOpen] = useState(false);
 
     return (
         <div className="rounded-3xl border border-stone-200/80 bg-white/90 p-4 shadow-sm dark:border-stone-700/70 dark:bg-zinc-900/40">
             <button
                 type="button"
-                className="flex w-full items-center justify-between text-left"
+                className="cursor-pointer flex w-full items-center justify-between gap-4 rounded-full px-4 py-3 text-left transition hover:bg-stone-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 dark:hover:bg-zinc-900/40"
                 onClick={() => setOpen((prev) => !prev)}
                 aria-expanded={open}
             >
-                <div>
-                    <p className="text-xs uppercase tracking-[0.4em] text-stone-500">
-                        {label}
-                    </p>
-                    <p className="text-lg font-semibold text-stone-900 dark:text-white">
-                        {value}
-                    </p>
+                <div className="flex flex-1 items-center gap-3">
+                    {icon && (
+                        <span className="flex size-11 items-center justify-center rounded-full bg-emerald-50 dark:bg-emerald-900/40">
+                            <Image src={icon} alt="" className="size-8" />
+                        </span>
+                    )}
+                    <div>
+                        <p className="text-xs uppercase tracking-[0.4em] text-stone-500">
+                            {label}
+                        </p>
+                        <p className="text-lg font-semibold text-stone-900 dark:text-white">
+                            {value}
+                        </p>
+                    </div>
                 </div>
                 <span
-                    className={`ml-4 inline-flex h-9 w-9 items-center justify-center rounded-full border border-stone-200/80 text-lg font-light text-stone-600 transition-transform duration-200 dark:border-stone-700/70 dark:text-stone-200 ${
+                    className={`ml-4 inline-flex size-9 items-center justify-center rounded-full border border-stone-200/80 text-lg font-light text-stone-600 transition-transform duration-200 dark:border-stone-700/70 dark:text-stone-200 ${
                         open ? 'rotate-45' : ''
                     }`}
                     aria-hidden="true"

@@ -70,11 +70,8 @@ export default function Nav() {
 
     useEffect(() => {
         if (!panelOpen) {
-            document.body.style.overflow = '';
             return;
         }
-
-        document.body.style.overflow = 'hidden';
 
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === 'Escape') {
@@ -85,7 +82,6 @@ export default function Nav() {
         document.addEventListener('keydown', handleKeyDown);
 
         return () => {
-            document.body.style.overflow = '';
             document.removeEventListener('keydown', handleKeyDown);
         };
     }, [panelOpen]);
@@ -108,7 +104,9 @@ export default function Nav() {
                             type="button"
                             onClick={() => setPanelOpen(true)}
                             aria-label="Open site navigation"
-                            className="inline-flex flex-col justify-center rounded-full border border-stone-200/70 bg-white/80 px-3 py-2 text-stone-800 shadow-sm backdrop-blur transition hover:bg-white dark:border-stone-700/70 dark:bg-zinc-900/70 dark:text-stone-100"
+                            aria-expanded={panelOpen}
+                            aria-controls="site-nav-panel"
+                            className="inline-flex flex-col justify-center rounded-full border border-stone-200/70 bg-white/80 px-3 py-2 text-stone-800 shadow-sm backdrop-blur transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 dark:border-stone-700/70 dark:bg-zinc-900/70 dark:text-stone-100"
                         >
                             <span className="my-0.5 h-0.5 w-5 rounded-full bg-current" />
                             <span className="my-0.5 h-0.5 w-5 rounded-full bg-current" />
@@ -128,7 +126,7 @@ export default function Nav() {
                             type="button"
                             onClick={handleToggle}
                             aria-pressed={mode === 'dark'}
-                            className="inline-flex items-center gap-2 rounded-full border border-stone-200/80 bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-stone-800 shadow-sm backdrop-blur transition hover:bg-white dark:border-stone-700/70 dark:bg-zinc-900/70 dark:text-stone-100 dark:hover:bg-zinc-900"
+                            className="inline-flex items-center gap-2 rounded-full border border-stone-200/80 bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-stone-800 shadow-sm backdrop-blur transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 dark:border-stone-700/70 dark:bg-zinc-900/70 dark:text-stone-100 dark:hover:bg-zinc-900"
                         >
                             <span aria-hidden="true">
                                 {mode === 'dark' ? '🌙' : '☀️'}
@@ -144,51 +142,47 @@ export default function Nav() {
             </nav>
 
             {panelOpen && (
-                <>
-                    <button
-                        type="button"
-                        className="fixed inset-0 z-40 bg-stone-900/50 backdrop-blur-sm"
-                        aria-label="Close site navigation"
-                        onClick={() => setPanelOpen(false)}
-                    />
-                    <aside className="fixed inset-y-0 left-0 z-50 w-72 border-r border-stone-200 bg-white/95 p-6 shadow-2xl shadow-stone-900/20 backdrop-blur dark:border-stone-800 dark:bg-zinc-950/90">
-                        <div className="flex items-center justify-between">
-                            <Link
-                                href="/"
-                                className="text-xs font-semibold uppercase tracking-[0.4em] text-stone-700 dark:text-stone-100"
-                                onClick={() => setPanelOpen(false)}
-                            >
-                                {t('brand')}
-                            </Link>
-                            <button
-                                type="button"
-                                onClick={() => setPanelOpen(false)}
-                                className="inline-flex items-center justify-center rounded-full border border-stone-200 px-2 py-1 text-sm text-stone-700 transition hover:bg-stone-100 dark:border-stone-700 dark:text-stone-100 dark:hover:bg-stone-800"
-                                aria-label="Close menu"
-                            >
-                                ×
-                            </button>
-                        </div>
-                        <ul className="mt-6 space-y-3 text-sm">
-                            {NAV_LINKS.map((link) => (
-                                <li key={link.href}>
-                                    <Link
-                                        href={link.href}
-                                        className="block rounded-2xl border border-stone-200/80 bg-white/90 px-4 py-3 transition hover:border-emerald-300 hover:bg-emerald-50 dark:border-stone-700/80 dark:bg-zinc-900 dark:hover:border-emerald-600 dark:hover:bg-emerald-950/30"
-                                        onClick={() => setPanelOpen(false)}
-                                    >
-                                        <p className="text-base font-semibold text-stone-900 dark:text-stone-100">
-                                            {link.label}
-                                        </p>
-                                        <p className="text-xs text-stone-500 dark:text-stone-300">
-                                            {link.description}
-                                        </p>
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </aside>
-                </>
+                <aside
+                    id="site-nav-panel"
+                    aria-label="Site navigation"
+                    className="fixed bottom-0 left-0 top-12 z-40 w-72 overflow-y-auto border-r border-stone-200 bg-white p-6 shadow-2xl shadow-stone-900/10 dark:border-stone-800 dark:bg-zinc-950"
+                >
+                    <div className="flex items-center justify-between">
+                        <Link
+                            href="/"
+                            className="text-xs font-semibold uppercase tracking-[0.4em] text-stone-700 dark:text-stone-100"
+                            onClick={() => setPanelOpen(false)}
+                        >
+                            {t('brand')}
+                        </Link>
+                        <button
+                            type="button"
+                            onClick={() => setPanelOpen(false)}
+                            className="inline-flex items-center justify-center rounded-full border border-stone-200 px-2 py-1 text-sm text-stone-700 transition hover:bg-stone-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 dark:border-stone-700 dark:text-stone-100 dark:hover:bg-stone-800"
+                            aria-label="Close menu"
+                        >
+                            ×
+                        </button>
+                    </div>
+                    <ul className="mt-6 space-y-3 text-sm">
+                        {NAV_LINKS.map((link) => (
+                            <li key={link.href}>
+                                <Link
+                                    href={link.href}
+                                    className="block rounded-2xl border border-stone-200/80 bg-white/90 px-4 py-3 transition hover:border-emerald-300 hover:bg-emerald-50 dark:border-stone-700/80 dark:bg-zinc-900 dark:hover:border-emerald-600 dark:hover:bg-emerald-950/30"
+                                    onClick={() => setPanelOpen(false)}
+                                >
+                                    <p className="text-base font-semibold text-stone-900 dark:text-stone-100">
+                                        {link.label}
+                                    </p>
+                                    <p className="text-xs text-stone-500 dark:text-stone-300">
+                                        {link.description}
+                                    </p>
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </aside>
             )}
         </>
     );

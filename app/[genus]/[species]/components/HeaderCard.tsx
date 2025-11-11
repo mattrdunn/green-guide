@@ -16,12 +16,6 @@ const quickFacts = [
     { icon: petsIcon, value: 'Mildly toxic' },
 ];
 
-const highlightNotes = [
-    'Native to the tropical rainforests of Southern Mexico.',
-    'Fenestrations form once plants reach 3+ years old.',
-    'Thrives with humidity above 60% and weekly misting.',
-];
-
 type HeaderCardProps = {
     genus: string;
     species: string;
@@ -68,7 +62,7 @@ export default function HeaderCard({ genus, species }: HeaderCardProps) {
                         {quickFacts.map((fact) => (
                             <div
                                 key={fact.value}
-                                className="flex  items-center gap-2 rounded-2xl border border-white/20 bg-white/10 p-4"
+                                className="flex  items-center gap-2 rounded-2xl border border-white/20 bg-white/10 px-4 py-2"
                             >
                                 <Image
                                     src={fact.icon}
@@ -81,14 +75,6 @@ export default function HeaderCard({ genus, species }: HeaderCardProps) {
                             </div>
                         ))}
                     </div>
-                    <ul className="space-y-3 rounded-3xl border border-white/15 bg-white/10 p-4 text-sm text-white/90">
-                        {highlightNotes.map((note) => (
-                            <li key={note} className="flex gap-3">
-                                <span className="mt-1 h-2 w-2 rounded-full bg-lime-200" />
-                                <p>{note}</p>
-                            </li>
-                        ))}
-                    </ul>
                 </div>
             </div>
         </GreenCard>
