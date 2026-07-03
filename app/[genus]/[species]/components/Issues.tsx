@@ -1,73 +1,8 @@
 'use client';
 
-const stressSignals = [
-    {
-        title: 'Yellow Leaves',
-        description:
-            'One or two older leaves aging to yellow is normal shed, but new growth or multiple leaves yellowing at once points to trouble.',
-        actions: [
-            'Check moisture: soggy soil means ease off watering and add airflow; bone-dry soil needs a deep soak.',
-            'Filter harsh light or pull the plant a few feet back from bright windows to prevent sun stress.',
-            'Trim only fully spent leaves to redirect energy to healthy foliage.',
-        ],
-    },
-    {
-        title: 'Drooping or Curling',
-        description:
-            'Tired, floppy petioles or inward curling edges typically signal root stress from watering swings or compacted soil.',
-        actions: [
-            'Feel the potting mix: rehydrate evenly if dry pockets remain, or repot into chunkier mix if water lingers.',
-            'Confirm the plant is not root-bound; upgrade 1–2" in diameter if roots circle the pot.',
-            'Support large vines with a moss pole so foliage is not dragging under its own weight.',
-        ],
-    },
-    {
-        title: 'Brown Tips & Edges',
-        description:
-            'Low humidity or salt buildup from fertilizer concentrates crisp leaf margins.',
-        actions: [
-            'Mist leaves or run a humidifier to keep humidity above 50–60%.',
-            'Flush the pot monthly with lukewarm water to rinse fertilizer residues.',
-            'Wipe leaves with a damp microfiber cloth so stomata can breathe.',
-        ],
-    },
-];
+import type { PlantIssues } from '@/lib/db/models/Plant';
 
-const pests = [
-    {
-        name: 'Spider Mites',
-        signs: 'Dusty webbing on undersides, stippled leaves losing color.',
-        treatment:
-            'Shower foliage, then treat weekly with neem oil or insecticidal soap until no new damage appears.',
-    },
-    {
-        name: 'Thrips',
-        signs: 'Silvery streaks and distorted new leaves; black specks (frass) nearby.',
-        treatment:
-            'Isolate the plant, prune the worst leaves, and alternate systemic granules with contact sprays for 4–6 weeks.',
-    },
-    {
-        name: 'Fungus Gnats',
-        signs: 'Tiny flies hovering near soil, larvae feeding on fine roots.',
-        treatment:
-            'Let the top 2" of mix dry, add a sand topdress, and water in Bacillus thuringiensis israelensis (BTI) or mosquito bits.',
-    },
-    {
-        name: 'Scale & Mealybugs',
-        signs: 'Sticky residue, cottony clusters in leaf nodes, or dome-like shells on stems.',
-        treatment:
-            'Swab insects with alcohol, then follow with horticultural oil coverage every 7–10 days until clean.',
-    },
-];
-
-const quickChecklist = [
-    'Inspect leaves weekly with a flashlight to catch pests before populations explode.',
-    'Refresh potting mix every 18–24 months to prevent compaction and fungus gnat hotels.',
-    'Rotate the plant quarterly to keep growth symmetrical and avoid one-sided light stress.',
-    'Use a moisture meter or chopstick test instead of calendar watering for better accuracy.',
-];
-
-export default function Issues() {
+export default function Issues({ issues }: { issues: PlantIssues }) {
     return (
         <div className="space-y-8">
             <section className="rounded-3xl border border-stone-200/80 bg-white/90 p-6 shadow-sm dark:border-stone-700/70 dark:bg-zinc-900/40">
@@ -82,7 +17,7 @@ export default function Issues() {
                     decline before it spreads plant-wide.
                 </p>
                 <div className="mt-6 grid gap-4 lg:grid-cols-3">
-                    {stressSignals.map((issue) => (
+                    {issues.stressSignals.map((issue) => (
                         <article
                             key={issue.title}
                             className="rounded-2xl border border-stone-200/70 bg-white/80 p-5 dark:border-stone-700/70 dark:bg-zinc-900/40"
@@ -114,7 +49,7 @@ export default function Issues() {
                     Identify & treat infestations early
                 </h2>
                 <div className="mt-6 grid gap-4 md:grid-cols-2">
-                    {pests.map((pest) => (
+                    {issues.pests.map((pest) => (
                         <article
                             key={pest.name}
                             className="rounded-2xl border border-amber-200/70 bg-white/80 p-4 dark:border-amber-400/30 dark:bg-amber-950/40"
@@ -158,7 +93,7 @@ export default function Issues() {
                     propagation.
                 </p>
                 <ul className="mt-5 grid gap-3 md:grid-cols-2">
-                    {quickChecklist.map((item) => (
+                    {issues.stabilityChecklist.map((item) => (
                         <li
                             key={item}
                             className="rounded-2xl border border-stone-200/70 bg-white/80 px-4 py-3 text-sm text-stone-700 dark:border-stone-700/70 dark:bg-zinc-900/40 dark:text-stone-200"

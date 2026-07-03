@@ -2,6 +2,7 @@
 
 import { MouseEvent, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useGetPlantQuery } from '@/store/api/templateApi';
 import HeaderCard from './HeaderCard';
 import Overview from './Overview';
 import Care from './Care';
@@ -10,7 +11,6 @@ import cn from '@/app/lib/cn';
 
 const tabs = ['overview', 'care', 'issues', 'getStarted'] as const;
 type TabKey = (typeof tabs)[number];
-type SecondaryTab = Extract<TabKey, 'issues' | 'getStarted'>;
 
 export default function SpeciesClient({
     genus,
@@ -23,10 +23,11 @@ export default function SpeciesClient({
     const [activeTab, setActiveTab] = useState<TabKey>('overview');
     const tabListRef = useRef<HTMLDivElement | null>(null);
 
-    const tabCopy: Record<SecondaryTab, string> = {
-        issues: t('tabCopy.issues'),
-        getStarted: t('tabCopy.getStarted'),
-    };
+    const {
+        data: plant,
+        isLoading,
+        isError,
+    } = useGetPlantQuery({ genus, species });
 
     const handleTabClick = (tab: TabKey, event: MouseEvent<HTMLButtonElement>) => {
         setActiveTab(tab);
@@ -52,9 +53,29 @@ export default function SpeciesClient({
         }
     };
 
+    if (isLoading) {
+        return (
+            <div className="mx-auto flex w-full max-w-5xl flex-col px-2 pb-12 pt-0 sm:px-6 sm:pb-16 sm:pt-8 lg:px-0">
+                <div className="rounded-3xl border border-dashed border-stone-300 px-6 py-24 text-center text-sm text-stone-500 dark:border-stone-700 dark:text-stone-300">
+                    {t('loading')}
+                </div>
+            </div>
+        );
+    }
+
+    if (isError || !plant) {
+        return (
+            <div className="mx-auto flex w-full max-w-5xl flex-col px-2 pb-12 pt-0 sm:px-6 sm:pb-16 sm:pt-8 lg:px-0">
+                <div className="rounded-3xl border border-dashed border-stone-300 px-6 py-24 text-center text-sm text-stone-500 dark:border-stone-700 dark:text-stone-300">
+                    {t('loadError')}
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-2 pb-12 pt-0 sm:px-6 sm:pb-16 sm:pt-8 lg:px-0">
-            <HeaderCard genus={genus} species={species} />
+            <HeaderCard genus={genus} species={species} plant={plant} />
 
             <section className="rounded-none border-0 bg-transparent p-0 shadow-none dark:bg-transparent sm:rounded-[32px] sm:border sm:border-stone-200/70 sm:bg-white/80 sm:p-8 sm:shadow-sm sm:backdrop-blur sm:dark:border-stone-800/60 sm:dark:bg-zinc-900/40">
                 <nav
@@ -82,13 +103,17 @@ export default function SpeciesClient({
                 </nav>
 
                 <div className="mt-6 sm:mt-6">
-                    {activeTab === 'overview' && <Overview />}
-                    {activeTab === 'care' && <Care />}
-                    {activeTab === 'issues' && <Issues />}
-                    {activeTab !== 'overview' && activeTab !== 'care' && (
+                    {activeTab === 'overview' && (
+                        <Overview
+                            vitals={plant.vitals}
+                            overview={plant.overview}
+                        />
+                    )}
+                    {activeTab === 'care' && <Care care={plant.care} />}
+                    {activeTab === 'issues' && <Issues issues={plant.issues} />}
+                    {activeTab === 'getStarted' && (
                         <div className="rounded-3xl border border-dashed border-stone-300 px-6 py-16 text-center text-sm text-stone-500 dark:border-stone-700 dark:text-stone-300">
-                            {tabCopy[activeTab as SecondaryTab] ??
-                                t('emptyStates.default')}
+                            {t('tabCopy.getStarted')}
                         </div>
                     )}
                 </div>

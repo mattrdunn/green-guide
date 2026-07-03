@@ -1,25 +1,27 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-type Plant = {
-    id: string;
-    name: string;
-    latinName: string;
-    imageUrl: string;
-}
+import type { Plant } from '@/lib/db/models/Plant';
+
+/** Plant document as served by the API — Mongoose Dates arrive as ISO strings. */
+export type PlantData = Omit<Plant, 'createdAt' | 'updatedAt'> & {
+    createdAt: string;
+    updatedAt: string;
+};
+
 export const greenGuideApi = createApi({
-  reducerPath: 'greenGuideApi',
-  baseQuery: fetchBaseQuery({ baseUrl: '/api/' }),
-  endpoints: (builder) => ({
-    getPlant: builder.query<Plant, string>({
-      query: (key) => `plants/${key}`,
+    reducerPath: 'greenGuideApi',
+    baseQuery: fetchBaseQuery({ baseUrl: '/api/' }),
+    endpoints: (builder) => ({
+        getPlant: builder.query<PlantData, { genus: string; species: string }>({
+            query: ({ genus, species }) => `plants/${genus}/${species}`,
+        }),
+        saveFavoritePlant: builder.mutation<void, { plantId: string }>({
+            query: ({ plantId }) => ({
+                url: 'favorites',
+                method: 'POST',
+                body: { plantId },
+            }),
+        }),
     }),
-    saveFavoritePlant: builder.mutation<void, { plantId: string }>({
-      query: ({ plantId }) => ({
-        url: 'favorites',
-        method: 'POST',
-        body: { plantId },
-      }),
-    }),
-  }),
 });
 
 export const { useGetPlantQuery, useSaveFavoritePlantMutation } = greenGuideApi;

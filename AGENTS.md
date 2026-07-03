@@ -50,6 +50,11 @@ store/
   index.ts                  # Redux store (RTK Query middleware wired)
   api/
     templateApi.ts          # RTK Query API slice (template / starting point)
+lib/
+  db/
+    connect.ts              # Mongoose connection singleton (server-only; hot-reload + serverless safe)
+    models/
+      Plant.ts              # Plant schema/model + exported TS interfaces
 public/
   icons/                    # SVG icons used in species vitals
   images/                   # Plant photography
@@ -86,6 +91,12 @@ public/
 - `returnObjects: true` for array values (e.g. checklist items)
 - Add new locale files alongside `en.json` when adding languages
 
+### Data Layer (MongoDB)
+- Mongoose models live in `lib/db/models/`; call `connectToDatabase()` from `lib/db/connect.ts` before any query
+- Server-side only (server components, route handlers) — never import from client components
+- `MONGODB_URI` comes from `.env.local` (template in `.env.example`); database name is part of the URI path
+- One `plants` document per species; unique compound index on `genus + species` (both stored lowercase, matching route params)
+
 ### State Management
 - RTK Query for server data; add new API slices in `store/api/`
 - Local UI state (tabs, modals) stays in component-level `useState`
@@ -114,3 +125,6 @@ public/
 ### Adding an RTK Query endpoint
 1. Add the endpoint in `store/api/templateApi.ts` (or a new slice)
 2. Register any new slice reducer/middleware in `store/index.ts`
+
+## Conventional Commits
+Use (Conventional Commits)[https://www.conventionalcommits.org/en/v1.0.0/] when formatting commit messages.

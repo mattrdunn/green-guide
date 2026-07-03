@@ -8,27 +8,23 @@ import sunnyIcon from '@/public/icons/sunny.svg';
 import meterIcon from '@/public/icons/speed.svg';
 import petsIcon from '@/public/icons/pets.svg';
 import Image from 'next/image';
-
-const quickFacts = [
-    { icon: sunnyIcon, value: 'Bright, indirect' },
-    { icon: waterDropIcon, value: 'When top 2" dry' },
-    { icon: meterIcon, value: 'Easy going' },
-    { icon: petsIcon, value: 'Mildly toxic' },
-];
-
-const highlightNotes = [
-    'Native to the tropical rainforests of Southern Mexico.',
-    'Fenestrations form once plants reach 3+ years old.',
-    'Thrives with humidity above 60% and weekly misting.',
-];
+import type { PlantData } from '@/store/api/templateApi';
 
 type HeaderCardProps = {
     genus: string;
     species: string;
+    plant: PlantData;
 };
 
-export default function HeaderCard({ genus, species }: HeaderCardProps) {
+export default function HeaderCard({ genus, species, plant }: HeaderCardProps) {
     const { t } = useTranslation('translation', { keyPrefix: 'speciesClient' });
+
+    const quickFacts = [
+        { icon: sunnyIcon, value: plant.vitals.light.value },
+        { icon: waterDropIcon, value: plant.vitals.watering.value },
+        { icon: meterIcon, value: plant.vitals.difficulty.value },
+        { icon: petsIcon, value: plant.vitals.toxicity.value },
+    ];
 
     return (
         <GreenCard>
@@ -40,17 +36,14 @@ export default function HeaderCard({ genus, species }: HeaderCardProps) {
 
                 <div className="rounded-[30px]">
                     <ImageCarousel
-                        images={[
-                            '/images/monstera-img-1.jpeg',
-                            '/images/monstera-img-2.jpeg',
-                        ]}
+                        images={plant.images.map((image) => image.url)}
                     />
                 </div>
 
                 <div className="space-y-6 pb-2 sm:pb-0">
                     <div>
                         <p className="text-sm uppercase tracking-[0.6em] text-white/60">
-                            {t('commonName')}
+                            {plant.commonNames.join(', ')}
                         </p>
                         <h1 className="mt-2 flex flex-wrap items-end gap-4 font-serif text-4xl leading-tight sm:text-5xl">
                             <span className="capitalize font-bold">
@@ -61,7 +54,7 @@ export default function HeaderCard({ genus, species }: HeaderCardProps) {
                             </span>
                         </h1>
                         <p className="mt-4 max-w-3xl text-base text-white/90 sm:text-lg">
-                            {t('description')}
+                            {plant.description}
                         </p>
                     </div>
                     <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -82,7 +75,7 @@ export default function HeaderCard({ genus, species }: HeaderCardProps) {
                         ))}
                     </div>
                     <ul className="space-y-3 rounded-3xl border border-white/15 bg-white/10 p-4 text-sm text-white/90">
-                        {highlightNotes.map((note) => (
+                        {plant.highlights.map((note) => (
                             <li key={note} className="flex gap-3">
                                 <span className="mt-1 h-2 w-2 rounded-full bg-lime-200" />
                                 <p>{note}</p>

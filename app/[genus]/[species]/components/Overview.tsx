@@ -7,98 +7,39 @@ import globeIcon from '@/public/icons/globe.svg';
 import waterDropIcon from '@/public/icons/water-drop.svg';
 import sunnyIcon from '@/public/icons/sunny.svg';
 import meterIcon from '@/public/icons/speed.svg';
+import type { PlantVitals, PlantOverview } from '@/lib/db/models/Plant';
 
-const vitals = [
-    {
-        label: 'USDA Zone',
-        value: '9-11',
-        caption: 'Keep above 60°F year-round.',
-        icon: globeIcon,
-    },
-    {
-        label: 'Light',
-        value: 'Bright, indirect',
-        caption: 'Morning sun, filtered afternoons.',
-        icon: sunnyIcon,
-    },
-    {
-        label: 'Watering',
-        value: 'Soak & dry out',
-        caption: 'Water until runoff, then wait for the top 2" to dry.',
-        icon: waterDropIcon,
-    },
-    {
-        label: 'Difficulty',
-        value: 'Easy',
-        caption: 'Perfect for confident beginners.',
-        icon: meterIcon,
-    },
-];
+type OverviewProps = {
+    vitals: PlantVitals;
+    overview: PlantOverview;
+};
 
-const careHighlights = [
-    'Rotate the pot every week for even fenestration.',
-    'Water thoroughly, then allow the top 2" of soil to dry.',
-    'Monthly misting or pebble trays keep humidity above 60%.',
-];
-
-const accordionSections = [
-    {
-        label: 'Height',
-        value: '3-10 ft indoors',
-        body: 'Expect the plant to climb once given a moss pole or trellis; prune vines above 10 ft to keep fenestrations manageable.',
-    },
-    {
-        label: 'Soil',
-        value: 'Light & airy mix',
-        body: 'Blend chunky bark, perlite, and coco coir for a well-draining aroid mix that still holds gentle moisture.',
-    },
-    {
-        label: 'Semi-hydro Compatible',
-        value: 'Yes',
-        body: 'Switch to LECA or pon with a mild nutrient solution after roots are acclimated to passive hydro.',
-    },
-    {
-        label: 'Fertilizer',
-        value: '4N-2P-1K',
-        body: 'Balanced, foliage-forward fertilizers keep steady growth without leaf burn.',
-    },
-    {
-        label: 'Fertilizer Frequency',
-        value: 'Every 3 months',
-        body: 'Feed lightly during the growing season and pause when light levels dip in winter.',
-    },
-    {
-        label: 'Native Habitat',
-        value: 'Southern Mexico',
-        body: 'Epiphytic vines climbing jungle canopies—mimic with totems or trellises indoors.',
-    },
-    {
-        label: 'Humidity',
-        value: '60%+ ideal',
-        body: 'Leaf edges crisp below 40%; humidifiers or clustering plants together helps.',
-    },
-    {
-        label: 'Temperature',
-        value: '65° – 85°F',
-        body: 'Protect from drafts and sudden drops below 55°F.',
-    },
-    {
-        label: 'Grow Season',
-        value: 'Spring–Fall',
-        body: 'Expect largest jumps in size when daylight exceeds 12 hours.',
-    },
-];
-
-export default function Overview() {
+export default function Overview({ vitals, overview }: OverviewProps) {
     const { t } = useTranslation('translation', { keyPrefix: 'overview' });
-    const weeklyChecklistItems = t('weeklyChecklist.items', {
-        returnObjects: true,
-    }) as string[];
+
+    const vitalCards = [
+        { label: 'USDA Zone', icon: globeIcon, fact: vitals.hardinessZone },
+        { label: 'Light', icon: sunnyIcon, fact: vitals.light },
+        { label: 'Watering', icon: waterDropIcon, fact: vitals.watering },
+        { label: 'Difficulty', icon: meterIcon, fact: vitals.difficulty },
+    ];
+
+    const accordionSections = [
+        { label: 'Height', entry: overview.height },
+        { label: 'Soil', entry: overview.soil },
+        { label: 'Semi-hydro Compatible', entry: overview.semiHydro },
+        { label: 'Fertilizer', entry: overview.fertilizer },
+        { label: 'Fertilizer Frequency', entry: overview.fertilizerFrequency },
+        { label: 'Native Habitat', entry: overview.nativeHabitat },
+        { label: 'Humidity', entry: overview.humidity },
+        { label: 'Temperature', entry: overview.temperature },
+        { label: 'Grow Season', entry: overview.growSeason },
+    ];
 
     return (
         <div className="space-y-8">
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                {vitals.map((vital) => (
+                {vitalCards.map((vital) => (
                     <article
                         key={vital.label}
                         className="rounded-3xl border border-stone-200/80 bg-white/90 p-4 shadow-sm dark:border-stone-700/70 dark:bg-zinc-900/40"
@@ -116,12 +57,12 @@ export default function Overview() {
                                     {vital.label}
                                 </p>
                                 <p className="text-lg font-semibold">
-                                    {vital.value}
+                                    {vital.fact.value}
                                 </p>
                             </div>
                         </div>
                         <p className="mt-4 text-sm text-stone-600 dark:text-stone-300">
-                            {vital.caption}
+                            {vital.fact.caption}
                         </p>
                     </article>
                 ))}
@@ -133,13 +74,13 @@ export default function Overview() {
                         {t('dailyRhythm.label')}
                     </p>
                     <h3 className="text-2xl font-serif">
-                        {t('dailyRhythm.heading')}
+                        {overview.dailyRhythm.heading}
                     </h3>
                     <p className="text-sm text-stone-600 dark:text-stone-300">
-                        {t('dailyRhythm.body')}
+                        {overview.dailyRhythm.body}
                     </p>
                     <ul className="space-y-3 text-sm text-stone-700 dark:text-stone-200">
-                        {careHighlights.map((tip) => (
+                        {overview.dailyRhythm.highlights.map((tip) => (
                             <li key={tip} className="flex gap-3">
                                 <span className="mt-1 h-2 w-2 rounded-full bg-emerald-500" />
                                 {tip}
@@ -152,7 +93,7 @@ export default function Overview() {
                         {t('weeklyChecklist.title')}
                     </h4>
                     <ul className="mt-4 space-y-4 text-sm text-stone-700 dark:text-stone-200">
-                        {weeklyChecklistItems.map((item) => (
+                        {overview.weeklyChecklist.map((item) => (
                             <li
                                 key={item}
                                 className="rounded-2xl border border-stone-200/80 bg-white/80 px-4 py-3 dark:border-stone-700/70 dark:bg-zinc-900/40"
@@ -169,9 +110,9 @@ export default function Overview() {
                     <AccordionItem
                         key={section.label}
                         label={section.label}
-                        value={section.value}
+                        value={section.entry.value}
                     >
-                        {section.body}
+                        {section.entry.detail}
                     </AccordionItem>
                 ))}
             </div>
