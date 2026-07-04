@@ -1,9 +1,59 @@
 {
     "nav": {
         "brand": "GREEN GUIDE",
+        "links": {
+            "categories": "Categories",
+            "commonPlants": "Common plants",
+            "search": "Search"
+        },
         "theme": {
             "light": "Light mode",
             "dark": "Dark mode"
+        }
+    },
+    "home": {
+        "hero": {
+            "badge_one": "{{count}} species indexed",
+            "badge_other": "{{count}} species indexed",
+            "title": "Find the right plant, know the right care.",
+            "subtitle": "Search any species or browse by category to get light, water, and soil guidance built from research and real plant parents.",
+            "searchPlaceholder": "Search by name, e.g. \"monstera\" or \"lavender\"",
+            "searchButton": "Search",
+            "filterAll": "All plants"
+        },
+        "categories": {
+            "eyebrow": "Browse by category",
+            "title": "Every space has a species that thrives in it.",
+            "items": {
+                "indoor": {
+                    "title": "Indoor",
+                    "description": "Low-light survivors to statement foliage."
+                },
+                "succulents": {
+                    "title": "Succulents & cacti",
+                    "description": "Drought-tolerant, forgiving, sun-loving."
+                },
+                "patio": {
+                    "title": "Patio",
+                    "description": "Container-friendly plants for porches and balconies."
+                },
+                "garden": {
+                    "title": "Garden & landscape",
+                    "description": "Beds, borders, and perennial planning."
+                }
+            }
+        },
+        "plants": {
+            "eyebrow": "Common plants",
+            "title": "Common plants",
+            "count_one": "{{count}} species",
+            "count_other": "{{count}} species",
+            "lightLabel": "Light",
+            "careLabel": "Care",
+            "imageComing": "Photo coming soon",
+            "empty": "No plants match that search yet — try another name or category.",
+            "reset": "Show all plants",
+            "dbEmpty": "Our plant library is waking up — check back shortly."
         }
     },
     "speciesClient": {

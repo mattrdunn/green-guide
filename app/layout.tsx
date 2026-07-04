@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Fraunces, Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Nav from './components/Nav';
 import Providers from './providers';
@@ -11,6 +11,11 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
     variable: '--font-geist-mono',
+    subsets: ['latin'],
+});
+
+const fraunces = Fraunces({
+    variable: '--font-fraunces',
     subsets: ['latin'],
 });
 
@@ -26,12 +31,12 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang='en'>
+        <html lang="en">
             <body
-                className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+                className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} antialiased`}
             >
                 <Providers>
-                    <div className="min-h-screen pt-12 pb-20 font-[family-name:var(--font-geist-sans)] sm:p-20 relative">
+                    <div className="min-h-screen pt-12 pb-20 font-(family-name:--font-geist-sans) sm:p-20 relative">
                         <Nav />
                         {children}
                     </div>

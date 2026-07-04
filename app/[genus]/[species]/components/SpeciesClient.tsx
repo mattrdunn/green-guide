@@ -29,7 +29,10 @@ export default function SpeciesClient({
         isError,
     } = useGetPlantQuery({ genus, species });
 
-    const handleTabClick = (tab: TabKey, event: MouseEvent<HTMLButtonElement>) => {
+    const handleTabClick = (
+        tab: TabKey,
+        event: MouseEvent<HTMLButtonElement>,
+    ) => {
         setActiveTab(tab);
 
         const container = tabListRef.current;
@@ -77,7 +80,7 @@ export default function SpeciesClient({
         <div className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-2 pb-12 pt-0 sm:px-6 sm:pb-16 sm:pt-8 lg:px-0">
             <HeaderCard genus={genus} species={species} plant={plant} />
 
-            <section className="rounded-none border-0 bg-transparent p-0 shadow-none dark:bg-transparent sm:rounded-[32px] sm:border sm:border-stone-200/70 sm:bg-white/80 sm:p-8 sm:shadow-sm sm:backdrop-blur sm:dark:border-stone-800/60 sm:dark:bg-zinc-900/40">
+            <section className="rounded-none border-0 bg-transparent p-0 shadow-none dark:bg-transparent sm:rounded-4xl sm:border sm:border-stone-200/70 sm:bg-white/80 sm:p-8 sm:shadow-sm sm:backdrop-blur sm:dark:border-stone-800/60 sm:dark:bg-zinc-900/40">
                 <nav
                     ref={tabListRef}
                     className="no-scrollbar flex gap-3 overflow-x-auto pb-3"

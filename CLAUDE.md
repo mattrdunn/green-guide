@@ -8,7 +8,7 @@ This file is the shared entry point for every Claude surface working in this rep
 
 Green Guide is a web-native plant encyclopedia for plant parents of every experience level — from first-time succulent owners to seasoned horticulturists. The core promise: whatever question someone has about keeping a plant alive, the answer is here, presented clearly and without friction.
 
-Current state: marketing landing page + one live species profile (`monstera/deliciosa`). Everything else below is roadmap, not shipped — check `app/` before assuming a feature exists.
+Current state: home page with hero search, category browsing, and a plant grid served from MongoDB (client-side name search + tag-derived category filters) + live species profiles for all seeded species. Everything else below is roadmap, not shipped — check `app/` before assuming a feature exists.
 
 ## Planned features (from README functional requirements)
 

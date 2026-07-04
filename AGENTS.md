@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Green Guide is a plant care companion web app. It provides species profiles with care details, vitals, and guided checklists. Currently a marketing landing page + a single live Monstera deliciosa profile; more species and features (AI botanist, collaborative lists, waitlist) are on the roadmap.
+Green Guide is a plant care companion web app. It provides species profiles with care details, vitals, and guided checklists. Currently a home page (hero search, category browsing, and a plant grid backed by the `plants` collection) + live species profiles for every seeded species; more features (AI botanist, collaborative lists, waitlist) are on the roadmap.
 
 ## Tech Stack
 
@@ -36,6 +36,11 @@ app/
   components/
     GreenCard.tsx           # Shared gradient card wrapper
     Nav.tsx                 # Top navigation bar
+    home/
+      HomeClient.tsx        # Home page shell — hero search, category cards, filterable plant grid
+      PlantCard.tsx         # Plant summary card (image/placeholder + light/care stats)
+      categories.ts         # Browse categories derived from plant tags
+      types.ts              # PlantCardData — serializable server→client projection
   lang/
     en.json                 # All UI strings (i18next source of truth)
   lib/
@@ -45,7 +50,7 @@ app/
     index.tsx               # Redux Provider wrapper
   globals.css               # Tailwind import, CSS variables, dark-mode tokens
   layout.tsx                # Root layout — fonts, Nav, Providers
-  page.tsx                  # Marketing home page
+  page.tsx                  # Home page (server component — fetches plant summaries from MongoDB)
 store/
   index.ts                  # Redux store (RTK Query middleware wired)
   api/
@@ -106,7 +111,7 @@ docs/
 
 ### Image Assets (Cloudflare R2)
 - Plant photography lives in the `green-guide-images` R2 bucket, served publicly via `https://images.greenguideapp.com` (custom domain; the r2.dev URL stays disabled) — see `docs/adr/0002-host-plant-images-in-cloudflare-r2.md`
-- Object keys mirror routes: `plants/<genus>/<species>/img-<n>.jpeg` (lowercase, matching the `plants` collection natural key)
+- Object keys mirror routes: `plants/<genus>/<species>/img-<n>.jpeg` or `.png` (lowercase, matching the `plants` collection natural key); the extension is part of the stored key, so nothing in code assumes one format
 - MongoDB stores the object key in `images[].url`, never a full URL; resolve keys with `imageUrl()` from `app/lib/imageUrl.ts` at render time
 - The base URL comes from `NEXT_PUBLIC_IMAGE_BASE_URL` (`.env.local`, template in `.env.example`); it is inlined at build time, so restart the dev server after changing it
 - The host must be allowlisted in `images.remotePatterns` in `next.config.ts` for `next/image` to accept it
@@ -122,7 +127,7 @@ docs/
 
 | Route | File | Notes |
 |---|---|---|
-| `/` | `app/page.tsx` | Marketing landing page |
+| `/` | `app/page.tsx` | Home page — hero search + category browse + plant grid from the `plants` collection (client-side filtering; renders a fallback if the DB is unreachable) |
 | `/[genus]` | `app/[genus]/page.tsx` | Genus overview (stub) |
 | `/[genus]/[species]` | `app/[genus]/[species]/page.tsx` | Species profile; validated against the `plants` collection — species missing from MongoDB return `notFound()` |
 
