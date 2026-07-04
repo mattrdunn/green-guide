@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import GreenCard from './components/GreenCard';
+import imageUrl from './lib/imageUrl';
 
 const featureHighlights = [
     {
@@ -113,7 +114,9 @@ export default function Home() {
                         <div className="flex gap-4">
                             <div className="h-24 w-24 overflow-hidden rounded-2xl border border-white/20">
                                 <Image
-                                    src="/images/monstera-img-1.jpeg"
+                                    src={imageUrl(
+                                        'plants/monstera/deliciosa/img-1.jpeg',
+                                    )}
                                     alt="Monstera deliciosa leaf close-up"
                                     width={240}
                                     height={240}
@@ -219,7 +222,9 @@ export default function Home() {
                     <div className="flex flex-col gap-4">
                         <div className="overflow-hidden rounded-2xl">
                             <Image
-                                src="/images/monstera-img-2.jpeg"
+                                src={imageUrl(
+                                    'plants/monstera/deliciosa/img-2.jpeg',
+                                )}
                                 alt="Monstera leaf detail"
                                 width={640}
                                 height={480}
@@ -301,7 +306,7 @@ export default function Home() {
 
             <section
                 id="waitlist"
-                className="flex flex-col gap-4 rounded-[32px] bg-emerald-900 px-8 py-10 text-white shadow-lg md:flex-row md:items-center md:justify-between"
+                className="flex flex-col gap-4 rounded-4xl bg-emerald-900 px-8 py-10 text-white shadow-lg md:flex-row md:items-center md:justify-between"
             >
                 <div className="space-y-2">
                     <p className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-200">

@@ -61,7 +61,7 @@ scripts/
     *.ts                    # One seed-data module per species (genus-species.ts)
 public/
   icons/                    # SVG icons used in species vitals
-  images/                   # Plant photography
+  images/                   # (empty) plant photography moved to Cloudflare R2 — see Image Assets
 docs/
   adr/                      # Architecture Decision Records (numbered, e.g. 0001-use-mongodb-for-plant-data.md)
 ```
@@ -103,6 +103,15 @@ docs/
 - `MONGODB_URI` comes from `.env.local` (template in `.env.example`); database name is part of the URI path
 - Atlas network access is `0.0.0.0/0`, so DB credentials are the only line of defense — use a least-privilege DB user and never commit `.env.local` (see `docs/adr/0001-use-mongodb-for-plant-data.md`)
 - One `plants` document per species; unique compound index on `genus + species` (both stored lowercase, matching route params)
+
+### Image Assets (Cloudflare R2)
+- Plant photography lives in the `green-guide-images` R2 bucket, served publicly via `https://images.greenguideapp.com` (custom domain; the r2.dev URL stays disabled) — see `docs/adr/0002-host-plant-images-in-cloudflare-r2.md`
+- Object keys mirror routes: `plants/<genus>/<species>/img-<n>.jpeg` (lowercase, matching the `plants` collection natural key)
+- MongoDB stores the object key in `images[].url`, never a full URL; resolve keys with `imageUrl()` from `app/lib/imageUrl.ts` at render time
+- The base URL comes from `NEXT_PUBLIC_IMAGE_BASE_URL` (`.env.local`, template in `.env.example`); it is inlined at build time, so restart the dev server after changing it
+- The host must be allowlisted in `images.remotePatterns` in `next.config.ts` for `next/image` to accept it
+- The bucket is fully public through the custom domain — never store private assets in it
+- Adding a species photo: upload to the bucket under the key convention, add the key to the species module in `scripts/seed/`, re-run `npm run db:seed`
 
 ### State Management
 - RTK Query for server data; add new API slices in `store/api/`

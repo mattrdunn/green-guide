@@ -8,6 +8,7 @@ import sunnyIcon from '@/public/icons/sunny.svg';
 import meterIcon from '@/public/icons/speed.svg';
 import petsIcon from '@/public/icons/pets.svg';
 import Image from 'next/image';
+import imageUrl from '@/app/lib/imageUrl';
 import type { PlantData } from '@/store/api/templateApi';
 
 type HeaderCardProps = {
@@ -36,7 +37,9 @@ export default function HeaderCard({ genus, species, plant }: HeaderCardProps) {
 
                 <div className="rounded-[30px]">
                     <ImageCarousel
-                        images={plant.images.map((image) => image.url)}
+                        images={plant.images.map((image) =>
+                            imageUrl(image.url),
+                        )}
                     />
                 </div>
 
