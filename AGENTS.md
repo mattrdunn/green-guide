@@ -55,9 +55,15 @@ lib/
     connect.ts              # Mongoose connection singleton (server-only; hot-reload + serverless safe)
     models/
       Plant.ts              # Plant schema/model + exported TS interfaces
+scripts/
+  seed-plants.ts            # Upserts every species in scripts/seed/ (`npm run db:seed`)
+  seed/
+    *.ts                    # One seed-data module per species (genus-species.ts)
 public/
   icons/                    # SVG icons used in species vitals
   images/                   # Plant photography
+docs/
+  adr/                      # Architecture Decision Records (numbered, e.g. 0001-use-mongodb-for-plant-data.md)
 ```
 
 ## Code Conventions
@@ -95,6 +101,7 @@ public/
 - Mongoose models live in `lib/db/models/`; call `connectToDatabase()` from `lib/db/connect.ts` before any query
 - Server-side only (server components, route handlers) — never import from client components
 - `MONGODB_URI` comes from `.env.local` (template in `.env.example`); database name is part of the URI path
+- Atlas network access is `0.0.0.0/0`, so DB credentials are the only line of defense — use a least-privilege DB user and never commit `.env.local` (see `docs/adr/0001-use-mongodb-for-plant-data.md`)
 - One `plants` document per species; unique compound index on `genus + species` (both stored lowercase, matching route params)
 
 ### State Management
@@ -108,7 +115,7 @@ public/
 |---|---|---|
 | `/` | `app/page.tsx` | Marketing landing page |
 | `/[genus]` | `app/[genus]/page.tsx` | Genus overview (stub) |
-| `/[genus]/[species]` | `app/[genus]/[species]/page.tsx` | Species profile; currently only `monstera/deliciosa` is live — others return `notFound()` |
+| `/[genus]/[species]` | `app/[genus]/[species]/page.tsx` | Species profile; validated against the `plants` collection — species missing from MongoDB return `notFound()` |
 
 ## Common Patterns
 

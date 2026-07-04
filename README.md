@@ -12,6 +12,22 @@ First, install the project dependencies:
 npm i
 ```
 
+### Set up MongoDB
+
+Species profile data is served from MongoDB, so you'll need a database user and a local env file before running the app:
+
+1. Create a MongoDB deployment (e.g. a free [MongoDB Atlas](https://www.mongodb.com/atlas) cluster).
+2. Create a database user with read/write access (in Atlas: **Security > Database Access > Add New Database User**). Note the username and password.
+3. Copy the env template and fill in your credentials:
+   ```bash
+   cp .env.example .env.local
+   ```
+4. In `.env.local`, set `MONGODB_URI` to your connection string (in Atlas: **Database > Connect > Drivers > Node.js**), substituting your database user's username and password. Keep the database name (`green-guide`) in the URI path — collections are created under it.
+
+`.env.local` holds real credentials and is git-ignored — never commit it.
+
+### Run the dev server
+
 Then, run the development server:
 
 ```bash
