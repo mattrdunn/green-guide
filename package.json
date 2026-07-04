@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "db:seed": "tsx scripts/seed-monstera.ts"
+    "db:seed": "tsx scripts/seed-plants.ts"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.9.2",

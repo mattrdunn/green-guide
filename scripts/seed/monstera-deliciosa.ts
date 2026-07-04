@@ -1,10 +1,6 @@
-import mongoose from 'mongoose';
-import { connectToDatabase } from '../lib/db/connect';
-import { PlantModel, type Plant } from '../lib/db/models/Plant';
+import type { Plant } from '../../lib/db/models/Plant';
 
-process.loadEnvFile('.env.local');
-
-const monsteraDeliciosa: Omit<Plant, 'createdAt' | 'updatedAt'> = {
+export const monsteraDeliciosa: Omit<Plant, 'createdAt' | 'updatedAt'> = {
     genus: 'monstera',
     species: 'deliciosa',
     commonNames: ['Swiss Cheese Plant'],
@@ -12,10 +8,13 @@ const monsteraDeliciosa: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         'Architectural leaves, forgiving care, and adaptable growth habits make Monstera deliciosa a staple for bright homes and lush patios alike.',
     images: [
         {
-            url: '/images/monstera-img-1.jpeg',
+            url: 'plants/monstera/deliciosa/img-1.jpeg',
             alt: 'Monstera deliciosa leaf close-up',
         },
-        { url: '/images/monstera-img-2.jpeg', alt: 'Monstera leaf detail' },
+        {
+            url: 'plants/monstera/deliciosa/img-2.jpeg',
+            alt: 'Monstera leaf detail',
+        },
     ],
     tags: ['aroid', 'vining', 'beginner-friendly', 'mildly-toxic'],
     highlights: [
@@ -36,8 +35,7 @@ const monsteraDeliciosa: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         },
         watering: {
             value: 'Soak & dry out',
-            caption:
-                'Water until runoff, then wait for the top 2" to dry.',
+            caption: 'Water until runoff, then wait for the top 2" to dry.',
         },
         difficulty: {
             value: 'Easy',
@@ -262,28 +260,3 @@ const monsteraDeliciosa: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         ],
     },
 };
-
-async function main() {
-    await connectToDatabase();
-
-    const doc = await PlantModel.findOneAndUpdate(
-        { genus: monsteraDeliciosa.genus, species: monsteraDeliciosa.species },
-        monsteraDeliciosa,
-        {
-            upsert: true,
-            returnDocument: 'after',
-            setDefaultsOnInsert: true,
-        },
-    );
-
-    console.log(`Seeded ${doc.genus} ${doc.species} (_id: ${doc._id})`);
-}
-
-main()
-    .catch((error) => {
-        console.error(error);
-        process.exitCode = 1;
-    })
-    .finally(async () => {
-        await mongoose.disconnect();
-    });
