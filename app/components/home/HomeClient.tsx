@@ -5,6 +5,7 @@ import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import GreenCard from '@/app/components/GreenCard';
 import cn from '@/app/lib/cn';
+import imageUrl from '@/app/lib/imageUrl';
 import { categories, type CategoryId } from './categories';
 import PlantCard from './PlantCard';
 import type { PlantCardData } from './types';
@@ -138,17 +139,24 @@ export default function HomeClient({ plants }: { plants: PlantCardData[] }) {
                             }}
                             className="group overflow-hidden rounded-3xl border border-stone-200 bg-white text-left transition hover:-translate-y-0.5 hover:border-emerald-600/40 hover:shadow-lg dark:border-stone-800 dark:bg-zinc-900/60 dark:hover:border-emerald-500/40"
                         >
-                            <div className="flex aspect-4/3 items-center justify-center bg-linear-to-br from-emerald-950 via-emerald-900 to-zinc-950">
+                            <div className="relative aspect-4/3 overflow-hidden bg-linear-to-br from-emerald-950 via-emerald-900 to-zinc-950">
                                 <Image
-                                    src={category.icon}
+                                    src={imageUrl(category.image)}
                                     alt=""
-                                    width={36}
-                                    height={36}
-                                    className="opacity-50 transition group-hover:scale-110 group-hover:opacity-80"
+                                    fill
+                                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                                    className="object-cover transition duration-300 group-hover:scale-105"
                                 />
                             </div>
                             <div className="p-5">
-                                <h3 className="font-semibold text-stone-900 dark:text-white">
+                                <h3 className="flex items-center gap-2 font-semibold text-stone-900 dark:text-white">
+                                    <Image
+                                        src={category.icon}
+                                        alt=""
+                                        width={18}
+                                        height={18}
+                                        className="invert dark:invert-0"
+                                    />
                                     {t(`categories.items.${category.id}.title`)}
                                 </h3>
                                 <p className="mt-1 text-sm text-stone-500 dark:text-stone-400">

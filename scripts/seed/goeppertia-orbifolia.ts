@@ -10,7 +10,16 @@ export const goeppertiaOrbifolia: Omit<Plant, 'createdAt' | 'updatedAt'> = {
     ],
     description:
         'Huge, rounded leaves striped in silver and sea-green make Goeppertia orbifolia — still widely sold as Calathea orbifolia — one of the most striking foliage plants you can grow, provided you can meet its rainforest-floor demands for humidity and pure water.',
-    images: [],
+    images: [
+        {
+            url: 'plants/goeppertia/orbifolia/img-1.png',
+            alt: 'Goeppertia orbifolia in a bright living room, with a few leaves showing brown edges.',
+        },
+        {
+            url: 'plants/goeppertia/orbifolia/img-2.png',
+            alt: 'Goeppertia orbifolia in a bright living room, with a few leaves showing brown edges.',
+        },
+    ],
     tags: ['prayer-plant', 'high-humidity', 'pet-safe', 'non-toxic'],
     highlights: [
         'Native to the rainforest understory of Bolivia.',
@@ -113,7 +122,7 @@ export const goeppertiaOrbifolia: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             },
             {
                 interval: 'weekly',
-                task: 'Inspect leaf undersides for the first signs of spider mites.',
+                task: 'Inspect leaf undersides for the first signs of spider mites or thrips.',
             },
             {
                 interval: 'as-needed',

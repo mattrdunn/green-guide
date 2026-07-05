@@ -3,6 +3,7 @@ export type CategoryId = 'indoor' | 'succulents' | 'patio' | 'garden';
 export interface Category {
     id: CategoryId;
     icon: string;
+    image: string;
     matches: (tags: string[]) => boolean;
 }
 
@@ -17,12 +18,14 @@ const hasAny = (tags: string[], wanted: string[]) =>
 export const categories: Category[] = [
     {
         id: 'indoor',
-        icon: '/icons/water-drop.svg',
+        icon: '/icons/house.svg',
+        image: 'plants/categories/indoor.png',
         matches: (tags) => !tags.includes('full-sun'),
     },
     {
         id: 'succulents',
         icon: '/icons/sunny.svg',
+        image: 'plants/categories/succulents.png',
         matches: (tags) =>
             hasAny(tags, [
                 'succulent',
@@ -33,13 +36,15 @@ export const categories: Category[] = [
     },
     {
         id: 'patio',
-        icon: '/icons/square-foot.svg',
+        icon: '/icons/patio.svg',
+        image: 'plants/categories/patio.png',
         matches: (tags) =>
             hasAny(tags, ['full-sun', 'drought-tolerant', 'patio']),
     },
     {
         id: 'garden',
-        icon: '/icons/globe.svg',
+        icon: '/icons/landscape.svg',
+        image: 'plants/categories/landscaping.png',
         matches: (tags) =>
             hasAny(tags, ['hardy', 'perennial', 'landscape', 'garden']),
     },
