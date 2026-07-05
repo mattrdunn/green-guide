@@ -6,7 +6,16 @@ export const aeoniumArboreum: Omit<Plant, 'createdAt' | 'updatedAt'> = {
     commonNames: ['Tree Aeonium', 'Tree Houseleek', 'Irish Rose'],
     description:
         'Glossy rosettes perched on bare branching stems give Aeonium arboreum the look of a miniature succulent tree — with a twist: it grows through the cool months and naps through summer heat.',
-    images: [],
+    images: [
+        {
+            url: 'plants/aeonium/arboreum/img-1.jpg',
+            alt: 'Aeonium arboreum rosettes on branching stems',
+        },
+        {
+            url: 'plants/aeonium/arboreum/img-2.png',
+            alt: 'Aeonium arboreum rosette close-up',
+        },
+    ],
     tags: ['succulent', 'rosette', 'winter-grower', 'non-toxic'],
     highlights: [
         'Native to the Canary Islands’ mild, Mediterranean-style climate.',
