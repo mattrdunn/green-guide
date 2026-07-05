@@ -6,7 +6,16 @@ export const ficusElastica: Omit<Plant, 'createdAt' | 'updatedAt'> = {
     commonNames: ['Rubber Plant', 'Rubber Tree', 'Rubber Fig'],
     description:
         'Glossy, burgundy-tinged leaves and an easygoing temperament make Ficus elastica the low-drama alternative to the fiddle-leaf — a fast-growing indoor tree that forgives the occasional missed watering.',
-    images: [],
+    images: [
+        {
+            url: 'plants/ficus/elastica/img-1.jpg',
+            alt: 'Ficus elastica with burgundy leaves in a white pot',
+        },
+        {
+            url: 'plants/ficus/elastica/img-2.jpeg',
+            alt: 'Ficus elastica with burgundy leaves in a white pot',
+        },
+    ],
     tags: ['ficus', 'tree', 'beginner-friendly', 'mildly-toxic'],
     highlights: [
         'Native to the rainforests of India and Southeast Asia.',
@@ -21,14 +30,19 @@ export const ficusElastica: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             zoneMax: 12,
         },
         light: {
+            score: 3,
             value: 'Bright, indirect',
-            caption: 'Tolerates some direct sun; variegated forms need the extra light.',
+            caption:
+                'Tolerates some direct sun; variegated forms need the extra light.',
         },
         watering: {
+            score: 2,
             value: 'Soak & dry out',
-            caption: 'Water deeply when the top 2" dries — thick leaves buffer missed waterings.',
+            caption:
+                'Water deeply when the top 2" dries — thick leaves buffer missed waterings.',
         },
         difficulty: {
+            score: 2,
             value: 'Easy',
             caption: 'The most forgiving of the popular indoor ficus trees.',
             level: 'easy',
@@ -85,7 +99,8 @@ export const ficusElastica: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             detail: 'Can add a foot or more of height per season in bright light.',
         },
         dailyRhythm: {
-            heading: 'Built to be low-maintenance — keep it bright and let it be.',
+            heading:
+                'Built to be low-maintenance — keep it bright and let it be.',
             body: 'The rubber plant stores water in its thick leaves and stems, so it tolerates the imperfect rhythms of real life. Give it good light, water when the top of the mix is dry, and its main demand becomes a regular leaf-polish to keep the gloss.',
             highlights: [
                 'Let the top 2" of soil dry fully between waterings.',
@@ -93,10 +108,31 @@ export const ficusElastica: Omit<Plant, 'createdAt' | 'updatedAt'> = {
                 'Rotate occasionally; it leans into the light faster than you expect.',
             ],
         },
-        weeklyChecklist: [
-            'Check the top 2" of soil; skip watering if any moisture remains.',
-            'Wipe a few leaves with a damp cloth to clear dust.',
-            'Glance at stems and leaf undersides for scale and mealybugs.',
+        careCadence: [
+            {
+                interval: 'weekly',
+                task: 'Check the top 2" of soil; skip watering if any moisture remains.',
+            },
+            {
+                interval: 'weekly',
+                task: 'Wipe a few leaves with a damp cloth to clear dust.',
+            },
+            {
+                interval: 'weekly',
+                task: 'Glance at stems and leaf undersides for scale and mealybugs.',
+            },
+            {
+                interval: 'as-needed',
+                task: 'Water deeply once the top 2" have dried, then empty the saucer.',
+            },
+            {
+                interval: 'monthly',
+                task: 'Wipe every leaf with a damp cloth to restore the gloss.',
+            },
+            {
+                interval: 'monthly',
+                task: 'Flush with lukewarm water to clear fertilizer salts.',
+            },
         ],
     },
     care: {

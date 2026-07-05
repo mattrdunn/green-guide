@@ -21,15 +21,18 @@ export const euphorbiaTrigona: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             zoneMax: 11,
         },
         light: {
+            score: 4,
             value: 'Bright + some sun',
             caption:
                 'Several hours of direct sun keeps stems stout and colorful.',
         },
         watering: {
+            score: 2,
             value: 'Soak when fully dry',
             caption: 'Roughly every 2 weeks in summer, monthly in winter.',
         },
         difficulty: {
+            score: 2,
             value: 'Easy',
             caption:
                 'Thrives on neglect; overwatering is the only real hazard.',
@@ -95,10 +98,23 @@ export const euphorbiaTrigona: Omit<Plant, 'createdAt' | 'updatedAt'> = {
                 'Winter leaf drop along the stems is normal, not a cry for water.',
             ],
         },
-        weeklyChecklist: [
-            'Lift the pot — water only when it feels feather-light.',
-            'Check stems are firm and upright; softness means too much water.',
-            'Scan stem grooves for mealybug fluff or spider mite dust.',
+        careCadence: [
+            {
+                interval: 'weekly',
+                task: 'Lift the pot — water only when it feels feather-light.',
+            },
+            {
+                interval: 'weekly',
+                task: 'Check stems are firm and upright; softness means too much water.',
+            },
+            {
+                interval: 'weekly',
+                task: 'Scan stem grooves for mealybug fluff or spider mite dust.',
+            },
+            {
+                interval: 'as-needed',
+                task: 'Soak thoroughly only once the mix has dried out completely.',
+            },
         ],
     },
     care: {

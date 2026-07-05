@@ -30,14 +30,17 @@ export const monsteraDeliciosa: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             zoneMax: 11,
         },
         light: {
+            score: 3,
             value: 'Bright, indirect',
             caption: 'Morning sun, filtered afternoons.',
         },
         watering: {
+            score: 2,
             value: 'Soak & dry out',
             caption: 'Water until runoff, then wait for the top 2" to dry.',
         },
         difficulty: {
+            score: 2,
             value: 'Easy',
             caption: 'Perfect for confident beginners.',
             level: 'easy',
@@ -102,10 +105,31 @@ export const monsteraDeliciosa: Omit<Plant, 'createdAt' | 'updatedAt'> = {
                 'Monthly misting or pebble trays keep humidity above 60%.',
             ],
         },
-        weeklyChecklist: [
-            'Dust leaves with a damp microfiber cloth.',
-            'Inspect aerial roots and tuck into the moss pole.',
-            'Check moisture halfway down the planter.',
+        careCadence: [
+            {
+                interval: 'weekly',
+                task: 'Rotate the pot a quarter turn for even light exposure.',
+            },
+            {
+                interval: 'weekly',
+                task: 'Dust leaves with a damp microfiber cloth.',
+            },
+            {
+                interval: 'weekly',
+                task: 'Check moisture halfway down the planter.',
+            },
+            {
+                interval: 'as-needed',
+                task: 'Water thoroughly, then let the top 2" of soil dry out.',
+            },
+            {
+                interval: 'monthly',
+                task: 'Mist or use a pebble tray to keep humidity above 60%.',
+            },
+            {
+                interval: 'monthly',
+                task: 'Inspect aerial roots and tuck into the moss pole.',
+            },
         ],
     },
     care: {

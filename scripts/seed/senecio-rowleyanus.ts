@@ -21,14 +21,17 @@ export const senecioRowleyanus: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             zoneMax: 12,
         },
         light: {
+            score: 4,
             value: 'Bright + gentle sun',
             caption: 'Loves soft morning sun; harsh midday rays scorch pearls.',
         },
         watering: {
+            score: 2,
             value: 'Light & infrequent',
             caption: 'Every 2-3 weeks; shriveling pearls are the cue.',
         },
         difficulty: {
+            score: 3,
             value: 'Moderate',
             caption: 'Simple rules, small margin for error on watering.',
             level: 'moderate',
@@ -93,10 +96,31 @@ export const senecioRowleyanus: Omit<Plant, 'createdAt' | 'updatedAt'> = {
                 'Drape strands over the pot rim rather than letting them root into damp soil.',
             ],
         },
-        weeklyChecklist: [
-            'Squeeze-test a few pearls — firm means wait, slightly soft means water soon.',
-            'Turn the pot so all sides of the crown get light; bald crowns start in shade.',
-            'Check strand bases at the soil line for mushy or blackened stems.',
+        careCadence: [
+            {
+                interval: 'weekly',
+                task: 'Squeeze-test a few pearls — firm means wait, slightly soft means water soon.',
+            },
+            {
+                interval: 'weekly',
+                task: 'Turn the pot so all sides of the crown get light; bald crowns start in shade.',
+            },
+            {
+                interval: 'weekly',
+                task: 'Check strand bases at the soil line for mushy or blackened stems.',
+            },
+            {
+                interval: 'as-needed',
+                task: 'Give a light drink when pearls just begin to soften; never leave the pot wet.',
+            },
+            {
+                interval: 'monthly',
+                task: 'Coil a healthy trimmed strand onto the soil surface and pin it to root.',
+            },
+            {
+                interval: 'monthly',
+                task: 'Inspect under the crown foliage with a flashlight for mealybugs.',
+            },
         ],
     },
     care: {

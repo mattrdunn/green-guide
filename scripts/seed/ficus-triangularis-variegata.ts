@@ -24,15 +24,18 @@ export const ficusTriangularisVariegata: Omit<
             zoneMax: 12,
         },
         light: {
+            score: 3,
             value: 'Bright, indirect',
             caption:
                 'A couple hours of gentle morning sun keeps variegation bold.',
         },
         watering: {
+            score: 4,
             value: 'Evenly moist',
             caption: 'Water when the top 1-2" dry; never let it go bone dry.',
         },
         difficulty: {
+            score: 3,
             value: 'Moderate',
             caption:
                 'Easygoing once settled, but sulks after moves and drafts.',
@@ -98,10 +101,31 @@ export const ficusTriangularisVariegata: Omit<
                 'Wipe leaves monthly so the variegated surfaces catch every photon.',
             ],
         },
-        weeklyChecklist: [
-            'Check the top 2" of soil and water if dry.',
-            'Rotate a quarter turn for even, balanced growth.',
-            'Scan stems and leaf undersides for scale and mites.',
+        careCadence: [
+            {
+                interval: 'weekly',
+                task: 'Check the top 2" of soil and water if dry.',
+            },
+            {
+                interval: 'weekly',
+                task: 'Rotate a quarter turn for even, balanced growth.',
+            },
+            {
+                interval: 'weekly',
+                task: 'Scan stems and leaf undersides for scale and mites.',
+            },
+            {
+                interval: 'as-needed',
+                task: 'Top up water so the mix stays evenly moist, never soggy.',
+            },
+            {
+                interval: 'monthly',
+                task: 'Wipe both leaf surfaces with a damp cloth to clear dust.',
+            },
+            {
+                interval: 'monthly',
+                task: 'Prune any all-green reverted shoots to preserve variegation.',
+            },
         ],
     },
     care: {

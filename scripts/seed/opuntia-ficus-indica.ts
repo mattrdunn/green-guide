@@ -21,14 +21,17 @@ export const opuntiaFicusIndica: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             zoneMax: 11,
         },
         light: {
+            score: 5,
             value: 'Full sun',
             caption: '6-8 hours direct — the sunniest spot you own.',
         },
         watering: {
+            score: 1,
             value: 'Sparse & deep',
             caption: 'Every 2-4 weeks in summer; near-zero in winter.',
         },
         difficulty: {
+            score: 1,
             value: 'Easy',
             caption: 'Nearly indestructible in sun; handling is the hard part.',
             level: 'easy',
@@ -93,10 +96,23 @@ export const opuntiaFicusIndica: Omit<Plant, 'createdAt' | 'updatedAt'> = {
                 'Handle only with tongs or thick leather gloves — never bare-handed.',
             ],
         },
-        weeklyChecklist: [
-            'Glance over pads for wrinkling, soft spots, or white cottony patches.',
-            'Rotate potted plants so new pads emerge evenly, not all sun-side.',
-            'Confirm the pot has dried fully since the last watering.',
+        careCadence: [
+            {
+                interval: 'weekly',
+                task: 'Glance over pads for wrinkling, soft spots, or white cottony patches.',
+            },
+            {
+                interval: 'weekly',
+                task: 'Rotate potted plants so new pads emerge evenly, not all sun-side.',
+            },
+            {
+                interval: 'weekly',
+                task: 'Confirm the pot has dried fully since the last watering.',
+            },
+            {
+                interval: 'as-needed',
+                task: 'Give a deep, sparse soak only after the pot has dried out entirely.',
+            },
         ],
     },
     care: {

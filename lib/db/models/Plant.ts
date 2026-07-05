@@ -21,12 +21,28 @@ export interface PlantImage {
     alt?: string;
 }
 
+/**
+ * 1–5 intensity used to render vital meters:
+ * light  — 1 low-light tolerant … 5 full sun
+ * water  — 1 rare, drought-loving … 5 constantly moist
+ * difficulty — 1 near-indestructible … 5 expert-level fussy
+ */
+export type VitalScore = 1 | 2 | 3 | 4 | 5;
+
 export interface PlantVitals {
     hardinessZone: VitalFact & { zoneMin?: number; zoneMax?: number };
-    light: VitalFact;
-    watering: VitalFact;
-    difficulty: VitalFact & { level: 'easy' | 'moderate' | 'advanced' };
+    light: VitalFact & { score: VitalScore };
+    watering: VitalFact & { score: VitalScore };
+    difficulty: VitalFact & {
+        score: VitalScore;
+        level: 'easy' | 'moderate' | 'advanced';
+    };
     toxicity: VitalFact & { level: 'non-toxic' | 'mildly-toxic' | 'toxic' };
+}
+
+export interface CareCadenceItem {
+    interval: 'weekly' | 'monthly' | 'seasonal' | 'as-needed';
+    task: string;
 }
 
 export interface PlantOverview {
@@ -40,7 +56,7 @@ export interface PlantOverview {
     temperature: OverviewDetail & { minF?: number; maxF?: number };
     growSeason: OverviewDetail;
     dailyRhythm: { heading: string; body: string; highlights: string[] };
-    weeklyChecklist: string[];
+    careCadence: CareCadenceItem[];
 }
 
 export interface PlantCare {
@@ -75,6 +91,13 @@ export interface Plant {
     createdAt: Date;
     updatedAt: Date;
 }
+
+const vitalScore = {
+    type: Number,
+    required: true,
+    min: 1,
+    max: 5,
+};
 
 const vitalFact = (extra: Record<string, unknown> = {}) =>
     new Schema(
@@ -129,9 +152,10 @@ const PlantSchema = new Schema<Plant>(
         vitals: new Schema<PlantVitals>(
             {
                 hardinessZone: vitalFact({ zoneMin: Number, zoneMax: Number }),
-                light: vitalFact(),
-                watering: vitalFact(),
+                light: vitalFact({ score: vitalScore }),
+                watering: vitalFact({ score: vitalScore }),
                 difficulty: vitalFact({
+                    score: vitalScore,
                     level: {
                         type: String,
                         enum: ['easy', 'moderate', 'advanced'],
@@ -169,7 +193,27 @@ const PlantSchema = new Schema<Plant>(
                     },
                     { _id: false },
                 ),
-                weeklyChecklist: { type: [String], default: [] },
+                careCadence: {
+                    type: [
+                        new Schema<CareCadenceItem>(
+                            {
+                                interval: {
+                                    type: String,
+                                    enum: [
+                                        'weekly',
+                                        'monthly',
+                                        'seasonal',
+                                        'as-needed',
+                                    ],
+                                    required: true,
+                                },
+                                task: { type: String, required: true },
+                            },
+                            { _id: false },
+                        ),
+                    ],
+                    default: [],
+                },
             },
             { _id: false },
         ),

@@ -58,6 +58,12 @@
     },
     "speciesClient": {
         "badge": "Species profile",
+        "facts": {
+            "light": "Light",
+            "water": "Water",
+            "difficulty": "Difficulty",
+            "toxicity": "Toxicity"
+        },
         "loading": "Loading plant profile…",
         "loadError": "We couldn't find this plant. Check the address or try again shortly.",
         "tabs": {
@@ -71,11 +77,21 @@
         }
     },
     "overview": {
+        "zoneScale": {
+            "coldest": "Zone 1 (coldest)",
+            "warmest": "Zone 13 (warmest)"
+        },
         "dailyRhythm": {
             "label": "Daily rhythm"
         },
-        "weeklyChecklist": {
-            "title": "Weekly checklist"
+        "careCadence": {
+            "title": "Care cadence",
+            "intervals": {
+                "weekly": "Weekly",
+                "monthly": "Monthly",
+                "seasonal": "Seasonal",
+                "as-needed": "As needed"
+            }
         }
     },
     "care": {

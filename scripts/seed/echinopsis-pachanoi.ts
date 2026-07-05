@@ -21,14 +21,17 @@ export const echinopsisPachanoi: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             zoneMax: 10,
         },
         light: {
+            score: 5,
             value: 'Full sun',
             caption: '6+ hours direct; acclimate young plants gradually.',
         },
         watering: {
+            score: 2,
             value: 'Deep soak, full dry',
             caption: 'Generous in summer for a cactus; nearly none in winter.',
         },
         difficulty: {
+            score: 2,
             value: 'Easy',
             caption: 'Vigorous and forgiving as long as drainage is sharp.',
             level: 'easy',
@@ -93,10 +96,23 @@ export const echinopsisPachanoi: Omit<Plant, 'createdAt' | 'updatedAt'> = {
                 'Winter is a dry, cool rest — that pause powers next year’s growth.',
             ],
         },
-        weeklyChecklist: [
-            'Check pot weight or probe the mix — water only when fully dry.',
-            'Look over ribs and the growth tip for scale or orange spotting.',
-            'Rotate a quarter turn so the column grows straight, not leaning.',
+        careCadence: [
+            {
+                interval: 'weekly',
+                task: 'Check pot weight or probe the mix — water only when fully dry.',
+            },
+            {
+                interval: 'weekly',
+                task: 'Look over ribs and the growth tip for scale or orange spotting.',
+            },
+            {
+                interval: 'weekly',
+                task: 'Rotate a quarter turn so the column grows straight, not leaning.',
+            },
+            {
+                interval: 'as-needed',
+                task: 'Drench thoroughly once the pot is bone-dry; in winter, barely water at all.',
+            },
         ],
     },
     care: {

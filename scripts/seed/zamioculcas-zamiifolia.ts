@@ -21,14 +21,17 @@ export const zamioculcasZamiifolia: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             zoneMax: 10,
         },
         light: {
+            score: 1,
             value: 'Low to bright, indirect',
             caption: 'Handles offices and dim rooms; avoid harsh direct sun.',
         },
         watering: {
+            score: 1,
             value: 'Sparse — soak & dry fully',
             caption: 'Every 2-3 weeks; the rhizomes bridge the gaps.',
         },
         difficulty: {
+            score: 1,
             value: 'Easy',
             caption: 'Practically thrives on being forgotten.',
             level: 'easy',
@@ -93,10 +96,31 @@ export const zamioculcasZamiifolia: Omit<Plant, 'createdAt' | 'updatedAt'> = {
                 'Underwatering is almost always safer than overwatering.',
             ],
         },
-        weeklyChecklist: [
-            'Check that soil is drying — not staying damp — between waterings.',
-            'Glance under fronds for the rare pest hitchhiker.',
-            'Rotate the pot so the arching fronds develop evenly.',
+        careCadence: [
+            {
+                interval: 'weekly',
+                task: 'Check that soil is drying — not staying damp — between waterings.',
+            },
+            {
+                interval: 'weekly',
+                task: 'Glance under fronds for the rare pest hitchhiker.',
+            },
+            {
+                interval: 'weekly',
+                task: 'Rotate the pot so the arching fronds develop evenly.',
+            },
+            {
+                interval: 'as-needed',
+                task: 'Soak thoroughly only when the mix has dried out fully — monthly is often enough.',
+            },
+            {
+                interval: 'monthly',
+                task: 'Wipe fronds with a damp cloth to restore the natural gloss.',
+            },
+            {
+                interval: 'monthly',
+                task: 'Prune any fully yellowed fronds at the soil line.',
+            },
         ],
     },
     care: {

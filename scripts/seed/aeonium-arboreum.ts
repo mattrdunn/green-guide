@@ -30,16 +30,19 @@ export const aeoniumArboreum: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             zoneMax: 11,
         },
         light: {
+            score: 4,
             value: 'Sun to bright shade',
             caption:
                 'Full sun in mild weather; light shade in scorching summers.',
         },
         watering: {
+            score: 3,
             value: 'Moderate, in season',
             caption:
                 'More than most succulents when growing, minimal when dormant.',
         },
         difficulty: {
+            score: 3,
             value: 'Moderate',
             caption: 'Easy once you learn its upside-down calendar.',
             level: 'moderate',
@@ -103,10 +106,23 @@ export const aeoniumArboreum: Omit<Plant, 'createdAt' | 'updatedAt'> = {
                 'Shallow roots dry fast — this succulent drinks more often than you’d guess.',
             ],
         },
-        weeklyChecklist: [
-            'Check the top inch of soil — in the growing season, water when it dries.',
-            'In summer, mostly leave it alone; a small sip every few weeks suffices.',
-            'Pick fallen leaves off the soil to deny pests a hiding place.',
+        careCadence: [
+            {
+                interval: 'weekly',
+                task: 'Check the top inch of soil — in the growing season, water when it dries.',
+            },
+            {
+                interval: 'weekly',
+                task: 'Pick fallen leaves off the soil to deny pests a hiding place.',
+            },
+            {
+                interval: 'as-needed',
+                task: 'In summer dormancy, mostly leave it alone; a small sip every few weeks suffices.',
+            },
+            {
+                interval: 'seasonal',
+                task: 'Resume regular watering when cooler weather wakes the plant from summer dormancy.',
+            },
         ],
     },
     care: {

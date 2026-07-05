@@ -26,15 +26,18 @@ export const goeppertiaOrbifolia: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             zoneMax: 11,
         },
         light: {
+            score: 2,
             value: 'Medium, filtered',
             caption: 'Bright shade — direct sun bleaches the silver banding.',
         },
         watering: {
+            score: 4,
             value: 'Evenly moist',
             caption:
                 'Never soggy, never dry; distilled or rainwater strongly preferred.',
         },
         difficulty: {
+            score: 5,
             value: 'Advanced',
             caption:
                 'Beautiful but demanding — humidity and water quality are non-negotiable.',
@@ -99,10 +102,31 @@ export const goeppertiaOrbifolia: Omit<Plant, 'createdAt' | 'updatedAt'> = {
                 'Group with other plants or run a humidifier to hold 60%+ humidity.',
             ],
         },
-        weeklyChecklist: [
-            'Check the topsoil — water once the top inch begins to dry.',
-            'Verify humidity is holding above 60% on a hygrometer.',
-            'Inspect leaf undersides for the first signs of spider mites.',
+        careCadence: [
+            {
+                interval: 'weekly',
+                task: 'Check the topsoil — water once the top inch begins to dry.',
+            },
+            {
+                interval: 'weekly',
+                task: 'Verify humidity is holding above 60% on a hygrometer.',
+            },
+            {
+                interval: 'weekly',
+                task: 'Inspect leaf undersides for the first signs of spider mites.',
+            },
+            {
+                interval: 'as-needed',
+                task: 'Water with filtered or rainwater whenever the top inch starts to dry.',
+            },
+            {
+                interval: 'monthly',
+                task: 'Flush the pot thoroughly with pure water to clear mineral and fertilizer salts.',
+            },
+            {
+                interval: 'monthly',
+                task: 'Trim crisped edges with clean scissors, following the natural leaf curve.',
+            },
         ],
     },
     care: {

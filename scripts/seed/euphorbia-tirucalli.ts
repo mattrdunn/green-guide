@@ -21,14 +21,17 @@ export const euphorbiaTirucalli: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             zoneMax: 12,
         },
         light: {
+            score: 5,
             value: 'Full sun',
             caption: '6+ hours direct for dense growth and fiery color.',
         },
         watering: {
+            score: 1,
             value: 'Rare, deep soaks',
             caption: 'Every 2-4 weeks in summer; monthly or less in winter.',
         },
         difficulty: {
+            score: 2,
             value: 'Easy',
             caption: 'Extremely tough — the care warnings are for you, not it.',
             level: 'easy',
@@ -93,10 +96,23 @@ export const euphorbiaTirucalli: Omit<Plant, 'createdAt' | 'updatedAt'> = {
                 'Treat every pruning session like a lab task: gloves, glasses, rinse tools.',
             ],
         },
-        weeklyChecklist: [
-            'Lift the pot — water only at genuine featherweight dryness.',
-            'Check stems stay firm and glossy; wrinkling means thirst, mush means rot.',
-            'Confirm it is out of traffic paths where snapped stems could drip sap.',
+        careCadence: [
+            {
+                interval: 'weekly',
+                task: 'Lift the pot — water only at genuine featherweight dryness.',
+            },
+            {
+                interval: 'weekly',
+                task: 'Check stems stay firm and glossy; wrinkling means thirst, mush means rot.',
+            },
+            {
+                interval: 'weekly',
+                task: 'Confirm it is out of traffic paths where snapped stems could drip sap.',
+            },
+            {
+                interval: 'as-needed',
+                task: 'Give a rare, deep soak, then let the pot dry out completely again.',
+            },
         ],
     },
     care: {

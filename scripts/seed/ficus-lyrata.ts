@@ -6,7 +6,16 @@ export const ficusLyrata: Omit<Plant, 'createdAt' | 'updatedAt'> = {
     commonNames: ['Fiddle-Leaf Fig'],
     description:
         'Sculptural, violin-shaped leaves make Ficus lyrata the statement tree of modern interiors — a diva about drafts and moving day, but stunning once it settles in.',
-    images: [],
+    images: [
+        {
+            url: 'plants/ficus/lyrata/img-1.png',
+            alt: 'Fiddle-leaf fig in a bright living room, with a few leaves showing brown edges.',
+        },
+        {
+            url: 'plants/ficus/lyrata/img-2.png',
+            alt: 'Fiddle-leaf fig in a bright living room, with a few leaves showing brown edges.',
+        },
+    ],
     tags: ['ficus', 'tree', 'statement-plant', 'mildly-toxic'],
     highlights: [
         'Native to the lowland rainforests of West Africa.',
@@ -21,16 +30,21 @@ export const ficusLyrata: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             zoneMax: 12,
         },
         light: {
+            score: 4,
             value: 'Bright, some direct',
             caption: 'A few hours of gentle morning sun keeps growth compact.',
         },
         watering: {
+            score: 3,
             value: 'Thorough & consistent',
-            caption: 'Water when the top 2" dries; hates both drought and soggy roots.',
+            caption:
+                'Water when the top 2" dries; hates both drought and soggy roots.',
         },
         difficulty: {
+            score: 3,
             value: 'Moderate',
-            caption: 'Sensitive to relocation, drafts, and inconsistent watering.',
+            caption:
+                'Sensitive to relocation, drafts, and inconsistent watering.',
             level: 'moderate',
         },
         toxicity: {
@@ -93,10 +107,31 @@ export const ficusLyrata: Omit<Plant, 'createdAt' | 'updatedAt'> = {
                 'Wipe the broad leaves regularly — dust meaningfully cuts their light intake.',
             ],
         },
-        weeklyChecklist: [
-            'Check the top 2" of soil and water only if dry.',
-            'Wipe one or two of the large leaves with a damp cloth.',
-            'Look for brown spots or sudden leaf drop — both are early warnings.',
+        careCadence: [
+            {
+                interval: 'weekly',
+                task: 'Check the top 2" of soil and water only if dry.',
+            },
+            {
+                interval: 'weekly',
+                task: 'Wipe one or two of the large leaves with a damp cloth.',
+            },
+            {
+                interval: 'weekly',
+                task: 'Look for brown spots or sudden leaf drop — both are early warnings.',
+            },
+            {
+                interval: 'as-needed',
+                task: 'Water thoroughly when the top 2" are dry — consistency beats volume.',
+            },
+            {
+                interval: 'monthly',
+                task: 'Wipe every leaf, top and bottom, with a damp microfiber cloth.',
+            },
+            {
+                interval: 'monthly',
+                task: 'Prune crossing or inward-facing branches to keep an open canopy.',
+            },
         ],
     },
     care: {

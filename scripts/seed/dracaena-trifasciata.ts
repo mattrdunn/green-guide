@@ -11,7 +11,16 @@ export const dracaenaTrifasciata: Omit<Plant, 'createdAt' | 'updatedAt'> = {
     ],
     description:
         'Upright, sword-like leaves and near-indestructible drought tolerance make Dracaena trifasciata — the classic snake plant, formerly Sansevieria — the go-to choice for dim corners, busy schedules, and first-time plant parents.',
-    images: [],
+    images: [
+        {
+            url: 'plants/dracaena/trifasciata/img-1.png',
+            alt: 'Dracaena trifasciata with upright, sword-like leaves',
+        },
+        {
+            url: 'plants/dracaena/trifasciata/img-2.png',
+            alt: 'Dracaena trifasciata with upright, sword-like leaves',
+        },
+    ],
     tags: ['succulent-like', 'low-light', 'beginner-friendly', 'mildly-toxic'],
     highlights: [
         'Native to the dry, rocky tropics of West Africa.',
@@ -26,14 +35,17 @@ export const dracaenaTrifasciata: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             zoneMax: 12,
         },
         light: {
+            score: 1,
             value: 'Low to bright, indirect',
             caption: 'Survives dim corners; grows fastest in bright light.',
         },
         watering: {
+            score: 1,
             value: 'Sparse — soak & dry fully',
             caption: 'Let the mix dry completely; every 2-4 weeks is typical.',
         },
         difficulty: {
+            score: 1,
             value: 'Easy',
             caption: 'One of the most forgiving houseplants available.',
             level: 'easy',
@@ -98,10 +110,31 @@ export const dracaenaTrifasciata: Omit<Plant, 'createdAt' | 'updatedAt'> = {
                 'Wipe leaves occasionally so the striped patterning stays vivid.',
             ],
         },
-        weeklyChecklist: [
-            'Glance at leaf bases for softness or wrinkling.',
-            'Confirm the soil is fully dry before even considering water.',
-            'Dust leaves with a dry or barely damp cloth.',
+        careCadence: [
+            {
+                interval: 'weekly',
+                task: 'Glance at leaf bases for softness or wrinkling.',
+            },
+            {
+                interval: 'weekly',
+                task: 'Confirm the soil is fully dry before even considering water.',
+            },
+            {
+                interval: 'weekly',
+                task: 'Dust leaves with a dry or barely damp cloth.',
+            },
+            {
+                interval: 'as-needed',
+                task: 'Water thoroughly only once the mix is bone-dry, then let it drain completely.',
+            },
+            {
+                interval: 'monthly',
+                task: 'Wipe leaves clean so the banding stays crisp.',
+            },
+            {
+                interval: 'monthly',
+                task: 'Remove any fully collapsed or yellowed leaves at the base.',
+            },
         ],
     },
     care: {

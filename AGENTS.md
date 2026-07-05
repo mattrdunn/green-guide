@@ -27,11 +27,12 @@ app/
       components/
         SpeciesClient.tsx   # Tab shell (overview / care / issues / getStarted)
         HeaderCard.tsx      # Hero card with images and top-level stats
-        Overview.tsx        # Vitals grid, daily rhythm, accordion details
+        Overview.tsx        # Vitals grid, care cadence checklist, daily rhythm, accordion details
         Care.tsx            # Seasonal care timeline
         Issues.tsx          # Pest and symptom troubleshooting
         AccordionItem.tsx   # Reusable expandable row
         ImageCarousel.tsx   # Photo gallery
+        VitalMeter.tsx      # Segment/dot meter for 1-5 vitals scores
     page.tsx                # Genus-level page (placeholder)
   components/
     GreenCard.tsx           # Shared gradient card wrapper

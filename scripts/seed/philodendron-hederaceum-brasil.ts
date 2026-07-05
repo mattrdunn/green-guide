@@ -34,15 +34,18 @@ export const philodendronHederaceumBrasil: Omit<
             zoneMax: 11,
         },
         light: {
+            score: 3,
             value: 'Bright, indirect',
             caption: 'The brighter the spot, the bolder the variegation.',
         },
         watering: {
+            score: 3,
             value: 'Moderate — top 1-2" dry',
             caption:
                 'Water when the upper soil dries; roughly weekly in season.',
         },
         difficulty: {
+            score: 1,
             value: 'Easy',
             caption: 'Forgiving of the occasional missed watering.',
             level: 'easy',
@@ -107,10 +110,28 @@ export const philodendronHederaceumBrasil: Omit<
                 'Every pruned cutting is a free new plant — root it in water.',
             ],
         },
-        weeklyChecklist: [
-            'Check the top 1-2" of soil for dryness.',
-            'Scan leaf undersides and new tips for pests.',
-            'Redirect or trim wandering runners.',
+        careCadence: [
+            {
+                interval: 'weekly',
+                task: 'Check the top 1-2" of soil for dryness.',
+            },
+            {
+                interval: 'weekly',
+                task: 'Scan leaf undersides and new tips for pests.',
+            },
+            { interval: 'weekly', task: 'Redirect or trim wandering runners.' },
+            {
+                interval: 'as-needed',
+                task: 'Water once the top 1-2" are dry; err on the dry side.',
+            },
+            {
+                interval: 'monthly',
+                task: 'Wipe leaves clean so the variegation shines.',
+            },
+            {
+                interval: 'monthly',
+                task: 'Pinch leggy runners just above a node to encourage branching.',
+            },
         ],
     },
     care: {

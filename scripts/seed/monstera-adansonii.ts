@@ -21,14 +21,19 @@ export const monsteraAdansonii: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             zoneMax: 12,
         },
         light: {
+            score: 3,
             value: 'Bright, indirect',
-            caption: 'Tolerates medium light but grows leggy without brightness.',
+            caption:
+                'Tolerates medium light but grows leggy without brightness.',
         },
         watering: {
+            score: 3,
             value: 'Evenly moist-ish',
-            caption: 'Water when the top 1-2" dries; wilts dramatically if forgotten.',
+            caption:
+                'Water when the top 1-2" dries; wilts dramatically if forgotten.',
         },
         difficulty: {
+            score: 2,
             value: 'Easy',
             caption: 'Forgiving, quick to recover, and simple to propagate.',
             level: 'easy',
@@ -93,10 +98,31 @@ export const monsteraAdansonii: Omit<Plant, 'createdAt' | 'updatedAt'> = {
                 'Prune leggy runners just after a node to trigger bushier growth.',
             ],
         },
-        weeklyChecklist: [
-            'Check moisture in the top 2" of mix — water if dry.',
-            'Wind or clip new vine growth onto the trellis or pole.',
-            'Scan leaf undersides for spider mites, which love this species.',
+        careCadence: [
+            {
+                interval: 'weekly',
+                task: 'Check moisture in the top 2" of mix — water if dry.',
+            },
+            {
+                interval: 'weekly',
+                task: 'Wind or clip new vine growth onto the trellis or pole.',
+            },
+            {
+                interval: 'weekly',
+                task: 'Scan leaf undersides for spider mites, which love this species.',
+            },
+            {
+                interval: 'as-needed',
+                task: 'Water once the top 2" are dry; keep it lightly moist in the growing season.',
+            },
+            {
+                interval: 'monthly',
+                task: 'Prune leggy or bare vines just past a node to keep the plant full.',
+            },
+            {
+                interval: 'monthly',
+                task: 'Flush the substrate with lukewarm water to prevent salt buildup.',
+            },
         ],
     },
     care: {
