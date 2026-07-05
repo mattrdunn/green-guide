@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "db:seed": "tsx scripts/seed-plants.ts"
   },
   "dependencies": {
@@ -31,6 +33,7 @@
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4",
     "tsx": "^4.23.0",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.9"
   }
 }

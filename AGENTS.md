@@ -124,6 +124,12 @@ docs/
 - Local UI state (tabs, modals) stays in component-level `useState`
 - Import `RootState` / `AppDispatch` types from `store/index.ts`
 
+### Testing (Vitest)
+- `npm test` runs the suite once; `npm run test:watch` for watch mode; config in `vitest.config.ts` (node environment, `@/` alias resolved from `tsconfig.json`)
+- Tests are colocated as `*.test.ts` next to the module under test
+- Scope: pure logic only (search matching, category predicates, URL/key resolution, DB projections) — no component/jsdom or DB integration tests yet
+- Keep DB code testable by separating the query from the mapping (see `toPlantSummaries` vs `fetchPlantSummaries` in `lib/db/plantSummaries.ts`) so the mapping is testable without a connection
+
 ## Routing
 
 | Route | File | Notes |
