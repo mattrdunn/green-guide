@@ -9,6 +9,12 @@
         "theme": {
             "light": "Light mode",
             "dark": "Dark mode"
+        },
+        "search": {
+            "placeholder": "Search plants by name, e.g. \"monstera\"",
+            "noResults": "No plants match “{{query}}” yet — try another name.",
+            "error": "Search is unavailable right now — try again shortly.",
+            "close": "Close search"
         }
     },
     "home": {
@@ -46,6 +52,8 @@
         "plants": {
             "eyebrow": "Common plants",
             "title": "Common plants",
+            "searchEyebrow": "Search results",
+            "searchTitle": "Results for “{{query}}”",
             "count_one": "{{count}} species",
             "count_other": "{{count}} species",
             "lightLabel": "Light",
