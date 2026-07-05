@@ -113,6 +113,7 @@ docs/
 ### Image Assets (Cloudflare R2)
 - Plant photography lives in the `green-guide-images` R2 bucket, served publicly via `https://images.greenguideapp.com` (custom domain; the r2.dev URL stays disabled) — see `docs/adr/0002-host-plant-images-in-cloudflare-r2.md`
 - Object keys mirror routes: `plants/<genus>/<species>/img-<n>.jpeg` or `.png` (lowercase, matching the `plants` collection natural key); the extension is part of the stored key, so nothing in code assumes one format
+- Pest photos (`issues.pests[].image`, optional) follow the same convention under a `pests/` subpath: `plants/<genus>/<species>/pests/<pest-slug>.jpeg`; the Issues tab renders a placeholder icon when the field is omitted
 - MongoDB stores the object key in `images[].url`, never a full URL; resolve keys with `imageUrl()` from `app/lib/imageUrl.ts` at render time
 - The base URL comes from `NEXT_PUBLIC_IMAGE_BASE_URL` (`.env.local`, template in `.env.example`); it is inlined at build time, so restart the dev server after changing it
 - The host must be allowlisted in `images.remotePatterns` in `next.config.ts` for `next/image` to accept it

@@ -6,7 +6,20 @@ export const dypsisLutescens: Omit<Plant, 'createdAt' | 'updatedAt'> = {
     commonNames: ['Areca Palm', 'Butterfly Palm', 'Golden Cane Palm'],
     description:
         'Feathery, arching fronds on slender golden canes give Areca Palm its airy, tropical look — a fast-growing, pet-safe statement palm for bright indoor corners.',
-    images: [],
+    images: [
+        {
+            url: 'plants/dypsis/lutescens/img-1.png',
+            alt: 'A potted Areca Palm with feathery fronds and golden canes, placed in a bright indoor setting.',
+        },
+        {
+            url: 'plants/dypsis/lutescens/img-2.png',
+            alt: 'A close-up of the feathery fronds and golden canes of an Areca Palm, showing its tropical texture.',
+        },
+        {
+            url: 'plants/dypsis/lutescens/img-3.png',
+            alt: 'A large, established Areca Palm in a bright outdoor space.',
+        }
+    ],
     tags: ['palm', 'tropical', 'non-toxic', 'air-purifying', 'beginner-friendly'],
     highlights: [
         'Native to the humid understories of Madagascar.',

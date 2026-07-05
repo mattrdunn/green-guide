@@ -71,8 +71,19 @@ export interface PlantCare {
 }
 
 export interface PlantIssues {
-    stressSignals: { title: string; description: string; actions: string[] }[];
-    pests: { name: string; signs: string; treatment: string }[];
+    stressSignals: {
+        title: string;
+        tag?: string;
+        description: string;
+        actions: string[];
+    }[];
+    pests: {
+        name: string;
+        tag?: string;
+        signs: string;
+        treatment: string;
+        image?: string;
+    }[];
     stabilityChecklist: string[];
 }
 
@@ -283,6 +294,7 @@ const PlantSchema = new Schema<Plant>(
                     new Schema(
                         {
                             title: { type: String, required: true },
+                            tag: String,
                             description: { type: String, required: true },
                             actions: { type: [String], default: [] },
                         },
@@ -293,8 +305,10 @@ const PlantSchema = new Schema<Plant>(
                     new Schema(
                         {
                             name: { type: String, required: true },
+                            tag: String,
                             signs: { type: String, required: true },
                             treatment: { type: String, required: true },
+                            image: String,
                         },
                         { _id: false },
                     ),

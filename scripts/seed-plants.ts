@@ -31,6 +31,13 @@ import { epipremnumAureum } from './seed/epipremnum-aureum';
 import { alocasiaAmazonica } from './seed/alocasia-amazonica';
 import { marantaLeuconeura } from './seed/maranta-leuconeura';
 import { nepenthesMiranda } from './seed/nepenthes-miranda';
+import { strelitziaNicolai } from './seed/strelitzia-nicolai';
+import { musaAcuminata } from './seed/musa-acuminata';
+import { heptapleurumActinophyllum } from './seed/heptapleurum-actinophyllum';
+import { heptapleurumArboricola } from './seed/heptapleurum-arboricola';
+import { phalaenopsisAmabilis } from './seed/phalaenopsis-amabilis';
+import { cattleyaLabiata } from './seed/cattleya-labiata';
+import { vandaCoerulea } from './seed/vanda-coerulea';
 
 process.loadEnvFile('.env.local');
 
@@ -65,6 +72,13 @@ const plants: Omit<Plant, 'createdAt' | 'updatedAt'>[] = [
     alocasiaAmazonica,
     marantaLeuconeura,
     nepenthesMiranda,
+    strelitziaNicolai,
+    musaAcuminata,
+    heptapleurumActinophyllum,
+    heptapleurumArboricola,
+    phalaenopsisAmabilis,
+    cattleyaLabiata,
+    vandaCoerulea,
 ];
 
 async function main() {

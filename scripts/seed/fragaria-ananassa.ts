@@ -6,7 +6,20 @@ export const fragariaAnanassa: Omit<Plant, 'createdAt' | 'updatedAt'> = {
     commonNames: ['Garden Strawberry', 'Strawberry'],
     description:
         'A low, spreading perennial that trades height for sheer productivity — trifoliate leaves, white spring flowers, and sweet red fruit that keeps beds and borders working double duty.',
-    images: [],
+    images: [
+        {
+            url: 'plants/fragaria/ananassa/img-1.png',
+            alt: 'A close-up of a Garden Strawberry plant with trifoliate leaves, white flowers, and red fruit.',
+        },
+        {
+            url: 'plants/fragaria/ananassa/img-2.png',
+            alt: 'A Garden Strawberry bed showing low, spreading plants with ripe red strawberries ready for harvest.',
+        },
+        {
+            url: 'plants/fragaria/ananassa/img-3.png',
+            alt: 'A close-up of an unripe strawberry on the plant, with green leaves and white flowers in the background.',
+        }
+    ],
     tags: ['fruit', 'perennial', 'groundcover', 'edible', 'non-toxic', 'full-sun'],
     highlights: [
         'A cultivated hybrid of North and South American wild strawberries.',

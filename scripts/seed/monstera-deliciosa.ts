@@ -20,7 +20,7 @@ export const monsteraDeliciosa: Omit<Plant, 'createdAt' | 'updatedAt'> = {
     highlights: [
         'Native to the tropical rainforests of Southern Mexico.',
         'Fenestrations form once plants reach 3+ years old.',
-        'Thrives with humidity above 60% and weekly misting.',
+        'Hardy enough to skip misting — ambient home humidity is usually fine.',
     ],
     vitals: {
         hardinessZone: {
@@ -102,7 +102,7 @@ export const monsteraDeliciosa: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             highlights: [
                 'Rotate the pot every week for even fenestration.',
                 'Water thoroughly, then allow the top 2" of soil to dry.',
-                'Monthly misting or pebble trays keep humidity above 60%.',
+                'Skip misting — it only helps if done daily. A pebble tray or humidifier keeps humidity above 60% without the upkeep.',
             ],
         },
         careCadence: [
@@ -124,7 +124,7 @@ export const monsteraDeliciosa: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             },
             {
                 interval: 'monthly',
-                task: 'Mist or use a pebble tray to keep humidity above 60%.',
+                task: 'Check that ambient humidity stays above 60%; a pebble tray helps more than misting.',
             },
             {
                 interval: 'monthly',
@@ -177,7 +177,7 @@ export const monsteraDeliciosa: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             {
                 season: 'Winter',
                 cadence: 'Every 14+ days',
-                tip: 'Brighten placement and mist weekly; resume feeding when new growth returns.',
+                tip: 'Brighten placement and run a humidifier if the air gets dry; resume feeding when new growth returns.',
             },
         ],
         routines: [
@@ -221,6 +221,7 @@ export const monsteraDeliciosa: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         stressSignals: [
             {
                 title: 'Yellow Leaves',
+                tag: 'Water or light stress',
                 description:
                     'One or two older leaves aging to yellow is normal shed, but new growth or multiple leaves yellowing at once points to trouble.',
                 actions: [
@@ -231,6 +232,7 @@ export const monsteraDeliciosa: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             },
             {
                 title: 'Drooping or Curling',
+                tag: 'Root stress',
                 description:
                     'Tired, floppy petioles or inward curling edges typically signal root stress from watering swings or compacted soil.',
                 actions: [
@@ -241,10 +243,11 @@ export const monsteraDeliciosa: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             },
             {
                 title: 'Brown Tips & Edges',
+                tag: 'Humidity or salts',
                 description:
                     'Low humidity or salt buildup from fertilizer concentrates crisp leaf margins.',
                 actions: [
-                    'Mist leaves or run a humidifier to keep humidity above 50–60%.',
+                    'Run a humidifier to keep humidity above 50–60% — misting only helps if repeated daily, so it rarely moves the needle.',
                     'Flush the pot monthly with lukewarm water to rinse fertilizer residues.',
                     'Wipe leaves with a damp microfiber cloth so stomata can breathe.',
                 ],
@@ -253,24 +256,28 @@ export const monsteraDeliciosa: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         pests: [
             {
                 name: 'Spider Mites',
+                tag: 'Spreads fast',
                 signs: 'Dusty webbing on undersides, stippled leaves losing color.',
                 treatment:
                     'Shower foliage, then treat weekly with neem oil or insecticidal soap until no new damage appears.',
             },
             {
                 name: 'Thrips',
+                tag: 'Scars new growth',
                 signs: 'Silvery streaks and distorted new leaves; black specks (frass) nearby.',
                 treatment:
                     'Isolate the plant, prune the worst leaves, and alternate systemic granules with contact sprays for 4–6 weeks.',
             },
             {
                 name: 'Fungus Gnats',
+                tag: 'Mostly a nuisance',
                 signs: 'Tiny flies hovering near soil, larvae feeding on fine roots.',
                 treatment:
                     'Let the top 2" of mix dry, add a sand topdress, and water in Bacillus thuringiensis israelensis (BTI) or mosquito bits.',
             },
             {
                 name: 'Scale & Mealybugs',
+                tag: 'Slow but stubborn',
                 signs: 'Sticky residue, cottony clusters in leaf nodes, or dome-like shells on stems.',
                 treatment:
                     'Swab insects with alcohol, then follow with horticultural oil coverage every 7–10 days until clean.',
