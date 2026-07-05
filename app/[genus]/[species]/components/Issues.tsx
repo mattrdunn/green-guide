@@ -83,7 +83,7 @@ export default function Issues({ issues }: { issues: PlantIssues }) {
                 </p>
             </section>
 
-            <section className="rounded-3xl border border-stone-200/80 bg-gradient-to-br from-emerald-50 via-white to-lime-50 p-6 shadow-sm dark:border-stone-700/70 dark:from-emerald-900/20 dark:via-zinc-900 dark:to-emerald-900/10">
+            <section className="rounded-3xl border border-stone-200/80 bg-linear-to-br from-emerald-50 via-white to-lime-50 p-6 shadow-sm dark:border-stone-700/70 dark:from-emerald-900/20 dark:via-zinc-900 dark:to-emerald-900/10">
                 <h2 className="text-2xl font-serif text-stone-900 dark:text-white">
                     Quick stability checklist
                 </h2>

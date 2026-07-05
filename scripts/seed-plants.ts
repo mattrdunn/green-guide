@@ -16,6 +16,21 @@ import { dracaenaTrifasciata } from './seed/dracaena-trifasciata';
 import { zamioculcasZamiifolia } from './seed/zamioculcas-zamiifolia';
 import { philodendronHederaceumBrasil } from './seed/philodendron-hederaceum-brasil';
 import { goeppertiaOrbifolia } from './seed/goeppertia-orbifolia';
+import { agaveAttenuata } from './seed/agave-attenuata';
+import { lavandulaAngustifolia } from './seed/lavandula-angustifolia';
+import { solanumLycopersicum } from './seed/solanum-lycopersicum';
+import { fragariaAnanassa } from './seed/fragaria-ananassa';
+import { dypsisLutescens } from './seed/dypsis-lutescens';
+import { pelargoniumPeltatum } from './seed/pelargonium-peltatum';
+import { citrusLimon } from './seed/citrus-limon';
+import { perseaAmericana } from './seed/persea-americana';
+import { rosaHybrida } from './seed/rosa-hybrida';
+import { syngoniumPodophyllum } from './seed/syngonium-podophyllum';
+import { syngoniumPodophyllumAlbo } from './seed/syngonium-podophyllum-albo';
+import { epipremnumAureum } from './seed/epipremnum-aureum';
+import { alocasiaAmazonica } from './seed/alocasia-amazonica';
+import { marantaLeuconeura } from './seed/maranta-leuconeura';
+import { nepenthesMiranda } from './seed/nepenthes-miranda';
 
 process.loadEnvFile('.env.local');
 
@@ -35,6 +50,21 @@ const plants: Omit<Plant, 'createdAt' | 'updatedAt'>[] = [
     zamioculcasZamiifolia,
     philodendronHederaceumBrasil,
     goeppertiaOrbifolia,
+    agaveAttenuata,
+    lavandulaAngustifolia,
+    solanumLycopersicum,
+    fragariaAnanassa,
+    dypsisLutescens,
+    pelargoniumPeltatum,
+    citrusLimon,
+    perseaAmericana,
+    rosaHybrida,
+    syngoniumPodophyllum,
+    syngoniumPodophyllumAlbo,
+    epipremnumAureum,
+    alocasiaAmazonica,
+    marantaLeuconeura,
+    nepenthesMiranda,
 ];
 
 async function main() {

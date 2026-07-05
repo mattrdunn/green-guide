@@ -6,7 +6,16 @@ export const euphorbiaTrigona: Omit<Plant, 'createdAt' | 'updatedAt'> = {
     commonNames: ['African Milk Tree', 'Cathedral Cactus', 'Candelabra Cactus'],
     description:
         'Upright, three-sided stems branch into a living candelabra — Euphorbia trigona delivers big architectural presence on a strict low-water budget, growing feet per year in a bright window.',
-    images: [],
+    images: [
+        {
+            url: 'plants/euphorbia/trigona/img-1.png',
+            alt: 'A tall Euphorbia trigona with three-sided stems branching into a candelabra shape, placed in a bright indoor setting.',
+        },
+        {
+            url: 'plants/euphorbia/trigona/img-2.png',
+            alt: 'A close-up of the three-sided stems of Euphorbia trigona, showing the green color and red-flushed edges.',
+        },
+    ],
     tags: ['euphorbia', 'succulent', 'columnar', 'fast-growing', 'toxic'],
     highlights: [
         'Native to Central Africa; a spurge, not a true cactus.',

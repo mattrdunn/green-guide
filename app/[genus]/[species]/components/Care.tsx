@@ -48,7 +48,7 @@ export default function Care({ care }: { care: PlantCare }) {
                     </ul>
                 </div>
 
-                <div className="rounded-3xl border border-stone-200/80 bg-gradient-to-br from-emerald-50 via-white to-lime-50 p-6 dark:border-stone-700/70 dark:from-emerald-900/20 dark:via-zinc-900 dark:to-emerald-900/20">
+                <div className="rounded-3xl border border-stone-200/80 bg-linear-to-br from-emerald-50 via-white to-lime-50 p-6 dark:border-stone-700/70 dark:from-emerald-900/20 dark:via-zinc-900 dark:to-emerald-900/20">
                     <h4 className="text-sm uppercase tracking-[0.4em] text-stone-500">
                         {t('seasonalCadence')}
                     </h4>
