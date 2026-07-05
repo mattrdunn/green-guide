@@ -6,10 +6,16 @@ import { AnimatePresence, motion } from 'framer-motion';
 type AccordionItemProps = {
     label: string;
     value: string;
+    badge?: string;
     children: React.ReactNode;
 };
 
-const AccordionItem = ({ label, value, children }: AccordionItemProps) => {
+const AccordionItem = ({
+    label,
+    value,
+    badge,
+    children,
+}: AccordionItemProps) => {
     const [open, setOpen] = useState(false);
 
     return (
@@ -24,9 +30,16 @@ const AccordionItem = ({ label, value, children }: AccordionItemProps) => {
                     <p className="text-xs uppercase tracking-[0.4em] text-stone-500">
                         {label}
                     </p>
-                    <p className="text-lg font-semibold text-stone-900 dark:text-white">
-                        {value}
-                    </p>
+                    <div className="flex items-center gap-2">
+                        <p className="text-lg font-semibold text-stone-900 dark:text-white">
+                            {value}
+                        </p>
+                        {badge && (
+                            <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-semibold tracking-wide text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300">
+                                {badge}
+                            </span>
+                        )}
+                    </div>
                 </div>
                 <span
                     className={`ml-4 inline-flex h-9 w-9 items-center justify-center rounded-full border border-stone-200/80 text-lg font-light text-stone-600 transition-transform duration-200 dark:border-stone-700/70 dark:text-stone-200 ${

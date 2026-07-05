@@ -72,8 +72,8 @@ export const nepenthesMiranda: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             compatible: true,
         },
         fertilizer: {
-            value: 'Feed prey, not roots',
-            detail: 'Skip soil fertilizer entirely. Drop a single rehydrated dried bloodworm, betta pellet, or small live insect into a few mature pitchers each month during the growing season — never into every pitcher at once.',
+            value: 'No fertilizer — prey only',
+            detail: 'Never fertilize the soil or pitcher fluid — water only with distilled, reverse-osmosis, or rainwater. If grown indoors with little access to live insects, occasionally drop a single rehydrated freeze-dried bloodworm into a mature pitcher instead.',
         },
         fertilizerFrequency: {
             value: 'Monthly, growing season only',

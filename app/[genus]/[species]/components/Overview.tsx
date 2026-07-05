@@ -93,8 +93,14 @@ export default function Overview({ vitals, overview }: OverviewProps) {
         { label: 'Height', entry: overview.height },
         { label: 'Soil', entry: overview.soil },
         { label: 'Semi-hydro Compatible', entry: overview.semiHydro },
-        { label: 'Feeding', entry: overview.fertilizer },
-        { label: 'Feeding Frequency', entry: overview.fertilizerFrequency },
+        {
+            label: 'Fertilizer',
+            entry: overview.fertilizer,
+            badge: overview.fertilizer.npk
+                ? `NPK ${overview.fertilizer.npk}`
+                : undefined,
+        },
+        { label: 'Fertilizer Frequency', entry: overview.fertilizerFrequency },
         { label: 'Native Habitat', entry: overview.nativeHabitat },
         { label: 'Humidity', entry: overview.humidity },
         { label: 'Temperature', entry: overview.temperature },
@@ -197,6 +203,7 @@ export default function Overview({ vitals, overview }: OverviewProps) {
                         key={section.label}
                         label={section.label}
                         value={section.entry.value}
+                        badge={'badge' in section ? section.badge : undefined}
                     >
                         {section.entry.detail}
                     </AccordionItem>
