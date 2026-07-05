@@ -11,7 +11,13 @@ export const syngoniumPodophyllumAlbo: Omit<Plant, 'createdAt' | 'updatedAt'> =
         ],
         description:
             "Crisp white-and-green splash patterns make Syngonium podophyllum 'Albo Variegatum' one of the most sought-after arrowhead cultivars — the same easy climbing habit as the species, dressed in striking, unstable variegation.",
-        images: [],
+        images: [
+
+        {
+            url: 'plants/syngonium/podophyllum/albo/img-1.png',
+            alt: 'A close-up of an Arrowhead Plant leaf with white variegation.',
+        }
+        ],
         tags: [
             'aroid',
             'vining',

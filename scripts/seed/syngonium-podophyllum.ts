@@ -6,7 +6,12 @@ export const syngoniumPodophyllum: Omit<Plant, 'createdAt' | 'updatedAt'> = {
     commonNames: ['Arrowhead Plant', 'Arrowhead Vine', 'Goosefoot Plant'],
     description:
         'Arrow-shaped juvenile leaves mature into deeply lobed, almost hand-like foliage — Syngonium podophyllum is a fast, forgiving climber that shifts its own look as it grows.',
-    images: [],
+    images: [
+        {
+            url: 'plants/syngonium/podophyllum/img-1.png',
+            alt: 'A close-up of an Arrowhead Plant with arrow-shaped leaves.',
+        }
+    ],
     tags: ['aroid', 'vining', 'beginner-friendly', 'mildly-toxic'],
     highlights: [
         'Native to the rainforests of Central and South America.',
