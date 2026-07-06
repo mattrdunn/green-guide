@@ -1,5 +1,6 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
@@ -7,7 +8,11 @@ import { useTranslation } from 'react-i18next';
 import cn from '@/app/lib/cn';
 import { plantMatchesQuery } from '@/app/lib/searchPlants';
 import { useThemeMode } from '@/app/lib/useThemeMode';
-import { useGetPlantSummariesQuery } from '@/store/api/templateApi';
+import {
+    useGetPestSummariesQuery,
+    useGetPlantSummariesQuery,
+} from '@/store/api/templateApi';
+import NavExpandableList from './NavExpandableList';
 import SearchResults from './SearchResults';
 
 const MAX_RESULTS = 8;
@@ -62,6 +67,91 @@ function BugIcon({ className }: { className?: string }) {
     );
 }
 
+function ChevronIcon({ className }: { className?: string }) {
+    return (
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            className={className}
+            aria-hidden="true"
+        >
+            <path
+                d="m7 10 5 5 5-5"
+                stroke="currentColor"
+                strokeWidth={1.8}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+            />
+        </svg>
+    );
+}
+
+/** Chevron that animates its rotation with framer-motion as `open` flips. */
+function DropdownToggle({
+    open,
+    onClick,
+    label,
+}: {
+    open: boolean;
+    onClick: () => void;
+    label: string;
+}) {
+    return (
+        <button
+            type="button"
+            onClick={onClick}
+            aria-expanded={open}
+            aria-label={label}
+            className="flex size-8 shrink-0 items-center justify-center rounded-full text-stone-500 transition hover:bg-stone-100 dark:text-stone-400 dark:hover:bg-zinc-900"
+        >
+            <motion.span
+                animate={{ rotate: open ? 180 : 0 }}
+                transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
+                className="flex"
+            >
+                <ChevronIcon className="size-4" />
+            </motion.span>
+        </button>
+    );
+}
+
+const capitalize = (value: string) =>
+    value.charAt(0).toUpperCase() + value.slice(1);
+
+/** Route segments that own their own top-level page, never a genus slug. */
+const RESERVED_TOP_LEVEL_SEGMENTS = new Set(['pests']);
+
+/**
+ * Matches a species (and optional variety) profile URL — `/[genus]/[species]`
+ * or `/[genus]/[species]/[variety]` — and pulls out the natural-key segments
+ * used to look up the corresponding plant, or `null` off any other route.
+ */
+function parseSpeciesRoute(
+    pathname: string,
+): { genus: string; species: string; variety: string | null } | null {
+    const parts = pathname.split('/').filter(Boolean);
+    if (parts.length < 2 || parts.length > 3) {
+        return null;
+    }
+    if (RESERVED_TOP_LEVEL_SEGMENTS.has(parts[0])) {
+        return null;
+    }
+    return {
+        genus: parts[0],
+        species: parts[1],
+        variety: parts[2] ?? null,
+    };
+}
+
+/** Matches a pest detail URL (`/pests/[slug]`) and pulls out the slug. */
+function parsePestSlug(pathname: string): string | null {
+    const parts = pathname.split('/').filter(Boolean);
+    if (parts.length !== 2 || parts[0] !== 'pests') {
+        return null;
+    }
+    return parts[1];
+}
+
 /**
  * Brand, quick search, primary nav, and appearance toggle — the sidebar's
  * actual content, shared by the persistent desktop `SideNav` and the mobile
@@ -80,8 +170,11 @@ export default function SideNavContent({
     const { mode, toggle } = useThemeMode();
     const pathname = usePathname();
     const [query, setQuery] = useState('');
+    const [speciesListOpen, setSpeciesListOpen] = useState(false);
+    const [pestsListOpen, setPestsListOpen] = useState(false);
 
     const { data: plants, isError } = useGetPlantSummariesQuery();
+    const { data: pests } = useGetPestSummariesQuery();
 
     const needle = query.trim().toLowerCase();
     const matches = useMemo(() => {
@@ -93,10 +186,85 @@ export default function SideNavContent({
             .slice(0, MAX_RESULTS);
     }, [plants, needle]);
 
+    const speciesRoute = useMemo(() => parseSpeciesRoute(pathname), [pathname]);
+    const currentPlant = useMemo(() => {
+        if (!plants || !speciesRoute) {
+            return null;
+        }
+        return (
+            plants.find(
+                (plant) =>
+                    plant.genus === speciesRoute.genus &&
+                    plant.species === speciesRoute.species &&
+                    (plant.variety ?? null) === speciesRoute.variety,
+            ) ?? null
+        );
+    }, [plants, speciesRoute]);
+
+    const speciesItems = useMemo(() => {
+        if (!plants) {
+            return [];
+        }
+        return [...plants]
+            .sort((a, b) =>
+                `${a.genus} ${a.species}`.localeCompare(
+                    `${b.genus} ${b.species}`,
+                ),
+            )
+            .map((plant) => ({
+                key: `${plant.genus}-${plant.species}-${plant.variety ?? ''}`,
+                href: plant.variety
+                    ? `/${plant.genus}/${plant.species}/${plant.variety}`
+                    : `/${plant.genus}/${plant.species}`,
+                label: `${capitalize(plant.genus)} ${plant.species.replace(/-/g, ' ')}`,
+                isCurrent:
+                    currentPlant != null &&
+                    plant.genus === currentPlant.genus &&
+                    plant.species === currentPlant.species &&
+                    (plant.variety ?? null) === (currentPlant.variety ?? null),
+            }));
+    }, [plants, currentPlant]);
+
+    const pestSlug = useMemo(() => parsePestSlug(pathname), [pathname]);
+    const currentPest = useMemo(() => {
+        if (!pests || !pestSlug) {
+            return null;
+        }
+        return pests.find((pest) => pest.slug === pestSlug) ?? null;
+    }, [pests, pestSlug]);
+
+    const pestItems = useMemo(() => {
+        if (!pests) {
+            return [];
+        }
+        return [...pests]
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .map((pest) => ({
+                key: pest.slug,
+                href: `/pests/${pest.slug}`,
+                label: pest.name,
+                isCurrent: pest.slug === currentPest?.slug,
+            }));
+    }, [pests, currentPest]);
+
     // Navigating away (e.g. via a result click) should close the dropdown.
     useEffect(() => {
         setQuery('');
     }, [pathname]);
+
+    // Loading (or navigating between) a species/pest page opens its list
+    // automatically so the currently-viewed entry is visible in it.
+    useEffect(() => {
+        if (currentPlant) {
+            setSpeciesListOpen(true);
+        }
+    }, [currentPlant]);
+
+    useEffect(() => {
+        if (currentPest) {
+            setPestsListOpen(true);
+        }
+    }, [currentPest]);
 
     const handleNavigate = () => {
         setQuery('');
@@ -162,22 +330,52 @@ export default function SideNavContent({
                 <p className="mb-1.5 text-xs font-semibold uppercase tracking-[0.3em] text-stone-400 dark:text-stone-500">
                     {t('browse')}
                 </p>
-                <Link
-                    href="/"
-                    onClick={onNavigate}
-                    className={navLinkClass(homeActive)}
-                >
-                    <LeafIcon className="size-[18px]" />
-                    {t('home')}
-                </Link>
-                <Link
-                    href="/pests"
-                    onClick={onNavigate}
-                    className={navLinkClass(pestsActive)}
-                >
-                    <BugIcon className="size-[18px]" />
-                    {t('pests')}
-                </Link>
+                <div className="flex flex-col gap-1">
+                    <div className="flex items-center gap-1">
+                        <Link
+                            href="/"
+                            onClick={onNavigate}
+                            className={cn(navLinkClass(homeActive), 'flex-1')}
+                        >
+                            <LeafIcon className="size-4.5" />
+                            {t('home')}
+                        </Link>
+                        <DropdownToggle
+                            open={speciesListOpen}
+                            onClick={() =>
+                                setSpeciesListOpen((prev) => !prev)
+                            }
+                            label={t('speciesList.toggle')}
+                        />
+                    </div>
+                    <NavExpandableList
+                        open={speciesListOpen}
+                        items={speciesItems}
+                        onNavigate={onNavigate}
+                    />
+                </div>
+                <div className="flex flex-col gap-1">
+                    <div className="flex items-center gap-1">
+                        <Link
+                            href="/pests"
+                            onClick={onNavigate}
+                            className={cn(navLinkClass(pestsActive), 'flex-1')}
+                        >
+                            <BugIcon className="size-4.5" />
+                            {t('pests')}
+                        </Link>
+                        <DropdownToggle
+                            open={pestsListOpen}
+                            onClick={() => setPestsListOpen((prev) => !prev)}
+                            label={t('pestsList.toggle')}
+                        />
+                    </div>
+                    <NavExpandableList
+                        open={pestsListOpen}
+                        items={pestItems}
+                        onNavigate={onNavigate}
+                    />
+                </div>
             </nav>
 
             <div className="mt-auto flex flex-col gap-2">

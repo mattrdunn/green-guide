@@ -26,7 +26,13 @@
         "pests": "Pests",
         "appearance": "Appearance",
         "light": "Light",
-        "dark": "Dark"
+        "dark": "Dark",
+        "speciesList": {
+            "toggle": "Toggle species list"
+        },
+        "pestsList": {
+            "toggle": "Toggle pests list"
+        }
     },
     "home": {
         "hero": {

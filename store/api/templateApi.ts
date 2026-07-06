@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type { PlantCardData } from '@/app/components/home/types';
+import type { PestSummaryData } from '@/app/pests/types';
 import type { Plant } from '@/lib/db/models/Plant';
 
 /** Plant document as served by the API — Mongoose Dates arrive as ISO strings. */
@@ -24,6 +25,9 @@ export const greenGuideApi = createApi({
         getPlantSummaries: builder.query<PlantCardData[], void>({
             query: () => 'plants',
         }),
+        getPestSummaries: builder.query<PestSummaryData[], void>({
+            query: () => 'pests',
+        }),
         saveFavoritePlant: builder.mutation<void, { plantId: string }>({
             query: ({ plantId }) => ({
                 url: 'favorites',
@@ -37,5 +41,6 @@ export const greenGuideApi = createApi({
 export const {
     useGetPlantQuery,
     useGetPlantSummariesQuery,
+    useGetPestSummariesQuery,
     useSaveFavoritePlantMutation,
 } = greenGuideApi;
