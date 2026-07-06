@@ -6,7 +6,20 @@ export const cattleyaLabiata: Omit<Plant, 'createdAt' | 'updatedAt'> = {
     commonNames: ['Corsage Orchid', 'Cattleya Orchid'],
     description:
         'The classic corsage orchid — large, ruffled, fragrant blooms follow plump water-storing pseudobulbs. Unlike shade-tolerant Phalaenopsis, Cattleya wants strong light and a pronounced dry stretch between waterings to bloom well.',
-    images: [],
+    images: [
+        {
+            url: 'plants/cattleya/labiata/img-1.png',
+            alt: 'Cattleya Labiata in bloom, showing a large pink flower with ruffled edges.',
+        },
+        {
+            url: 'plants/cattleya/labiata/img-2.png',
+            alt: 'Close-up of Cattleya Labiata flower, showing the leaves and pot in the background.',
+        },
+        {
+            url: 'plants/cattleya/labiata/img-3.png',
+            alt: 'Cattleya Labiata growing on a tree trunk, with multiple violet blooms and bright green leaves.',
+        }
+    ],
     tags: ['orchid', 'epiphyte', 'flowering', 'non-toxic', 'fragrant'],
     highlights: [
         'Native to the exposed canopy branches of Brazilian rainforests, where it gets far more direct sun than most houseplant orchids tolerate.',

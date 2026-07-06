@@ -6,7 +6,20 @@ export const epipremnumAureum: Omit<Plant, 'createdAt' | 'updatedAt'> = {
     commonNames: ['Golden Pothos', "Devil's Ivy", 'Money Plant'],
     description:
         'Glossy, heart-shaped leaves splashed with gold make Golden Pothos the plant most people learn on — Epipremnum aureum tolerates low light, irregular watering, and near-total neglect while still looking good.',
-    images: [],
+    images: [
+        {
+            url: 'plants/epipremnum/aureum/img-1.png',
+            alt: 'Golden Pothos in a hanging basket, trailing down with variegated leaves.',
+        },
+        {
+            url: 'plants/epipremnum/aureum/img-2.png',
+            alt: 'A large golden pothos climbing a wooden stake.',
+        },
+        {
+            url: 'plants/epipremnum/aureum/img-3.png',
+            alt: 'A giant golden pothos vine climbing a wall.',
+        },
+    ],
     tags: ['aroid', 'vining', 'beginner-friendly', 'low-light', 'mildly-toxic'],
     highlights: [
         'Native to the Solomon Islands, now one of the most widely grown houseplants worldwide.',

@@ -6,7 +6,16 @@ export const heptapleurumActinophyllum: Omit<Plant, 'createdAt' | 'updatedAt'> =
     commonNames: ['Australian Umbrella Tree', 'Octopus Tree', 'Amate'],
     description:
         'Glossy compound leaves radiate out from a central point like the ribs of an umbrella, stacking into a bold, fast-growing tree indoors or a towering canopy outdoors in warm climates.',
-    images: [],
+    images: [
+        {
+            url: 'plants/heptapleurum/actinophyllum/img-1.png',
+            alt: 'Australian Umbrella Tree with glossy compound leaves radiating from a central point.',
+        },
+        {
+            url: 'plants/heptapleurum/actinophyllum/img-2.png',
+            alt: 'Close-up of Australian Umbrella Tree leaves, showing the umbrella-like arrangement of leaflets.',
+        },
+    ],
     tags: ['statement-plant', 'tree', 'mildly-toxic', 'low-maintenance'],
     highlights: [
         'Native to tropical rainforests of Australia, New Guinea, and Java, often starting life as an epiphyte before rooting into the ground.',

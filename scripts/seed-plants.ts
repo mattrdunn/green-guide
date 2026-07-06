@@ -38,6 +38,17 @@ import { heptapleurumArboricola } from './seed/heptapleurum-arboricola';
 import { phalaenopsisAmabilis } from './seed/phalaenopsis-amabilis';
 import { cattleyaLabiata } from './seed/cattleya-labiata';
 import { vandaCoerulea } from './seed/vanda-coerulea';
+import { narcissusPseudonarcissus } from './seed/narcissus-pseudonarcissus';
+import { helleborusOrientalis } from './seed/helleborus-orientalis';
+import { alliumGiganteum } from './seed/allium-giganteum';
+import { dianthusCaryophyllus } from './seed/dianthus-caryophyllus';
+import { violaWittrockiana } from './seed/viola-wittrockiana';
+import { hederaHelix } from './seed/hedera-helix';
+import { hibiscusRosaSinensis } from './seed/hibiscus-rosa-sinensis';
+import { chlorophytumComosum } from './seed/chlorophytum-comosum';
+import { rhaphidophoraTetrasperma } from './seed/rhaphidophora-tetrasperma';
+import { alocasiaReginula } from './seed/alocasia-reginula';
+import { philodendronHederaceumMicans } from './seed/philodendron-hederaceum-micans';
 
 process.loadEnvFile('.env.local');
 
@@ -79,6 +90,17 @@ const plants: Omit<Plant, 'createdAt' | 'updatedAt'>[] = [
     phalaenopsisAmabilis,
     cattleyaLabiata,
     vandaCoerulea,
+    narcissusPseudonarcissus,
+    helleborusOrientalis,
+    alliumGiganteum,
+    dianthusCaryophyllus,
+    violaWittrockiana,
+    hederaHelix,
+    hibiscusRosaSinensis,
+    chlorophytumComosum,
+    rhaphidophoraTetrasperma,
+    alocasiaReginula,
+    philodendronHederaceumMicans,
 ];
 
 async function main() {

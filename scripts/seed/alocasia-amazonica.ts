@@ -10,7 +10,16 @@ export const alocasiaAmazonica: Omit<Plant, 'createdAt' | 'updatedAt'> = {
     ],
     description:
         'Arrow-shaped, dark green leaves veined in bright white and edged with sharp scallops give Alocasia Amazonica its dramatic, almost sculptural look — a striking hybrid aroid that trades easy-care flexibility for serious visual payoff.',
-    images: [],
+    images: [
+        {
+            url: 'plants/alocasia/amazonica/img-1.png',
+            alt: 'Alocasia Amazonica in a white pot on a wooden table, with bright indirect light.',
+        },
+        {
+            url: 'plants/alocasia/amazonica/img-2.png',
+            alt: 'Close-up of Alocasia Amazonica leaves, showing the white veining and scalloped edges.',
+        },
+    ],
     tags: ['aroid', 'statement-plant', 'high-humidity', 'toxic'],
     highlights: [
         'A hybrid of garden origin, not found in the wild — bred from Southeast Asian Alocasia species.',
