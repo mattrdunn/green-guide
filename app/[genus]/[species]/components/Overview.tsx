@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { useTranslation } from 'react-i18next';
 import AccordionItem from './AccordionItem';
-import VitalMeter from './VitalMeter';
+import VitalMeter from '@/app/components/VitalMeter';
 import cn from '@/app/lib/cn';
 import globeIcon from '@/public/icons/globe.svg';
 import waterDropIcon from '@/public/icons/water-drop.svg';

@@ -245,18 +245,21 @@ export const solanumLycopersicum: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             },
             {
                 name: 'Aphids',
+                pestSlug: 'aphids',
                 signs: 'Clusters of small insects on new growth and the undersides of leaves.',
                 treatment:
                     'Hose off or treat with insecticidal soap weekly until populations drop.',
             },
             {
                 name: 'Whiteflies',
+                pestSlug: 'whiteflies',
                 signs: 'Tiny white insects that scatter when foliage is disturbed; sticky honeydew residue.',
                 treatment:
                     'Yellow sticky traps plus insecticidal soap applications every 5-7 days.',
             },
             {
                 name: 'Spider Mites',
+                pestSlug: 'spider-mites',
                 signs: 'Fine stippling on leaves and faint webbing during hot, dry spells.',
                 treatment:
                     'Increase humidity around plants and treat with insecticidal soap or miticide as needed.',

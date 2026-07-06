@@ -198,7 +198,7 @@ export default function HomeClient({ plants }: { plants: PlantCardData[] }) {
                     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                         {filtered.map((plant) => (
                             <PlantCard
-                                key={`${plant.genus}-${plant.species}`}
+                                key={`${plant.genus}-${plant.species}-${plant.variety ?? ''}`}
                                 plant={plant}
                             />
                         ))}

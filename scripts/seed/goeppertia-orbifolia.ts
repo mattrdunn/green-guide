@@ -276,18 +276,21 @@ export const goeppertiaOrbifolia: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         pests: [
             {
                 name: 'Spider Mites',
+                pestSlug: 'spider-mites',
                 signs: 'Fine webbing and pale speckling — orbifolia is a mite magnet whenever humidity drops.',
                 treatment:
                     'Shower both leaf surfaces, raise humidity, and spray weekly with insecticidal soap until no new stippling appears.',
             },
             {
                 name: 'Fungus Gnats',
+                pestSlug: 'fungus-gnats',
                 signs: 'Small flies over the constantly moist soil this plant requires.',
                 treatment:
                     'Water in BTI (mosquito bits) and topdress with sand — you cannot dry this plant out to break the cycle.',
             },
             {
                 name: 'Thrips',
+                pestSlug: 'thrips',
                 signs: 'Silvery smears and black specks on the broad leaf faces.',
                 treatment:
                     'Isolate, remove heavily damaged leaves, and treat with systemic granules plus weekly contact sprays.',

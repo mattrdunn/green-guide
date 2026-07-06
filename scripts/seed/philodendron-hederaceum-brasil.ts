@@ -262,24 +262,28 @@ export const philodendronHederaceumBrasil: Omit<
         pests: [
             {
                 name: 'Spider Mites',
+                pestSlug: 'spider-mites',
                 signs: 'Fine webbing and pale stippling, especially in dry winter air.',
                 treatment:
                     'Shower the foliage, then spray weekly with insecticidal soap until new leaves emerge clean.',
             },
             {
                 name: 'Thrips',
+                pestSlug: 'thrips',
                 signs: 'Silvery patches and warped new leaves on the growth tips.',
                 treatment:
                     'Isolate, prune the worst vines, and alternate systemic granules with contact sprays for 4-6 weeks.',
             },
             {
                 name: 'Mealybugs',
+                pestSlug: 'mealybugs',
                 signs: 'White cottony clusters at nodes and along stems.',
                 treatment:
                     'Swab with alcohol, then follow up with horticultural oil every 7-10 days.',
             },
             {
                 name: 'Fungus Gnats',
+                pestSlug: 'fungus-gnats',
                 signs: 'Small flies around consistently damp soil.',
                 treatment:
                     'Extend dry-downs, topdress with sand, and water in BTI to break the larval cycle.',

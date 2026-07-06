@@ -247,6 +247,7 @@ export const lavandulaAngustifolia: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             },
             {
                 name: 'Aphids',
+                pestSlug: 'aphids',
                 signs: 'Small clustered insects on new growth and flower buds, often with sticky residue.',
                 treatment:
                     'Hose off light infestations or treat with insecticidal soap every 5-7 days until clear.',

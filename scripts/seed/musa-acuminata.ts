@@ -246,18 +246,21 @@ export const musaAcuminata: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         pests: [
             {
                 name: 'Spider Mites',
+                pestSlug: 'spider-mites',
                 signs: 'Fine stippling and faint webbing on leaf undersides, worse in dry indoor air.',
                 treatment:
                     'Raise humidity, rinse leaves regularly, and treat with insecticidal soap or neem oil weekly until clear.',
             },
             {
                 name: 'Aphids',
+                pestSlug: 'aphids',
                 signs: 'Small clusters of soft-bodied insects on new growth, often with sticky honeydew residue.',
                 treatment:
                     'Rinse off with water and follow with insecticidal soap applications until the colony is gone.',
             },
             {
                 name: 'Mealybugs',
+                pestSlug: 'mealybugs',
                 signs: 'Cottony white clusters where leaves meet the pseudostem.',
                 treatment:
                     'Swab visible clusters with isopropyl alcohol, then treat with neem oil until no new clusters appear.',

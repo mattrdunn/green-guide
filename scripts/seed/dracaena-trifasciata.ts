@@ -263,18 +263,21 @@ export const dracaenaTrifasciata: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         pests: [
             {
                 name: 'Spider Mites',
+                pestSlug: 'spider-mites',
                 signs: 'Fine stippling and faint webbing, usually in hot, dry placements.',
                 treatment:
                     'Wipe leaves down with insecticidal soap weekly until stippling stops; the smooth foliage makes eradication easy.',
             },
             {
                 name: 'Mealybugs',
+                pestSlug: 'mealybugs',
                 signs: 'White, cottony tufts tucked into the leaf bases and rosette centers.',
                 treatment:
                     'Swab with isopropyl alcohol on a cotton bud, then follow with horticultural oil every 7-10 days.',
             },
             {
                 name: 'Fungus Gnats',
+                pestSlug: 'fungus-gnats',
                 signs: 'Small flies around the soil — a red flag that the mix is staying too wet.',
                 treatment:
                     'Let the pot dry out completely (the plant will not mind) and top-dress with sand or grit.',

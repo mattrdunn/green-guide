@@ -254,12 +254,14 @@ export const agaveAttenuata: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             },
             {
                 name: 'Scale Insects',
+                pestSlug: 'scale',
                 signs: 'Hard, grey-brown discs along leaf undersides and bases.',
                 treatment:
                     'Scrape off light infestations, then follow with horticultural oil applications every 1-2 weeks.',
             },
             {
                 name: 'Mealybugs',
+                pestSlug: 'mealybugs',
                 signs: 'Cottony white clusters tucked between tightly packed leaves.',
                 treatment:
                     'Swab visible clusters with isopropyl alcohol and follow with neem oil sprays until clear.',

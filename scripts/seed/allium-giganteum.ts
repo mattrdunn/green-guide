@@ -257,6 +257,7 @@ export const alliumGiganteum: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             },
             {
                 name: 'Slugs and Snails',
+                pestSlug: 'slugs-and-snails',
                 signs: 'Occasional ragged holes in young emerging foliage.',
                 treatment:
                     'Hand-pick or use iron phosphate bait; damage is typically minor and self-limiting.',

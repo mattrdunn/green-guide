@@ -243,18 +243,21 @@ export const euphorbiaTirucalli: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         pests: [
             {
                 name: 'Mealybugs',
+                pestSlug: 'mealybugs',
                 signs: 'White cottony patches at the branch junctions.',
                 treatment:
                     'Swab with isopropyl alcohol and repeat weekly; the smooth stems make thorough coverage easy.',
             },
             {
                 name: 'Scale',
+                pestSlug: 'scale',
                 signs: 'Tan-brown discs dotted along older stems.',
                 treatment:
                     'Scrape gently and follow with horticultural oil every 7-10 days for a few weeks.',
             },
             {
                 name: 'Spider Mites',
+                pestSlug: 'spider-mites',
                 signs: 'Dusty, faded stem tips in hot dry spells with fine webbing.',
                 treatment:
                     'Rinse the canopy and treat weekly with insecticidal soap until tips regain color.',

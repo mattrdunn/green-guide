@@ -264,6 +264,7 @@ export const perseaAmericana: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             },
             {
                 name: 'Scale Insects',
+                pestSlug: 'scale',
                 signs: 'Small, hard bumps on stems and leaf undersides, often with sticky honeydew nearby.',
                 treatment:
                     'Scrape off light infestations and follow with horticultural oil every 1-2 weeks.',

@@ -246,18 +246,21 @@ export const monsteraAdansonii: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         pests: [
             {
                 name: 'Spider Mites',
+                pestSlug: 'spider-mites',
                 signs: 'Fine stippling and webbing on thin leaves; damage spreads quickly on this species.',
                 treatment:
                     'Shower the foliage, then apply insecticidal soap or neem weekly for 3-4 weeks, covering leaf undersides.',
             },
             {
                 name: 'Thrips',
+                pestSlug: 'thrips',
                 signs: 'Silvery patches, distorted new leaves, and black frass specks.',
                 treatment:
                     'Isolate, prune heavily damaged leaves, and alternate systemic granules with contact sprays for 4-6 weeks.',
             },
             {
                 name: 'Fungus Gnats',
+                pestSlug: 'fungus-gnats',
                 signs: 'Small flies around the soil surface, especially in moisture-retentive mixes.',
                 treatment:
                     'Let the top 2" dry between waterings and drench with BTI (mosquito bits) to kill larvae.',

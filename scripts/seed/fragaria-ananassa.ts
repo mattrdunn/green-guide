@@ -246,18 +246,21 @@ export const fragariaAnanassa: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         pests: [
             {
                 name: 'Slugs & Snails',
+                pestSlug: 'slugs-and-snails',
                 signs: 'Ragged holes in leaves and fruit, with silvery slime trails nearby.',
                 treatment:
                     'Hand-pick in the evening, or use iron phosphate bait around the bed perimeter.',
             },
             {
                 name: 'Aphids',
+                pestSlug: 'aphids',
                 signs: 'Small clustered insects on new leaves and flower stems.',
                 treatment:
                     'Hose off or treat with insecticidal soap weekly until populations clear.',
             },
             {
                 name: 'Spider Mites',
+                pestSlug: 'spider-mites',
                 signs: 'Fine stippling and faint webbing on leaves during hot, dry weather.',
                 treatment:
                     'Rinse foliage regularly and treat with insecticidal soap if damage progresses.',

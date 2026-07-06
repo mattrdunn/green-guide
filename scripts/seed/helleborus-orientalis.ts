@@ -246,12 +246,14 @@ export const helleborusOrientalis: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         pests: [
             {
                 name: 'Slugs and Snails',
+                pestSlug: 'slugs-and-snails',
                 signs: 'Ragged holes in new leaves and flower buds, particularly in damp weather.',
                 treatment:
                     'Use iron phosphate bait around the crown or hand-pick in the evening; established plants tolerate light damage.',
             },
             {
                 name: 'Aphids',
+                pestSlug: 'aphids',
                 signs: 'Small clustered insects on new growth and flower stems in spring.',
                 treatment:
                     'Hose off light infestations or treat with insecticidal soap every 5-7 days until clear.',

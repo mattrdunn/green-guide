@@ -256,24 +256,28 @@ export const ficusElastica: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         pests: [
             {
                 name: 'Scale',
+                pestSlug: 'scale',
                 signs: 'Brown limpet-like bumps on stems and leaf midribs with sticky honeydew beneath.',
                 treatment:
                     'Swab each insect with isopropyl alcohol, then apply horticultural oil every 7-10 days until clean.',
             },
             {
                 name: 'Mealybugs',
+                pestSlug: 'mealybugs',
                 signs: 'White cottony masses tucked into leaf axils and along new growth.',
                 treatment:
                     'Alcohol-swab visible clusters, follow with insecticidal soap weekly, and recheck hidden crevices.',
             },
             {
                 name: 'Spider Mites',
+                pestSlug: 'spider-mites',
                 signs: 'Pin-prick stippling and fine webbing, worst in hot, dry rooms.',
                 treatment:
                     'Shower the foliage, boost humidity, and spray neem or insecticidal soap weekly for 3-4 weeks.',
             },
             {
                 name: 'Fungus Gnats',
+                pestSlug: 'fungus-gnats',
                 signs: 'Tiny flies over chronically moist soil.',
                 treatment:
                     'Dry the top layer out fully between waterings and drench with BTI to stop the larval cycle.',

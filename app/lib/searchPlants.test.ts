@@ -6,6 +6,7 @@ import { plantMatchesQuery } from '@/app/lib/searchPlants';
 const plant = (overrides: Partial<PlantCardData> = {}): PlantCardData => ({
     genus: 'monstera',
     species: 'deliciosa',
+    variety: null,
     commonNames: ['Swiss Cheese Plant', 'Split-Leaf Philodendron'],
     imageKey: null,
     imageAlt: null,

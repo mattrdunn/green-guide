@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Fraunces, Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Nav from './components/Nav';
+import SideNav from './components/SideNav';
 import Providers from './providers';
 
 const geistSans = Geist({
@@ -36,9 +37,12 @@ export default function RootLayout({
                 className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} antialiased`}
             >
                 <Providers>
-                    <div className="min-h-screen pt-12 pb-20 font-(family-name:--font-geist-sans) sm:p-20 relative">
+                    <div className="flex min-h-screen font-(family-name:--font-geist-sans)">
                         <Nav />
-                        {children}
+                        <SideNav />
+                        <main className="relative min-w-0 flex-1 pt-12 pb-20 sm:p-20">
+                            {children}
+                        </main>
                     </div>
                 </Providers>
             </body>

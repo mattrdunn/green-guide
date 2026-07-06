@@ -83,6 +83,8 @@ export interface PlantIssues {
         signs: string;
         treatment: string;
         image?: string;
+        /** Slug of the matching entry in the shared Pest library, when one exists. */
+        pestSlug?: string;
     }[];
     stabilityChecklist: string[];
 }
@@ -90,6 +92,12 @@ export interface PlantIssues {
 export interface Plant {
     genus: string;
     species: string;
+    /**
+     * Cultivar/variety slug for species with materially identical care but
+     * distinct identity (e.g. `epipremnum aureum` "neon", "marble-queen").
+     * Omitted entirely for the canonical/no-variety document of a species.
+     */
+    variety?: string;
     commonNames: string[];
     description: string;
     images: PlantImage[];
@@ -141,6 +149,11 @@ const PlantSchema = new Schema<Plant>(
         species: {
             type: String,
             required: true,
+            lowercase: true,
+            trim: true,
+        },
+        variety: {
+            type: String,
             lowercase: true,
             trim: true,
         },
@@ -309,6 +322,7 @@ const PlantSchema = new Schema<Plant>(
                             signs: { type: String, required: true },
                             treatment: { type: String, required: true },
                             image: String,
+                            pestSlug: String,
                         },
                         { _id: false },
                     ),
@@ -321,8 +335,10 @@ const PlantSchema = new Schema<Plant>(
     { timestamps: true },
 );
 
-// One document per species; genus+species is the natural key used in routes.
-PlantSchema.index({ genus: 1, species: 1 }, { unique: true });
+// One document per species/variety; genus+species+variety is the natural key
+// used in routes ([genus]/[species] for the variety-less doc, plus
+// [genus]/[species]/[variety] for each cultivar sharing that species' care).
+PlantSchema.index({ genus: 1, species: 1, variety: 1 }, { unique: true });
 
 // Glossary browsing / category filters.
 PlantSchema.index({ tags: 1 });

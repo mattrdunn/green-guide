@@ -254,18 +254,21 @@ export const euphorbiaTrigona: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         pests: [
             {
                 name: 'Mealybugs',
+                pestSlug: 'mealybugs',
                 signs: 'Cottony white clusters tucked into the stem grooves and around spines.',
                 treatment:
                     'Dab with isopropyl alcohol on a swab, then spray insecticidal soap weekly until clear.',
             },
             {
                 name: 'Spider Mites',
+                pestSlug: 'spider-mites',
                 signs: 'Faded, dusty stem surfaces with fine webbing in dry heat.',
                 treatment:
                     'Rinse stems in the shower and treat weekly with neem or a miticide; improve airflow.',
             },
             {
                 name: 'Scale',
+                pestSlug: 'scale',
                 signs: 'Small hard brown discs fixed along stem ridges.',
                 treatment:
                     'Scrape off what you can reach and follow with horticultural oil every 7-10 days.',

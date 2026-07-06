@@ -260,18 +260,21 @@ export const alocasiaAmazonica: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         pests: [
             {
                 name: 'Spider Mites',
+                pestSlug: 'spider-mites',
                 signs: 'Fine webbing and pale stippling on leaf undersides, especially in dry air.',
                 treatment:
                     'Shower the foliage, raise humidity, and spray weekly with insecticidal soap until new leaves emerge clean.',
             },
             {
                 name: 'Mealybugs',
+                pestSlug: 'mealybugs',
                 signs: 'Cottony white clusters where leaves meet the petiole.',
                 treatment:
                     'Swab visible clusters with isopropyl alcohol and follow with neem oil sprays until clear.',
             },
             {
                 name: 'Thrips',
+                pestSlug: 'thrips',
                 signs: 'Silvery streaks and distorted new leaves.',
                 treatment:
                     'Isolate, prune the worst-affected leaves, and alternate systemic granules with contact sprays for 4-6 weeks.',

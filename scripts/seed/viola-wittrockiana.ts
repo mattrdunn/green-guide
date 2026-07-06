@@ -246,12 +246,14 @@ export const violaWittrockiana: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         pests: [
             {
                 name: 'Aphids',
+                pestSlug: 'aphids',
                 signs: 'Small clustered insects on new growth and buds, often with sticky residue.',
                 treatment:
                     'Hose off light infestations or treat with insecticidal soap every 5-7 days until clear.',
             },
             {
                 name: 'Slugs and Snails',
+                pestSlug: 'slugs-and-snails',
                 signs: 'Ragged holes in leaves and flowers, especially in damp, cool weather.',
                 treatment:
                     'Use iron phosphate bait or hand-pick in the evening; pansies are a favorite target in wet conditions.',

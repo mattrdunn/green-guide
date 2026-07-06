@@ -250,18 +250,21 @@ export const cattleyaLabiata: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         pests: [
             {
                 name: 'Scale',
+                pestSlug: 'scale',
                 signs: 'Small brown, dome-shaped bumps along pseudobulbs and leaf undersides.',
                 treatment:
                     'Scrape off manually and follow with horticultural oil every 1-2 weeks until clear.',
             },
             {
                 name: 'Mealybugs',
+                pestSlug: 'mealybugs',
                 signs: 'Cottony clusters hidden at the base of pseudobulbs and in leaf folds.',
                 treatment:
                     'Dab with isopropyl alcohol, then treat with insecticidal soap weekly until no new clusters appear.',
             },
             {
                 name: 'Spider Mites',
+                pestSlug: 'spider-mites',
                 signs: 'Fine stippling on leaves, worse in bright, dry conditions this species prefers.',
                 treatment:
                     'Rinse foliage periodically and treat with insecticidal soap or neem oil at the first sign of stippling.',

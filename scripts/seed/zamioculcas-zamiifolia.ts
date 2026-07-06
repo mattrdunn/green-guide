@@ -249,18 +249,21 @@ export const zamioculcasZamiifolia: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         pests: [
             {
                 name: 'Mealybugs',
+                pestSlug: 'mealybugs',
                 signs: 'Cottony white clusters where leaflets meet the stem.',
                 treatment:
                     'Dab with isopropyl alcohol, then spray with insecticidal soap weekly until clear.',
             },
             {
                 name: 'Spider Mites',
+                pestSlug: 'spider-mites',
                 signs: 'Faint stippling and dull patches on the normally glossy leaflets.',
                 treatment:
                     'Shower the fronds, then apply neem oil or insecticidal soap on a weekly cycle.',
             },
             {
                 name: 'Fungus Gnats',
+                pestSlug: 'fungus-gnats',
                 signs: 'Tiny flies at the soil surface — evidence the mix is staying too moist.',
                 treatment:
                     'Dry the pot out fully, add a grit topdress, and water in BTI if larvae persist.',

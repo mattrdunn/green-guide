@@ -2,13 +2,15 @@
     "nav": {
         "brand": "GREEN GUIDE",
         "links": {
-            "categories": "Categories",
-            "commonPlants": "Common plants",
             "search": "Search"
         },
         "theme": {
             "light": "Light mode",
             "dark": "Dark mode"
+        },
+        "menu": {
+            "open": "Open menu",
+            "close": "Close menu"
         },
         "search": {
             "placeholder": "Search plants by name, e.g. \"monstera\"",
@@ -16,6 +18,15 @@
             "error": "Search is unavailable right now — try again shortly.",
             "close": "Close search"
         }
+    },
+    "sideNav": {
+        "brand": "GREEN GUIDE",
+        "browse": "Browse",
+        "home": "Home",
+        "pests": "Pests",
+        "appearance": "Appearance",
+        "light": "Light",
+        "dark": "Dark"
     },
     "home": {
         "hero": {
@@ -63,6 +74,33 @@
             "reset": "Show all plants",
             "dbEmpty": "Our plant library is waking up — check back shortly."
         }
+    },
+    "pests": {
+        "badge_one": "{{count}} pest indexed",
+        "badge_other": "{{count}} pests indexed",
+        "title": "Identify and treat plant pests before they spread.",
+        "subtitle": "Search by name or symptom, or filter by pest type to match the damage you’re seeing to the culprit.",
+        "searchPlaceholder": "Search pests by name or symptom, e.g. \"webbing\"",
+        "filterAll": "All pests",
+        "resultsTitle": "Pest library",
+        "searchTitle": "Results for “{{query}}”",
+        "count_one": "{{count}} pest",
+        "count_other": "{{count}} pests",
+        "empty": "No pests match that search yet — try another name or symptom.",
+        "reset": "Show all pests",
+        "dbEmpty": "Our pest library is waking up — check back shortly.",
+        "severityLabel": "Severity"
+    },
+    "pestDetail": {
+        "backLink": "Back to pest library",
+        "identification": "Identification",
+        "lifeCycle": "Life cycle & spread",
+        "organicTreatment": "Organic treatment",
+        "chemicalTreatment": "Chemical treatment",
+        "prevention": "Prevention",
+        "commonlyAffects": "Commonly affects",
+        "severityLabel": "Severity",
+        "notFound": "We couldn't find this pest. Check the address or try again shortly."
     },
     "speciesClient": {
         "badge": "Species profile",

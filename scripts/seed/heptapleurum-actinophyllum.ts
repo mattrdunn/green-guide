@@ -253,18 +253,21 @@ export const heptapleurumActinophyllum: Omit<Plant, 'createdAt' | 'updatedAt'> =
         pests: [
             {
                 name: 'Scale',
+                pestSlug: 'scale',
                 signs: 'Small, dome-shaped brown bumps along stems and leaf undersides, often with sticky honeydew residue.',
                 treatment:
                     'Scrape off visible scale and follow with horticultural oil applications every 7-10 days until clear.',
             },
             {
                 name: 'Spider Mites',
+                pestSlug: 'spider-mites',
                 signs: 'Fine stippling and faint webbing on leaf undersides, worse in dry indoor air.',
                 treatment:
                     'Rinse foliage and treat weekly with insecticidal soap or neem oil until no new damage appears.',
             },
             {
                 name: 'Mealybugs',
+                pestSlug: 'mealybugs',
                 signs: 'Cottony white clusters in leaf joints and along stems.',
                 treatment:
                     'Swab visible clusters with isopropyl alcohol, then treat with neem oil until no new clusters appear.',

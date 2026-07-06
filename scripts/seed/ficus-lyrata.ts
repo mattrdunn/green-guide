@@ -255,24 +255,28 @@ export const ficusLyrata: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         pests: [
             {
                 name: 'Spider Mites',
+                pestSlug: 'spider-mites',
                 signs: 'Faint stippling and dusty webbing, often starting on the newest leaves.',
                 treatment:
                     'Shower the canopy, then spray insecticidal soap or neem weekly for 3-4 weeks, coating leaf undersides.',
             },
             {
                 name: 'Scale',
+                pestSlug: 'scale',
                 signs: 'Brown, dome-shaped bumps along the trunk and leaf midribs; sticky honeydew below.',
                 treatment:
                     'Scrape or alcohol-swab each insect, then apply horticultural oil every 7-10 days until no new bumps appear.',
             },
             {
                 name: 'Mealybugs',
+                pestSlug: 'mealybugs',
                 signs: 'White cottony clusters where leaves meet the trunk.',
                 treatment:
                     'Dab with isopropyl alcohol on a cotton swab and follow with insecticidal soap; recheck weekly.',
             },
             {
                 name: 'Fungus Gnats',
+                pestSlug: 'fungus-gnats',
                 signs: 'Small flies around the soil, usually after a stretch of overwatering.',
                 treatment:
                     'Let the top 2" of soil dry fully, topdress with sand, and drench with BTI to break the larval cycle.',

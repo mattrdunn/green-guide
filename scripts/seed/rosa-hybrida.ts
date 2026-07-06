@@ -243,6 +243,7 @@ export const rosaHybrida: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         pests: [
             {
                 name: 'Aphids',
+                pestSlug: 'aphids',
                 signs: 'Clusters of small insects on buds and new growth, often with sticky honeydew.',
                 treatment:
                     'Spray off with water and follow with insecticidal soap every 5-7 days until clear.',
@@ -255,6 +256,7 @@ export const rosaHybrida: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             },
             {
                 name: 'Spider Mites',
+                pestSlug: 'spider-mites',
                 signs: 'Fine webbing and stippled, dull leaves, especially in hot, dry weather.',
                 treatment:
                     'Rinse foliage regularly and apply insecticidal soap or a miticide if infestations persist.',

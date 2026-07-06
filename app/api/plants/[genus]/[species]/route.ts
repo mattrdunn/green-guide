@@ -13,6 +13,7 @@ export async function GET(
     const plant = await PlantModel.findOne({
         genus: genus.toLowerCase(),
         species: species.toLowerCase(),
+        variety: null,
     }).lean();
 
     if (!plant) {

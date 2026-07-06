@@ -6,6 +6,7 @@ import { PlantModel } from '@/lib/db/models/Plant';
 export interface PlantSummaryDoc {
     genus: string;
     species: string;
+    variety?: string | null;
     commonNames?: string[];
     images?: { url?: string; alt?: string }[];
     tags?: string[];
@@ -24,6 +25,7 @@ export function toPlantSummaries(docs: PlantSummaryDoc[]): PlantCardData[] {
         .map((doc) => ({
             genus: doc.genus,
             species: doc.species,
+            variety: doc.variety ?? null,
             commonNames: doc.commonNames ?? [],
             imageKey: doc.images?.[0]?.url ?? null,
             imageAlt: doc.images?.[0]?.alt ?? null,
@@ -49,6 +51,7 @@ export async function fetchPlantSummaries(): Promise<PlantCardData[]> {
         {
             genus: 1,
             species: 1,
+            variety: 1,
             commonNames: 1,
             images: 1,
             tags: 1,

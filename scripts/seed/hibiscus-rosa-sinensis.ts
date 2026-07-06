@@ -249,18 +249,21 @@ export const hibiscusRosaSinensis: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         pests: [
             {
                 name: 'Aphids',
+                pestSlug: 'aphids',
                 signs: 'Clusters of small insects on buds and new growth, often with sticky residue.',
                 treatment:
                     'Hose off light infestations or treat with insecticidal soap every 5-7 days until clear.',
             },
             {
                 name: 'Spider Mites',
+                pestSlug: 'spider-mites',
                 signs: 'Fine webbing and pale stippling on leaves, especially in hot, dry conditions.',
                 treatment:
                     'Shower foliage regularly and raise humidity; treat persistent cases with insecticidal soap.',
             },
             {
                 name: 'Whiteflies',
+                pestSlug: 'whiteflies',
                 signs: 'Small white insects that flutter up when foliage is disturbed, leaving sticky residue behind.',
                 treatment:
                     'Use yellow sticky traps and insecticidal soap sprays, repeating weekly until the population clears.',

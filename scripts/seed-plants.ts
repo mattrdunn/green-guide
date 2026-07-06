@@ -28,6 +28,7 @@ import { rosaHybrida } from './seed/rosa-hybrida';
 import { syngoniumPodophyllum } from './seed/syngonium-podophyllum';
 import { syngoniumPodophyllumAlbo } from './seed/syngonium-podophyllum-albo';
 import { epipremnumAureum } from './seed/epipremnum-aureum';
+import { epipremnumAureumNeon } from './seed/epipremnum-aureum-neon';
 import { alocasiaAmazonica } from './seed/alocasia-amazonica';
 import { marantaLeuconeura } from './seed/maranta-leuconeura';
 import { nepenthesMiranda } from './seed/nepenthes-miranda';
@@ -52,7 +53,7 @@ import { philodendronHederaceumMicans } from './seed/philodendron-hederaceum-mic
 
 process.loadEnvFile('.env.local');
 
-const plants: Omit<Plant, 'createdAt' | 'updatedAt'>[] = [
+export const plants: Omit<Plant, 'createdAt' | 'updatedAt'>[] = [
     monsteraDeliciosa,
     monsteraAdansonii,
     ficusLyrata,
@@ -80,6 +81,7 @@ const plants: Omit<Plant, 'createdAt' | 'updatedAt'>[] = [
     syngoniumPodophyllum,
     syngoniumPodophyllumAlbo,
     epipremnumAureum,
+    epipremnumAureumNeon,
     alocasiaAmazonica,
     marantaLeuconeura,
     nepenthesMiranda,
@@ -108,7 +110,11 @@ async function main() {
 
     for (const plant of plants) {
         const doc = await PlantModel.findOneAndUpdate(
-            { genus: plant.genus, species: plant.species },
+            {
+                genus: plant.genus,
+                species: plant.species,
+                variety: plant.variety ?? null,
+            },
             plant,
             {
                 upsert: true,
@@ -117,15 +123,22 @@ async function main() {
             },
         );
 
-        console.log(`Seeded ${doc.genus} ${doc.species} (_id: ${doc._id})`);
+        const label = doc.variety
+            ? `${doc.genus} ${doc.species} '${doc.variety}'`
+            : `${doc.genus} ${doc.species}`;
+        console.log(`Seeded ${label} (_id: ${doc._id})`);
     }
 }
 
-main()
-    .catch((error) => {
-        console.error(error);
-        process.exitCode = 1;
-    })
-    .finally(async () => {
-        await mongoose.disconnect();
-    });
+// Only auto-run when executed directly (`tsx scripts/seed-plants.ts`) — guards
+// against re-seeding when `plants` is imported elsewhere, e.g. by seed-pests.ts.
+if (import.meta.url === `file://${process.argv[1]}`) {
+    main()
+        .catch((error) => {
+            console.error(error);
+            process.exitCode = 1;
+        })
+        .finally(async () => {
+            await mongoose.disconnect();
+        });
+}

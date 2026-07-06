@@ -256,6 +256,7 @@ export const monsteraDeliciosa: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         pests: [
             {
                 name: 'Spider Mites',
+                pestSlug: 'spider-mites',
                 tag: 'Spreads fast',
                 signs: 'Dusty webbing on undersides, stippled leaves losing color.',
                 treatment:
@@ -263,6 +264,7 @@ export const monsteraDeliciosa: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             },
             {
                 name: 'Thrips',
+                pestSlug: 'thrips',
                 tag: 'Scars new growth',
                 signs: 'Silvery streaks and distorted new leaves; black specks (frass) nearby.',
                 treatment:
@@ -270,6 +272,7 @@ export const monsteraDeliciosa: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             },
             {
                 name: 'Fungus Gnats',
+                pestSlug: 'fungus-gnats',
                 tag: 'Mostly a nuisance',
                 signs: 'Tiny flies hovering near soil, larvae feeding on fine roots.',
                 treatment:

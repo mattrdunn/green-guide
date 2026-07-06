@@ -24,6 +24,7 @@ describe('toPlantSummaries', () => {
             {
                 genus: 'monstera',
                 species: 'deliciosa',
+                variety: null,
                 commonNames: ['Swiss Cheese Plant'],
                 imageKey: 'plants/monstera/deliciosa/img-1.jpeg',
                 imageAlt: 'A leaf',
@@ -41,6 +42,7 @@ describe('toPlantSummaries', () => {
         expect(summary).toEqual({
             genus: 'ficus',
             species: 'lyrata',
+            variety: null,
             commonNames: [],
             imageKey: null,
             imageAlt: null,
@@ -48,6 +50,11 @@ describe('toPlantSummaries', () => {
             light: '—',
             care: '—',
         });
+    });
+
+    it('passes through a variety slug when present', () => {
+        const [summary] = toPlantSummaries([doc({ variety: 'neon' })]);
+        expect(summary.variety).toBe('neon');
     });
 
     it('uses only the first image for the card', () => {

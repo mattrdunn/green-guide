@@ -26,10 +26,13 @@ export default function PlantCard({ plant }: { plant: PlantCardData }) {
     const { t } = useTranslation('translation', { keyPrefix: 'home.plants' });
     const name = `${capitalize(plant.genus)} ${plant.species.replace(/-/g, ' ')}`;
     const commonName = plant.commonNames[0];
+    const href = plant.variety
+        ? `/${plant.genus}/${plant.species}/${plant.variety}`
+        : `/${plant.genus}/${plant.species}`;
 
     return (
         <Link
-            href={`/${plant.genus}/${plant.species}`}
+            href={href}
             className="group overflow-hidden rounded-3xl border border-stone-200 bg-white transition hover:-translate-y-0.5 hover:border-emerald-600/40 hover:shadow-lg dark:border-stone-800 dark:bg-zinc-900/60 dark:hover:border-emerald-500/40"
         >
             <div className="relative aspect-4/3 overflow-hidden bg-linear-to-br from-emerald-950 via-emerald-900 to-zinc-950">

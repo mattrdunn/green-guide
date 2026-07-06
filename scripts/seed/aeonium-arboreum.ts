@@ -252,12 +252,14 @@ export const aeoniumArboreum: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         pests: [
             {
                 name: 'Aphids',
+                pestSlug: 'aphids',
                 signs: 'Green or black clusters on new leaves and especially flower stalks.',
                 treatment:
                     'Rinse off with water, then apply insecticidal soap every 5-7 days until clear.',
             },
             {
                 name: 'Mealybugs',
+                pestSlug: 'mealybugs',
                 signs: 'White fluff tucked deep between rosette leaves.',
                 treatment:
                     'Dab with isopropyl alcohol on a swab, repeating weekly; check leaf bases carefully.',
@@ -270,6 +272,7 @@ export const aeoniumArboreum: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             },
             {
                 name: 'Fungus Gnats',
+                pestSlug: 'fungus-gnats',
                 signs: 'Small flies around soil kept too moist in the dormant season.',
                 treatment:
                     'Let the surface dry fully, topdress with grit, and correct the summer watering schedule.',

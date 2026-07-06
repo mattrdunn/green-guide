@@ -1,17 +1,12 @@
 'use client';
 
-import Image from 'next/image';
-import Link from 'next/link';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import imageUrl from '@/app/lib/imageUrl';
 import { plantMatchesQuery } from '@/app/lib/searchPlants';
 import { useGetPlantSummariesQuery } from '@/store/api/templateApi';
+import SearchResults from './SearchResults';
 
 const MAX_RESULTS = 8;
-
-const capitalize = (value: string) =>
-    value.charAt(0).toUpperCase() + value.slice(1);
 
 /**
  * Drop-down search panel for pages without the hero search bar. Sits just
@@ -104,67 +99,14 @@ export default function SearchOverlay({
                             className="w-full bg-transparent py-3 text-base text-stone-900 placeholder:text-stone-400 focus:outline-none dark:text-white"
                         />
                     </form>
-                    {needle &&
-                        (matches.length > 0 ? (
-                            <ul className="mt-3 overflow-hidden rounded-3xl border border-stone-200 bg-white dark:border-stone-800 dark:bg-zinc-900">
-                                {matches.map((plant) => {
-                                    const name = `${capitalize(plant.genus)} ${plant.species.replace(/-/g, ' ')}`;
-                                    return (
-                                        <li
-                                            key={`${plant.genus}-${plant.species}`}
-                                        >
-                                            <Link
-                                                href={`/${plant.genus}/${plant.species}`}
-                                                onClick={onClose}
-                                                className="flex items-center gap-3 px-4 py-3 transition hover:bg-stone-50 dark:hover:bg-zinc-800/60"
-                                            >
-                                                <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-xl bg-linear-to-br from-emerald-950 via-emerald-900 to-zinc-950">
-                                                    {plant.imageKey ? (
-                                                        <Image
-                                                            src={imageUrl(
-                                                                plant.imageKey,
-                                                            )}
-                                                            alt=""
-                                                            fill
-                                                            sizes="40px"
-                                                            className="object-cover"
-                                                        />
-                                                    ) : (
-                                                        <span
-                                                            aria-hidden="true"
-                                                            className="flex h-full items-center justify-center font-serif text-lg text-emerald-200/50"
-                                                        >
-                                                            {capitalize(
-                                                                plant.genus,
-                                                            ).charAt(0)}
-                                                        </span>
-                                                    )}
-                                                </div>
-                                                <div className="min-w-0">
-                                                    <p className="truncate text-sm font-semibold text-stone-900 dark:text-white">
-                                                        {name}
-                                                    </p>
-                                                    {plant.commonNames[0] && (
-                                                        <p className="truncate text-xs italic text-stone-500 dark:text-stone-400">
-                                                            {
-                                                                plant
-                                                                    .commonNames[0]
-                                                            }
-                                                        </p>
-                                                    )}
-                                                </div>
-                                            </Link>
-                                        </li>
-                                    );
-                                })}
-                            </ul>
-                        ) : (
-                            <p className="mt-3 rounded-3xl border border-dashed border-stone-300 px-5 py-6 text-center text-sm text-stone-500 dark:border-stone-700 dark:text-stone-400">
-                                {isError
-                                    ? t('error')
-                                    : t('noResults', { query: query.trim() })}
-                            </p>
-                        ))}
+                    {needle && (
+                        <SearchResults
+                            query={query.trim()}
+                            matches={matches}
+                            isError={isError}
+                            onNavigate={onClose}
+                        />
+                    )}
                 </div>
             </div>
         </div>

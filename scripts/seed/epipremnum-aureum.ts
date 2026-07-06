@@ -258,24 +258,28 @@ export const epipremnumAureum: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         pests: [
             {
                 name: 'Mealybugs',
+                pestSlug: 'mealybugs',
                 signs: 'White cottony clusters at nodes and along stems.',
                 treatment:
                     'Swab with alcohol, then follow up with horticultural oil every 7-10 days.',
             },
             {
                 name: 'Spider Mites',
+                pestSlug: 'spider-mites',
                 signs: 'Fine webbing and pale stippling, especially in dry winter air.',
                 treatment:
                     'Shower the foliage, then apply insecticidal soap weekly until new leaves emerge clean.',
             },
             {
                 name: 'Scale',
+                pestSlug: 'scale',
                 signs: 'Small, hard brown bumps along stems and leaf undersides.',
                 treatment:
                     'Scrape off light infestations, then follow with horticultural oil applications every 1-2 weeks.',
             },
             {
                 name: 'Fungus Gnats',
+                pestSlug: 'fungus-gnats',
                 signs: 'Small flies around consistently damp soil.',
                 treatment:
                     'Extend dry-downs, topdress with sand, and water in BTI to break the larval cycle.',

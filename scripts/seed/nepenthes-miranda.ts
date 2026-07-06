@@ -243,12 +243,14 @@ export const nepenthesMiranda: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         pests: [
             {
                 name: 'Mealybugs',
+                pestSlug: 'mealybugs',
                 signs: 'Cottony white clusters in leaf axils and along new vine growth.',
                 treatment:
                     'Dab clusters with isopropyl alcohol and follow with insecticidal soap, keeping both out of open pitcher fluid.',
             },
             {
                 name: 'Aphids',
+                pestSlug: 'aphids',
                 signs: 'Small clustered insects on tender new shoots and unopened pitchers.',
                 treatment:
                     'Rinse off with a gentle water spray and apply insecticidal soap for persistent infestations.',

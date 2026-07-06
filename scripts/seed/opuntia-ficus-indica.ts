@@ -248,12 +248,14 @@ export const opuntiaFicusIndica: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             },
             {
                 name: 'Mealybugs',
+                pestSlug: 'mealybugs',
                 signs: 'Cottony clusters at pad joints and around spine clusters.',
                 treatment:
                     'Swab with isopropyl alcohol and follow with neem or soap sprays every 7-10 days.',
             },
             {
                 name: 'Scale Insects',
+                pestSlug: 'scale',
                 signs: 'Hard grey-brown discs peppering pad surfaces.',
                 treatment:
                     'Scrape heavy crusts off with a plastic edge, then apply horticultural oil in repeated rounds.',

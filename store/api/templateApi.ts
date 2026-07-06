@@ -12,8 +12,14 @@ export const greenGuideApi = createApi({
     reducerPath: 'greenGuideApi',
     baseQuery: fetchBaseQuery({ baseUrl: '/api/' }),
     endpoints: (builder) => ({
-        getPlant: builder.query<PlantData, { genus: string; species: string }>({
-            query: ({ genus, species }) => `plants/${genus}/${species}`,
+        getPlant: builder.query<
+            PlantData,
+            { genus: string; species: string; variety?: string }
+        >({
+            query: ({ genus, species, variety }) =>
+                variety
+                    ? `plants/${genus}/${species}/${variety}`
+                    : `plants/${genus}/${species}`,
         }),
         getPlantSummaries: builder.query<PlantCardData[], void>({
             query: () => 'plants',

@@ -6,6 +6,7 @@
 export interface PlantCardData {
     genus: string;
     species: string;
+    variety: string | null;
     commonNames: string[];
     imageKey: string | null;
     imageAlt: string | null;

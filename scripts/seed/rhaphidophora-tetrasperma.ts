@@ -249,18 +249,21 @@ export const rhaphidophoraTetrasperma: Omit<Plant, 'createdAt' | 'updatedAt'> =
             pests: [
                 {
                     name: 'Spider Mites',
+                    pestSlug: 'spider-mites',
                     signs: 'Fine webbing and pale stippling on leaf undersides, especially in dry air.',
                     treatment:
                         'Shower the foliage, raise humidity, and treat weekly with insecticidal soap until new growth is clean.',
                 },
                 {
                     name: 'Mealybugs',
+                    pestSlug: 'mealybugs',
                     signs: 'Cottony white clusters at leaf joints and along the stem.',
                     treatment:
                         'Swab visible clusters with isopropyl alcohol and follow with neem oil sprays until clear.',
                 },
                 {
                     name: 'Thrips',
+                    pestSlug: 'thrips',
                     signs: 'Silvery streaks and distorted new leaves.',
                     treatment:
                         'Isolate the plant, prune the worst-affected leaves, and treat with insecticidal soap for several weeks.',

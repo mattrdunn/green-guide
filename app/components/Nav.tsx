@@ -5,59 +5,27 @@ import { usePathname } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { HERO_SEARCH_INPUT_ID } from '@/app/lib/searchPlants';
+import { useThemeMode } from '@/app/lib/useThemeMode';
+import MobileSideNavDrawer, { HamburgerIcon } from './MobileSideNavDrawer';
 import SearchOverlay from './SearchOverlay';
-
-type ThemeMode = 'light' | 'dark';
-
-const THEME_STORAGE_KEY = 'green-guide-theme';
-
-function applyTheme(mode: ThemeMode) {
-    const root = document.documentElement;
-    const isDark = mode === 'dark';
-
-    root.classList.toggle('dark', isDark);
-    root.classList.toggle('light', !isDark);
-    root.style.colorScheme = isDark ? 'dark' : 'light';
-}
-
-function resolveInitialTheme(): ThemeMode {
-    if (typeof window === 'undefined') {
-        return 'light';
-    }
-
-    const stored = window.localStorage.getItem(
-        THEME_STORAGE_KEY,
-    ) as ThemeMode | null;
-
-    if (stored === 'light' || stored === 'dark') {
-        return stored;
-    }
-
-    return window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light';
-}
 
 export default function Nav() {
     const { t } = useTranslation('translation', { keyPrefix: 'nav' });
-    const [mode, setMode] = useState<ThemeMode>('light');
+    const { mode, toggle } = useThemeMode();
     const [searchOpen, setSearchOpen] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
     const pathname = usePathname();
     const onHomePage = pathname === '/';
 
-    useEffect(() => {
-        const initial = resolveInitialTheme();
-        setMode(initial);
-        applyTheme(initial);
-    }, []);
-
-    // Leaving the page (e.g. via a nav link) should never strand the overlay.
+    // Leaving the page (e.g. via a nav link) should never strand the overlay/drawer.
     useEffect(() => {
         setSearchOpen(false);
+        setMenuOpen(false);
     }, [pathname]);
 
     const handleSearchClick = () => {
         if (!onHomePage) {
+            setMenuOpen(false);
             setSearchOpen((prev) => !prev);
             return;
         }
@@ -73,19 +41,16 @@ export default function Nav() {
     };
 
     const closeSearch = useCallback(() => setSearchOpen(false), []);
+    const closeMenu = useCallback(() => setMenuOpen(false), []);
 
-    const handleToggle = () => {
-        setMode((prev) => {
-            const next: ThemeMode = prev === 'dark' ? 'light' : 'dark';
-            applyTheme(next);
-            window.localStorage.setItem(THEME_STORAGE_KEY, next);
-            return next;
-        });
+    const handleMenuClick = () => {
+        setSearchOpen(false);
+        setMenuOpen((prev) => !prev);
     };
 
     return (
         <>
-            <nav className="fixed left-0 right-0 top-0 z-50 h-12 border-b border-stone-200/60 bg-white/70 px-4 py-2 backdrop-blur-md dark:border-stone-800/60 dark:bg-zinc-950/30 sm:px-10">
+            <nav className="fixed left-0 right-0 top-0 z-50 h-12 border-b border-stone-200/60 bg-white/70 px-4 py-2 backdrop-blur-md dark:border-stone-800/60 dark:bg-zinc-950/30 sm:hidden">
                 <div className="mx-auto flex h-full max-w-6xl items-center justify-between">
                     <Link
                         href="/"
@@ -94,19 +59,7 @@ export default function Nav() {
                         {t('brand')}
                     </Link>
 
-                    <div className="flex items-center gap-2 sm:gap-5">
-                        <Link
-                            href="/#categories"
-                            className="text-sm text-stone-600 transition hover:text-stone-900 max-sm:hidden dark:text-stone-300 dark:hover:text-white"
-                        >
-                            {t('links.categories')}
-                        </Link>
-                        <Link
-                            href="/#common-plants"
-                            className="text-sm text-stone-600 transition hover:text-stone-900 max-sm:hidden dark:text-stone-300 dark:hover:text-white"
-                        >
-                            {t('links.commonPlants')}
-                        </Link>
+                    <div className="flex items-center gap-2">
                         <button
                             type="button"
                             onClick={handleSearchClick}
@@ -128,7 +81,7 @@ export default function Nav() {
                         </button>
                         <button
                             type="button"
-                            onClick={handleToggle}
+                            onClick={toggle}
                             aria-pressed={mode === 'dark'}
                             aria-label={
                                 mode === 'dark'
@@ -141,10 +94,22 @@ export default function Nav() {
                                 {mode === 'dark' ? '🌙' : '☀️'}
                             </span>
                         </button>
+                        <button
+                            type="button"
+                            onClick={handleMenuClick}
+                            aria-expanded={menuOpen}
+                            aria-label={
+                                menuOpen ? t('menu.close') : t('menu.open')
+                            }
+                            className="inline-flex items-center justify-center rounded-full border border-stone-200/80 bg-white/80 p-2 text-stone-800 shadow-sm backdrop-blur transition hover:bg-white dark:border-stone-700/70 dark:bg-zinc-900/70 dark:text-stone-100 dark:hover:bg-zinc-900"
+                        >
+                            <HamburgerIcon open={menuOpen} />
+                        </button>
                     </div>
                 </div>
             </nav>
             <SearchOverlay open={searchOpen} onClose={closeSearch} />
+            <MobileSideNavDrawer open={menuOpen} onClose={closeMenu} />
         </>
     );
 }

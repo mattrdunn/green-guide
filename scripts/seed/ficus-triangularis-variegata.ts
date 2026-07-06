@@ -248,18 +248,21 @@ export const ficusTriangularisVariegata: Omit<
         pests: [
             {
                 name: 'Scale',
+                pestSlug: 'scale',
                 signs: 'Brown bumps along stems and midribs with sticky honeydew below.',
                 treatment:
                     'Scrape off adults with a fingernail or alcohol swab, then apply horticultural oil every 7-10 days for a month.',
             },
             {
                 name: 'Spider Mites',
+                pestSlug: 'spider-mites',
                 signs: 'Fine webbing and pale stippling, worst in dry winter air.',
                 treatment:
                     'Shower the foliage, raise humidity, and spray weekly with insecticidal soap until stippling stops spreading.',
             },
             {
                 name: 'Mealybugs',
+                pestSlug: 'mealybugs',
                 signs: 'White cottony tufts in leaf axils and along new growth.',
                 treatment:
                     'Dab each cluster with isopropyl alcohol, then follow with neem oil coverage weekly until clear.',

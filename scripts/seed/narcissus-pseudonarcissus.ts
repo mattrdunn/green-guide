@@ -253,12 +253,14 @@ export const narcissusPseudonarcissus: Omit<Plant, 'createdAt' | 'updatedAt'> =
                 },
                 {
                     name: 'Slugs and Snails',
+                    pestSlug: 'slugs-and-snails',
                     signs: 'Ragged holes in young emerging leaves and flower buds, mainly in wet weather.',
                     treatment:
                         'Use iron phosphate bait or hand-pick in the evening; damage rarely affects the bulb itself.',
                 },
                 {
                     name: 'Aphids',
+                    pestSlug: 'aphids',
                     signs: 'Small clustered insects on flower stalks and buds, usually a minor cosmetic issue.',
                     treatment:
                         'Hose off light infestations; treatment is rarely necessary given the plant’s short bloom window.',

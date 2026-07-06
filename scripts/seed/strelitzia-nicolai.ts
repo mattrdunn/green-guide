@@ -247,18 +247,21 @@ export const strelitziaNicolai: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         pests: [
             {
                 name: 'Spider Mites',
+                pestSlug: 'spider-mites',
                 signs: 'Fine stippling on leaves and faint webbing near leaf bases, worse in dry indoor air.',
                 treatment:
                     'Raise humidity, rinse leaves regularly, and treat with insecticidal soap or neem oil weekly until clear.',
             },
             {
                 name: 'Scale',
+                pestSlug: 'scale',
                 signs: 'Small brown, dome-shaped bumps along stems and leaf midribs.',
                 treatment:
                     'Scrape off light infestations and follow with horticultural oil applications every 1-2 weeks.',
             },
             {
                 name: 'Mealybugs',
+                pestSlug: 'mealybugs',
                 signs: 'Cottony white clusters at leaf bases and along stems.',
                 treatment:
                     'Swab with isopropyl alcohol, then treat with neem oil until no new clusters appear.',

@@ -251,24 +251,28 @@ export const senecioRowleyanus: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         pests: [
             {
                 name: 'Mealybugs',
+                pestSlug: 'mealybugs',
                 signs: 'White cottony specks wedged between pearls and at stem joints.',
                 treatment:
                     'Dab individuals with isopropyl alcohol and spray the strands with insecticidal soap weekly until clear.',
             },
             {
                 name: 'Aphids',
+                pestSlug: 'aphids',
                 signs: 'Soft green insects clustered on new tips and flower stalks.',
                 treatment:
                     'Rinse gently under lukewarm water and follow with soap spray every 5-7 days.',
             },
             {
                 name: 'Fungus Gnats',
+                pestSlug: 'fungus-gnats',
                 signs: 'Tiny flies around the pot — a flag that the mix is staying too wet.',
                 treatment:
                     'Extend drying time, topdress with grit, and use BTI bits in the watering can.',
             },
             {
                 name: 'Spider Mites',
+                pestSlug: 'spider-mites',
                 signs: 'Fine webbing between strands with dull, stippled pearls.',
                 treatment:
                     'Shower the strands, then treat weekly with neem or miticide until webbing stops.',

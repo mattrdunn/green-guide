@@ -15,9 +15,11 @@ type TabKey = (typeof tabs)[number];
 export default function SpeciesClient({
     genus,
     species,
+    variety,
 }: {
     genus: string;
     species: string;
+    variety?: string;
 }) {
     const { t } = useTranslation('translation', { keyPrefix: 'speciesClient' });
     const [activeTab, setActiveTab] = useState<TabKey>('overview');
@@ -27,7 +29,7 @@ export default function SpeciesClient({
         data: plant,
         isLoading,
         isError,
-    } = useGetPlantQuery({ genus, species });
+    } = useGetPlantQuery({ genus, species, variety });
 
     const handleTabClick = (
         tab: TabKey,
@@ -78,7 +80,12 @@ export default function SpeciesClient({
 
     return (
         <div className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-2 pb-12 pt-0 sm:px-6 sm:pb-16 sm:pt-8 lg:px-0">
-            <HeaderCard genus={genus} species={species} plant={plant} />
+            <HeaderCard
+                genus={genus}
+                species={species}
+                variety={variety}
+                plant={plant}
+            />
 
             <section>
                 <nav

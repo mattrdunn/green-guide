@@ -267,18 +267,21 @@ export const syngoniumPodophyllumAlbo: Omit<Plant, 'createdAt' | 'updatedAt'> =
             pests: [
                 {
                     name: 'Spider Mites',
+                    pestSlug: 'spider-mites',
                     signs: 'Fine webbing and pale stippling, especially in dry winter air.',
                     treatment:
                         'Shower the foliage, then spray weekly with insecticidal soap until new leaves emerge clean.',
                 },
                 {
                     name: 'Mealybugs',
+                    pestSlug: 'mealybugs',
                     signs: 'Cottony white clusters tucked into leaf axils and along stems.',
                     treatment:
                         'Swab visible clusters with isopropyl alcohol and follow with neem oil sprays until clear.',
                 },
                 {
                     name: 'Fungus Gnats',
+                    pestSlug: 'fungus-gnats',
                     signs: 'Small flies hovering around consistently damp soil.',
                     treatment:
                         'Extend dry-downs, topdress with sand, and water in BTI to break the larval cycle.',

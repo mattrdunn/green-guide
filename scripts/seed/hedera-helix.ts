@@ -252,18 +252,21 @@ export const hederaHelix: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         pests: [
             {
                 name: 'Spider Mites',
+                pestSlug: 'spider-mites',
                 signs: 'Fine webbing and pale stippling on leaves, especially in dry indoor air.',
                 treatment:
                     'Shower the foliage, raise humidity, and treat with insecticidal soap weekly until new growth is clean.',
             },
             {
                 name: 'Scale',
+                pestSlug: 'scale',
                 signs: 'Small, immobile brown bumps along stems and leaf undersides.',
                 treatment:
                     'Scrape off visible scale and follow with insecticidal soap or neem oil to catch newly hatched crawlers.',
             },
             {
                 name: 'Mealybugs',
+                pestSlug: 'mealybugs',
                 signs: 'Cottony white clusters at leaf joints and stem nodes.',
                 treatment:
                     'Swab visible clusters with isopropyl alcohol and follow with neem oil sprays until clear.',

@@ -254,12 +254,14 @@ export const citrusLimon: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             },
             {
                 name: 'Scale Insects',
+                pestSlug: 'scale',
                 signs: 'Small, waxy brown or white bumps along stems and leaf undersides.',
                 treatment:
                     'Scrape off light infestations and follow with horticultural oil every 1-2 weeks.',
             },
             {
                 name: 'Spider Mites',
+                pestSlug: 'spider-mites',
                 signs: 'Fine webbing and stippled, dull leaves, especially in dry indoor air.',
                 treatment:
                     'Raise humidity, rinse foliage, and treat with insecticidal soap or miticide as needed.',

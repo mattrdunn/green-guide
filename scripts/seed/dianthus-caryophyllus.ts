@@ -247,12 +247,14 @@ export const dianthusCaryophyllus: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         pests: [
             {
                 name: 'Aphids',
+                pestSlug: 'aphids',
                 signs: 'Small clustered insects on new growth and flower buds, often with sticky residue.',
                 treatment:
                     'Hose off light infestations or treat with insecticidal soap every 5-7 days until clear.',
             },
             {
                 name: 'Spider Mites',
+                pestSlug: 'spider-mites',
                 signs: 'Fine webbing and stippled, pale foliage, especially in hot, dry conditions.',
                 treatment:
                     'Shower foliage regularly and treat persistent infestations with insecticidal soap.',

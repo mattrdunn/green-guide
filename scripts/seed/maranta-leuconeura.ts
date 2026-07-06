@@ -259,18 +259,21 @@ export const marantaLeuconeura: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         pests: [
             {
                 name: 'Spider Mites',
+                pestSlug: 'spider-mites',
                 signs: 'Fine webbing and pale speckling, especially whenever humidity drops.',
                 treatment:
                     'Shower both leaf surfaces, raise humidity, and spray weekly with insecticidal soap until no new stippling appears.',
             },
             {
                 name: 'Fungus Gnats',
+                pestSlug: 'fungus-gnats',
                 signs: 'Small flies over the consistently moist soil this plant prefers.',
                 treatment:
                     'Water in BTI (mosquito bits) and topdress with sand to break the larval cycle without letting the plant dry out.',
             },
             {
                 name: 'Mealybugs',
+                pestSlug: 'mealybugs',
                 signs: 'Cottony white clusters tucked where leaves meet the stem.',
                 treatment:
                     'Swab visible clusters with isopropyl alcohol and follow with neem oil sprays until clear.',

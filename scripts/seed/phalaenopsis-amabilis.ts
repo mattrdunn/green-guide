@@ -239,18 +239,21 @@ export const phalaenopsisAmabilis: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         pests: [
             {
                 name: 'Mealybugs',
+                pestSlug: 'mealybugs',
                 signs: 'Cottony white clusters tucked into leaf axils and along the bloom spike.',
                 treatment:
                     'Dab with isopropyl alcohol on a cotton swab, then follow with insecticidal soap weekly until clear.',
             },
             {
                 name: 'Scale',
+                pestSlug: 'scale',
                 signs: 'Small brown, dome-shaped bumps on the undersides of leaves.',
                 treatment:
                     'Scrape off gently and treat with horticultural oil every 1-2 weeks until no new scale appears.',
             },
             {
                 name: 'Spider Mites',
+                pestSlug: 'spider-mites',
                 signs: 'Fine stippling and faint webbing on leaf undersides, worse in dry indoor air.',
                 treatment:
                     'Rinse leaves regularly and raise humidity; treat persistent infestations with insecticidal soap.',

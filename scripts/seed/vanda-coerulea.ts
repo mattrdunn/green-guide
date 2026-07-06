@@ -237,18 +237,21 @@ export const vandaCoerulea: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         pests: [
             {
                 name: 'Scale',
+                pestSlug: 'scale',
                 signs: 'Small brown, dome-shaped bumps along the stem and leaf bases.',
                 treatment:
                     'Scrape off manually and follow with horticultural oil every 1-2 weeks until clear.',
             },
             {
                 name: 'Mealybugs',
+                pestSlug: 'mealybugs',
                 signs: 'Cottony clusters hidden where leaves meet the stem.',
                 treatment:
                     'Dab with isopropyl alcohol, then treat with insecticidal soap weekly until no new clusters appear.',
             },
             {
                 name: 'Spider Mites',
+                pestSlug: 'spider-mites',
                 signs: 'Fine stippling on leaves, more common in dry indoor air alongside the bright light this species needs.',
                 treatment:
                     'Raise humidity and rinse foliage regularly; treat persistent infestations with insecticidal soap.',

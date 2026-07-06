@@ -15,6 +15,7 @@ export default async function SpeciesPage({
     const exists = await PlantModel.exists({
         genus: genus.toLowerCase(),
         species: species.toLowerCase(),
+        variety: null,
     });
 
     if (!exists) {

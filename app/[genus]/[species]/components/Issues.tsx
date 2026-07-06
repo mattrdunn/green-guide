@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
 import imageUrl from '@/app/lib/imageUrl';
 import cn from '@/app/lib/cn';
@@ -9,7 +10,12 @@ import type { PlantIssues } from '@/lib/db/models/Plant';
 
 function LeafIcon({ className }: { className?: string }) {
     return (
-        <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            className={className}
+            aria-hidden="true"
+        >
             <path
                 d="M5 19c7 0 13-5.5 13-13.5V5c-8 0-13 5-13 13v1Z"
                 stroke="currentColor"
@@ -28,7 +34,12 @@ function LeafIcon({ className }: { className?: string }) {
 
 function WiltIcon({ className }: { className?: string }) {
     return (
-        <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            className={className}
+            aria-hidden="true"
+        >
             <path
                 d="M12 20V9c0-3 2.5-5 6-5"
                 stroke="currentColor"
@@ -47,7 +58,12 @@ function WiltIcon({ className }: { className?: string }) {
 
 function DropletIcon({ className }: { className?: string }) {
     return (
-        <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            className={className}
+            aria-hidden="true"
+        >
             <path
                 d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z"
                 stroke="currentColor"
@@ -60,8 +76,19 @@ function DropletIcon({ className }: { className?: string }) {
 
 function CheckIcon({ className }: { className?: string }) {
     return (
-        <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
-            <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth={1.6} />
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            className={className}
+            aria-hidden="true"
+        >
+            <circle
+                cx="12"
+                cy="12"
+                r="9"
+                stroke="currentColor"
+                strokeWidth={1.6}
+            />
             <path
                 d="M8 12.5l2.5 2.5L16 9.5"
                 stroke="currentColor"
@@ -75,8 +102,20 @@ function CheckIcon({ className }: { className?: string }) {
 
 function BugIcon({ className }: { className?: string }) {
     return (
-        <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
-            <ellipse cx="12" cy="13" rx="5" ry="6" stroke="currentColor" strokeWidth={1.4} />
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            className={className}
+            aria-hidden="true"
+        >
+            <ellipse
+                cx="12"
+                cy="13"
+                rx="5"
+                ry="6"
+                stroke="currentColor"
+                strokeWidth={1.4}
+            />
             <path
                 d="M12 7V4M9 5.5 10.5 7M15 5.5 13.5 7M4 11l3 1M20 11l-3 1M4 17l3-1M20 17l-3-1"
                 stroke="currentColor"
@@ -175,15 +214,25 @@ export default function Issues({ issues }: { issues: PlantIssues }) {
                             treatment when you need it.
                         </p>
                     </div>
-                    {issues.pests.length > 0 && (
-                        <button
-                            type="button"
-                            onClick={toggleAllPests}
-                            className="shrink-0 rounded-full border border-stone-200/80 px-4 py-2 text-xs font-semibold text-stone-600 transition hover:border-stone-300 hover:text-stone-900 dark:border-stone-700/70 dark:text-stone-300 dark:hover:text-white"
+                    <div className="flex shrink-0 items-center gap-2">
+                        <Link
+                            href="/pests"
+                            className="rounded-full border border-stone-200/80 px-4 py-2 text-xs font-semibold text-stone-600 transition hover:border-stone-300 hover:text-stone-900 dark:border-stone-700/70 dark:text-stone-300 dark:hover:text-white"
                         >
-                            {allOpen ? 'Collapse all treatments' : 'Expand all treatments'}
-                        </button>
-                    )}
+                            Open pest library
+                        </Link>
+                        {issues.pests.length > 0 && (
+                            <button
+                                type="button"
+                                onClick={toggleAllPests}
+                                className="rounded-full border border-stone-200/80 px-4 py-2 text-xs font-semibold text-stone-600 transition hover:border-stone-300 hover:text-stone-900 dark:border-stone-700/70 dark:text-stone-300 dark:hover:text-white"
+                            >
+                                {allOpen
+                                    ? 'Collapse all treatments'
+                                    : 'Expand all treatments'}
+                            </button>
+                        )}
+                    </div>
                 </div>
                 <div className="mt-6 grid gap-4 md:grid-cols-2">
                     {issues.pests.map((pest, index) => {
@@ -211,9 +260,18 @@ export default function Issues({ issues }: { issues: PlantIssues }) {
                                     </div>
                                     <div className="min-w-0 flex-1">
                                         <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
-                                            <h3 className="text-lg font-semibold text-stone-900 dark:text-white">
-                                                {pest.name}
-                                            </h3>
+                                            {pest.pestSlug ? (
+                                                <Link
+                                                    href={`/pests/${pest.pestSlug}`}
+                                                    className="text-lg font-semibold text-stone-900 underline decoration-stone-300 underline-offset-2 dark:text-white dark:decoration-stone-600"
+                                                >
+                                                    {pest.name}
+                                                </Link>
+                                            ) : (
+                                                <h3 className="text-lg font-semibold text-stone-900 dark:text-white">
+                                                    {pest.name}
+                                                </h3>
+                                            )}
                                             {pest.tag && (
                                                 <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-stone-500 dark:text-stone-400">
                                                     <span className="size-1.5 rounded-full bg-amber-500" />
@@ -250,7 +308,10 @@ export default function Issues({ issues }: { issues: PlantIssues }) {
                                         <motion.div
                                             key="treatment"
                                             initial={{ height: 0, opacity: 0 }}
-                                            animate={{ height: 'auto', opacity: 1 }}
+                                            animate={{
+                                                height: 'auto',
+                                                opacity: 1,
+                                            }}
                                             exit={{ height: 0, opacity: 0 }}
                                             transition={{
                                                 duration: 0.25,
@@ -258,9 +319,19 @@ export default function Issues({ issues }: { issues: PlantIssues }) {
                                             }}
                                             className="overflow-hidden"
                                         >
-                                            <p className="px-4 pb-4 text-sm text-stone-600 dark:text-stone-300">
-                                                {pest.treatment}
-                                            </p>
+                                            <div className="space-y-2 px-4 pb-4">
+                                                <p className="text-sm text-stone-600 dark:text-stone-300">
+                                                    {pest.treatment}
+                                                </p>
+                                                {pest.pestSlug && (
+                                                    <Link
+                                                        href={`/pests/${pest.pestSlug}`}
+                                                        className="inline-block text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700 dark:text-emerald-300"
+                                                    >
+                                                        View full pest guide →
+                                                    </Link>
+                                                )}
+                                            </div>
                                         </motion.div>
                                     )}
                                 </AnimatePresence>

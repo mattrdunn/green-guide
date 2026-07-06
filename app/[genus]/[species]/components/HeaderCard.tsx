@@ -3,7 +3,7 @@
 import GreenCard from '@/app/components/GreenCard';
 import { useTranslation } from 'react-i18next';
 import ImageCarousel from './ImageCarousel';
-import VitalMeter from './VitalMeter';
+import VitalMeter from '@/app/components/VitalMeter';
 import waterDropIcon from '@/public/icons/water-drop.svg';
 import sunnyIcon from '@/public/icons/sunny.svg';
 import meterIcon from '@/public/icons/speed.svg';
@@ -15,6 +15,7 @@ import type { PlantData } from '@/store/api/templateApi';
 type HeaderCardProps = {
     genus: string;
     species: string;
+    variety?: string;
     plant: PlantData;
 };
 
@@ -25,7 +26,12 @@ const toxicitySeverity = {
     toxic: 3,
 } as const;
 
-export default function HeaderCard({ genus, species, plant }: HeaderCardProps) {
+export default function HeaderCard({
+    genus,
+    species,
+    variety,
+    plant,
+}: HeaderCardProps) {
     const { t } = useTranslation('translation', { keyPrefix: 'speciesClient' });
 
     const quickFacts = [
@@ -88,6 +94,11 @@ export default function HeaderCard({ genus, species, plant }: HeaderCardProps) {
                                 <span className="capitalize font-light">
                                     {species}
                                 </span>
+                                {variety && (
+                                    <span className="capitalize font-light italic text-white/80">
+                                        &apos;{variety.replace(/-/g, ' ')}&apos;
+                                    </span>
+                                )}
                             </h1>
                             <p className="mt-4 max-w-3xl text-base text-white/90 sm:text-lg">
                                 {plant.description}

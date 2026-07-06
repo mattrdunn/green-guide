@@ -241,18 +241,21 @@ export const echinopsisPachanoi: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         pests: [
             {
                 name: 'Mealybugs',
+                pestSlug: 'mealybugs',
                 signs: 'White cottony tufts wedged between ribs and around areoles.',
                 treatment:
                     'Swab colonies with isopropyl alcohol, then drench weekly with insecticidal soap until no new tufts appear.',
             },
             {
                 name: 'Scale',
+                pestSlug: 'scale',
                 signs: 'Hard tan discs stuck to the column that resist a light rub.',
                 treatment:
                     'Scrape gently with a soft brush, then apply horticultural oil every 7-10 days for several weeks.',
             },
             {
                 name: 'Spider Mites',
+                pestSlug: 'spider-mites',
                 signs: 'Rusty, dusty discoloration at the tender growth tip with fine webbing.',
                 treatment:
                     'Rinse the column, increase airflow, and spray with miticide or insecticidal soap weekly until color returns.',

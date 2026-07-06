@@ -250,18 +250,21 @@ export const chlorophytumComosum: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         pests: [
             {
                 name: 'Spider Mites',
+                pestSlug: 'spider-mites',
                 signs: 'Fine webbing and pale stippling on leaves, especially in dry indoor air.',
                 treatment:
                     'Shower the foliage, raise humidity, and treat with insecticidal soap weekly until new growth is clean.',
             },
             {
                 name: 'Mealybugs',
+                pestSlug: 'mealybugs',
                 signs: 'Cottony white clusters at the base of leaves or along stolons.',
                 treatment:
                     'Swab visible clusters with isopropyl alcohol and follow with neem oil sprays until clear.',
             },
             {
                 name: 'Aphids',
+                pestSlug: 'aphids',
                 signs: 'Small clustered insects on new growth and plantlets.',
                 treatment:
                     'Hose off light infestations or treat with insecticidal soap every 5-7 days until clear.',

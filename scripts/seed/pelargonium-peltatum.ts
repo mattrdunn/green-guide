@@ -240,12 +240,14 @@ export const pelargoniumPeltatum: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         pests: [
             {
                 name: 'Aphids',
+                pestSlug: 'aphids',
                 signs: 'Clusters of small green or black insects on new growth and buds.',
                 treatment:
                     'Spray off with water and follow with insecticidal soap every 5-7 days until clear.',
             },
             {
                 name: 'Whiteflies',
+                pestSlug: 'whiteflies',
                 signs: 'Tiny white insects that flutter up when the plant is disturbed.',
                 treatment:
                     'Use yellow sticky traps and treat with insecticidal soap or horticultural oil.',
