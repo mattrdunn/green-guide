@@ -11,7 +11,7 @@ import { useThemeMode } from '@/app/lib/useThemeMode';
 import {
     useGetPestSummariesQuery,
     useGetPlantSummariesQuery,
-} from '@/store/api/templateApi';
+} from '@/store/api/greenGuideApi';
 import NavExpandableList from './NavExpandableList';
 import SearchResults from './SearchResults';
 

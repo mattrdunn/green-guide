@@ -10,7 +10,7 @@ import meterIcon from '@/public/icons/speed.svg';
 import petsIcon from '@/public/icons/pets.svg';
 import Image from 'next/image';
 import imageUrl from '@/app/lib/imageUrl';
-import type { PlantData } from '@/store/api/templateApi';
+import type { PlantData } from '@/store/api/greenGuideApi';
 
 type HeaderCardProps = {
     genus: string;

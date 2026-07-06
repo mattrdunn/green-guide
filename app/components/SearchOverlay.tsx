@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { plantMatchesQuery } from '@/app/lib/searchPlants';
-import { useGetPlantSummariesQuery } from '@/store/api/templateApi';
+import { useGetPlantSummariesQuery } from '@/store/api/greenGuideApi';
 import SearchResults from './SearchResults';
 
 const MAX_RESULTS = 8;

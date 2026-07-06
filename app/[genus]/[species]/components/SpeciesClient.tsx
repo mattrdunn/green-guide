@@ -2,7 +2,7 @@
 
 import { MouseEvent, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useGetPlantQuery } from '@/store/api/templateApi';
+import { useGetPlantQuery } from '@/store/api/greenGuideApi';
 import HeaderCard from './HeaderCard';
 import Overview from './Overview';
 import Care from './Care';

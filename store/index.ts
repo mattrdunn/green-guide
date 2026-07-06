@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { greenGuideApi } from './api/templateApi';
+import { greenGuideApi } from './api/greenGuideApi';
 
 export const store = configureStore({
     reducer: {
