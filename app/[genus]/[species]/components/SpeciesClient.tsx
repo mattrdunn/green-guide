@@ -80,7 +80,7 @@ export default function SpeciesClient({
     }
 
     return (
-        <div className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-2 pb-12 pt-0 sm:px-6 sm:pb-16 sm:pt-0 lg:px-0">
+        <div className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-2 pb-12 pt-4 sm:px-6 sm:pb-16 sm:pt-0 lg:px-0">
             <nav className="flex items-center gap-2 text-xs text-stone-500 dark:text-stone-400">
                 <Link
                     href="/"
