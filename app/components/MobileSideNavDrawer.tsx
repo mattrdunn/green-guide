@@ -9,7 +9,7 @@ export function HamburgerIcon({ open }: { open: boolean }) {
     return (
         <span
             aria-hidden="true"
-            className="relative flex h-3.5 w-[18px] flex-col justify-between"
+            className="relative flex h-3.5 w-4.5 flex-col justify-between"
         >
             {[0, 1, 2].map((index) => (
                 <motion.span
@@ -74,7 +74,7 @@ export default function MobileSideNavDrawer({
                         transition={{ duration: 0.2 }}
                     />
                     <motion.aside
-                        className="fixed left-0 top-0 z-50 flex h-full w-[260px] max-w-[80vw] flex-col gap-7 overflow-y-auto bg-white p-6 shadow-2xl sm:hidden dark:bg-zinc-950"
+                        className="fixed left-0 top-0 z-50 flex h-full w-65 max-w-[80vw] flex-col gap-7 overflow-y-auto bg-white p-6 shadow-2xl sm:hidden dark:bg-zinc-950"
                         initial={{ x: '-100%' }}
                         animate={{ x: 0 }}
                         exit={{ x: '-100%' }}
@@ -84,7 +84,10 @@ export default function MobileSideNavDrawer({
                             ease: [0.4, 0, 0.2, 1],
                         }}
                     >
-                        <SideNavContent onNavigate={onClose} />
+                        <SideNavContent
+                            onNavigate={onClose}
+                            showSearch={false}
+                        />
                     </motion.aside>
                 </>
             )}

@@ -159,9 +159,17 @@ function parsePestSlug(pathname: string): string | null {
  */
 export default function SideNavContent({
     onNavigate,
+    showSearch = true,
 }: {
     /** Called after any link is followed — lets the mobile drawer close itself. */
     onNavigate?: () => void;
+    /**
+     * Shows the inline quick-search box. Off by default in the mobile
+     * drawer, where the nav bar's own search button/overlay is the single
+     * search entry point — typing there and here at once meant the results
+     * list could cover the input it belonged to.
+     */
+    showSearch?: boolean;
 }) {
     const { t } = useTranslation('translation', { keyPrefix: 'sideNav' });
     const { t: tSearch } = useTranslation('translation', {
@@ -292,39 +300,41 @@ export default function SideNavContent({
                 {t('brand')}
             </Link>
 
-            <div className="relative">
-                <form
-                    role="search"
-                    onSubmit={(event) => event.preventDefault()}
-                    className="flex items-center gap-2 rounded-full border border-stone-300 bg-white px-4 transition focus-within:border-emerald-600/60 dark:border-stone-700 dark:bg-zinc-900"
-                >
-                    <svg
-                        aria-hidden="true"
-                        viewBox="0 0 24 24"
-                        className="h-3.5 w-3.5 shrink-0 fill-none stroke-stone-400 stroke-2"
+            {showSearch && (
+                <div className="relative">
+                    <form
+                        role="search"
+                        onSubmit={(event) => event.preventDefault()}
+                        className="flex items-center gap-2 rounded-full border border-stone-300 bg-white px-4 transition focus-within:border-emerald-600/60 dark:border-stone-700 dark:bg-zinc-900"
                     >
-                        <circle cx="11" cy="11" r="7" />
-                        <path d="m20 20-3.5-3.5" strokeLinecap="round" />
-                    </svg>
-                    <input
-                        type="search"
-                        value={query}
-                        onChange={(event) => setQuery(event.target.value)}
-                        placeholder={tSearch('placeholder')}
-                        className="w-full bg-transparent py-2.5 text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none dark:text-white"
-                    />
-                </form>
-                {needle && (
-                    <div className="absolute inset-x-0 top-full z-40 mt-2 max-h-[60vh] overflow-y-auto">
-                        <SearchResults
-                            query={query.trim()}
-                            matches={matches}
-                            isError={Boolean(isError)}
-                            onNavigate={handleNavigate}
+                        <svg
+                            aria-hidden="true"
+                            viewBox="0 0 24 24"
+                            className="h-3.5 w-3.5 shrink-0 fill-none stroke-stone-400 stroke-2"
+                        >
+                            <circle cx="11" cy="11" r="7" />
+                            <path d="m20 20-3.5-3.5" strokeLinecap="round" />
+                        </svg>
+                        <input
+                            type="search"
+                            value={query}
+                            onChange={(event) => setQuery(event.target.value)}
+                            placeholder={tSearch('placeholder')}
+                            className="w-full bg-transparent py-2.5 text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none dark:text-white"
                         />
-                    </div>
-                )}
-            </div>
+                    </form>
+                    {needle && (
+                        <div className="absolute inset-x-0 top-full z-40 mt-2 max-h-[60vh] overflow-y-auto">
+                            <SearchResults
+                                query={query.trim()}
+                                matches={matches}
+                                isError={Boolean(isError)}
+                                onNavigate={handleNavigate}
+                            />
+                        </div>
+                    )}
+                </div>
+            )}
 
             <nav className="flex flex-col gap-1">
                 <p className="mb-1.5 text-xs font-semibold uppercase tracking-[0.3em] text-stone-400 dark:text-stone-500">

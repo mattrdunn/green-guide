@@ -5,13 +5,11 @@ import { usePathname } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { HERO_SEARCH_INPUT_ID } from '@/app/lib/searchPlants';
-import { useThemeMode } from '@/app/lib/useThemeMode';
 import MobileSideNavDrawer, { HamburgerIcon } from './MobileSideNavDrawer';
 import SearchOverlay from './SearchOverlay';
 
 export default function Nav() {
     const { t } = useTranslation('translation', { keyPrefix: 'nav' });
-    const { mode, toggle } = useThemeMode();
     const [searchOpen, setSearchOpen] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const pathname = usePathname();
@@ -64,12 +62,13 @@ export default function Nav() {
                             type="button"
                             onClick={handleSearchClick}
                             aria-expanded={onHomePage ? undefined : searchOpen}
-                            className="inline-flex items-center gap-2 rounded-full border border-stone-200/80 bg-white/80 px-3 py-1 text-sm font-semibold text-stone-800 shadow-sm backdrop-blur transition hover:bg-white dark:border-stone-700/70 dark:bg-zinc-900/70 dark:text-stone-100 dark:hover:bg-zinc-900"
+                            aria-label={t('links.search')}
+                            className="inline-flex items-center justify-center rounded-full border border-stone-200/80 bg-white/80 p-2 text-stone-800 shadow-sm backdrop-blur transition hover:bg-white dark:border-stone-700/70 dark:bg-zinc-900/70 dark:text-stone-100 dark:hover:bg-zinc-900"
                         >
                             <svg
                                 aria-hidden="true"
                                 viewBox="0 0 24 24"
-                                className="h-3.5 w-3.5 fill-none stroke-current stroke-2"
+                                className="h-4 w-4 fill-none stroke-current stroke-2"
                             >
                                 <circle cx="11" cy="11" r="7" />
                                 <path
@@ -77,22 +76,6 @@ export default function Nav() {
                                     strokeLinecap="round"
                                 />
                             </svg>
-                            {t('links.search')}
-                        </button>
-                        <button
-                            type="button"
-                            onClick={toggle}
-                            aria-pressed={mode === 'dark'}
-                            aria-label={
-                                mode === 'dark'
-                                    ? t('theme.dark')
-                                    : t('theme.light')
-                            }
-                            className="inline-flex items-center rounded-full border border-stone-200/80 bg-white/80 px-2.5 py-1 text-xs shadow-sm backdrop-blur transition hover:bg-white dark:border-stone-700/70 dark:bg-zinc-900/70 dark:hover:bg-zinc-900"
-                        >
-                            <span aria-hidden="true">
-                                {mode === 'dark' ? '🌙' : '☀️'}
-                            </span>
                         </button>
                         <button
                             type="button"

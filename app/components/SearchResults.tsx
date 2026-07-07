@@ -29,7 +29,7 @@ export default function SearchResults({
 
     if (matches.length === 0) {
         return (
-            <p className="mt-3 rounded-3xl border border-dashed border-stone-300 px-5 py-6 text-center text-sm text-stone-500 dark:border-stone-700 dark:text-stone-400">
+            <p className="mt-3 rounded-3xl border border-dashed border-stone-300 bg-white px-5 py-6 text-center text-sm text-stone-500 dark:border-stone-700 dark:bg-zinc-900 dark:text-stone-400">
                 {isError ? t('error') : t('noResults', { query })}
             </p>
         );
