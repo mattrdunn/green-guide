@@ -6,7 +6,14 @@ export const alliumGiganteum: Omit<Plant, 'createdAt' | 'updatedAt'> = {
     commonNames: ['Giant Allium', 'Giant Onion', 'Ornamental Onion'],
     description:
         'Perfectly round, softball-sized lavender-purple flower globes float atop tall bare stems — a sculptural bulb that adds height and geometry to a border with almost no ongoing care once planted.',
-    images: [],
+    images: [
+        { url: 'plants/allium/giganteum/img-1.jpg', alt: '' },
+        { url: 'plants/allium/giganteum/img-2.jpg', alt: '' },
+        { url: 'plants/allium/giganteum/img-3.jpg', alt: '' },
+        { url: 'plants/allium/giganteum/img-4.jpg', alt: '' },
+        { url: 'plants/allium/giganteum/img-5.jpg', alt: '' },
+        { url: 'plants/allium/giganteum/img-6.jpg', alt: '' },
+    ],
     tags: [
         'bulb',
         'full-sun',

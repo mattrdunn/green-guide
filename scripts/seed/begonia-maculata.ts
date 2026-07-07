@@ -6,7 +6,13 @@ export const begoniaMaculata: Omit<Plant, 'createdAt' | 'updatedAt'> = {
     commonNames: ['Polka Dot Begonia', 'Angel Wing Begonia', 'Spotted Begonia'],
     description:
         'Silver polka-dotted, wing-shaped leaves with deep maroon undersides sit on tall, bamboo-like canes, making polka dot begonia one of the most photographed houseplants around — a statement plant that trades some fuss for a genuinely striking look.',
-    images: [],
+    images: [
+        { url: 'plants/begonia/maculata/img-1.jpg', alt: '' },
+        { url: 'plants/begonia/maculata/img-2.jpg', alt: '' },
+        { url: 'plants/begonia/maculata/img-3.jpg', alt: '' },
+        { url: 'plants/begonia/maculata/img-4.jpg', alt: '' },
+        { url: 'plants/begonia/maculata/img-5.jpg', alt: '' },
+    ],
     tags: [
         'statement-plant',
         'cane-type',
@@ -97,7 +103,8 @@ export const begoniaMaculata: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             detail: 'Puts on the most cane height and new leaves during the warm months.',
         },
         dailyRhythm: {
-            heading: 'A tall, showy plant that wants consistency more than complexity.',
+            heading:
+                'A tall, showy plant that wants consistency more than complexity.',
             body: 'Polka dot begonia does best with a steady routine: check the soil before watering, keep it away from cold drafts, and give it good airflow alongside humidity. Most problems trace back to inconsistency rather than any single mistake.',
             highlights: [
                 'Check soil moisture every few days; water once the top inch is dry.',

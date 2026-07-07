@@ -6,7 +6,12 @@ export const begoniaSemperflorens: Omit<Plant, 'createdAt' | 'updatedAt'> = {
     commonNames: ['Wax Begonia', 'Bedding Begonia', 'Fibrous Begonia'],
     description:
         'Glossy, waxy leaves and small flowers that bloom continuously from spring through frost make wax begonia the most widely planted begonia in the world — a compact, low-fuss staple of garden borders, window boxes, and sunny windowsills alike.',
-    images: [],
+    images: [
+        { url: 'plants/begonia/semperflorens/img-1.jpg', alt: '' },
+        { url: 'plants/begonia/semperflorens/img-2.jpg', alt: '' },
+        { url: 'plants/begonia/semperflorens/img-3.jpg', alt: '' },
+        { url: 'plants/begonia/semperflorens/img-4.jpg', alt: '' },
+    ],
     tags: [
         'flowering',
         'compact',
@@ -98,7 +103,8 @@ export const begoniaSemperflorens: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             detail: 'Blooms continuously through the growing season rather than in a single flush.',
         },
         dailyRhythm: {
-            heading: 'A continuous bloomer that just wants steady moisture and light.',
+            heading:
+                'A continuous bloomer that just wants steady moisture and light.',
             body: 'Wax begonia rewards a simple routine: check the soil, deadhead spent blooms occasionally, and keep it out of harsh midday sun in hot climates. It rarely goes fully dormant, so care stays consistent through most of the year.',
             highlights: [
                 'Check soil moisture every few days during active growth.',

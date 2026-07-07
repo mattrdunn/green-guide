@@ -3,10 +3,21 @@ import type { Plant } from '../../lib/db/models/Plant';
 export const crassulaOvata: Omit<Plant, 'createdAt' | 'updatedAt'> = {
     genus: 'crassula',
     species: 'ovata',
-    commonNames: ['Jade Plant', 'Money Plant', 'Lucky Plant', 'Friendship Tree'],
+    commonNames: [
+        'Jade Plant',
+        'Money Plant',
+        'Lucky Plant',
+        'Friendship Tree',
+    ],
     description:
         'Thick, glossy paddle-shaped leaves on sturdy branching stems make Jade Plant the archetypal easy succulent — a South African shrub that slowly builds into a miniature tree over decades of neglect-friendly care.',
-    images: [],
+    images: [
+        { url: 'plants/crassula/ovata/img-1.jpg', alt: '' },
+        { url: 'plants/crassula/ovata/img-2.jpg', alt: '' },
+        { url: 'plants/crassula/ovata/img-3.jpg', alt: '' },
+        { url: 'plants/crassula/ovata/img-4.jpg', alt: '' },
+        { url: 'plants/crassula/ovata/img-5.jpg', alt: '' },
+    ],
     tags: ['succulent', 'beginner-friendly', 'mildly-toxic'],
     highlights: [
         'Native to the rocky Kwazulu-Natal and Eastern Cape regions of South Africa.',
@@ -29,7 +40,8 @@ export const crassulaOvata: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         watering: {
             score: 1,
             value: 'Sparse & deep',
-            caption: 'Every 2-3 weeks; let the mix dry out fully between drinks.',
+            caption:
+                'Every 2-3 weeks; let the mix dry out fully between drinks.',
         },
         difficulty: {
             score: 1,

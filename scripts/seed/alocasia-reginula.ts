@@ -6,7 +6,12 @@ export const alocasiaReginula: Omit<Plant, 'createdAt' | 'updatedAt'> = {
     commonNames: ['Alocasia Black Velvet', 'Little Queen'],
     description:
         'Small, heart-shaped leaves in a deep, almost black velvet finish with pale silvery veins make Alocasia Black Velvet one of the most striking compact aroids — a jewel plant that trades size for intense visual texture.',
-    images: [],
+    images: [
+        { url: 'plants/alocasia/reginula/img-1.jpg', alt: '' },
+        { url: 'plants/alocasia/reginula/img-2.jpg', alt: '' },
+        { url: 'plants/alocasia/reginula/img-3.jpg', alt: '' },
+        { url: 'plants/alocasia/reginula/img-4.jpg', alt: '' },
+    ],
     tags: ['aroid', 'jewel-plant', 'high-humidity', 'toxic', 'low-maintenance'],
     highlights: [
         'Native to the humid limestone forests of Borneo, where it grows low to the ground in dappled shade.',

@@ -6,7 +6,11 @@ export const chlorophytumComosum: Omit<Plant, 'createdAt' | 'updatedAt'> = {
     commonNames: ['Spider Plant', 'Airplane Plant', 'Ribbon Plant'],
     description:
         'Arching, ribbon-like leaves striped in green and cream send out long stems tipped with baby plantlets — one of the most forgiving, fastest-propagating houseplants around, ideal for hanging baskets and first-time growers alike.',
-    images: [],
+    images: [
+        { url: 'plants/chlorophytum/comosum/img-1.jpg', alt: '' },
+        { url: 'plants/chlorophytum/comosum/img-2.jpg', alt: '' },
+        { url: 'plants/chlorophytum/comosum/img-3.jpg', alt: '' },
+    ],
     tags: [
         'beginner-friendly',
         'low-light',
