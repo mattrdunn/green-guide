@@ -50,6 +50,12 @@ import { chlorophytumComosum } from './seed/chlorophytum-comosum';
 import { rhaphidophoraTetrasperma } from './seed/rhaphidophora-tetrasperma';
 import { alocasiaReginula } from './seed/alocasia-reginula';
 import { philodendronHederaceumMicans } from './seed/philodendron-hederaceum-micans';
+import { senecioRadicans } from './seed/senecio-radicans';
+import { monsteraDeliciosaThaiConstellation } from './seed/monstera-deliciosa-thai-constellation';
+import { jasminumPolyanthum } from './seed/jasminum-polyanthum';
+import { crassulaOvata } from './seed/crassula-ovata';
+import { crassulaOvataGollum } from './seed/crassula-ovata-gollum';
+import { echinocactusGrusonii } from './seed/echinocactus-grusonii';
 
 process.loadEnvFile('.env.local');
 
@@ -103,6 +109,12 @@ export const plants: Omit<Plant, 'createdAt' | 'updatedAt'>[] = [
     rhaphidophoraTetrasperma,
     alocasiaReginula,
     philodendronHederaceumMicans,
+    senecioRadicans,
+    monsteraDeliciosaThaiConstellation,
+    jasminumPolyanthum,
+    crassulaOvata,
+    crassulaOvataGollum,
+    echinocactusGrusonii,
 ];
 
 async function main() {
