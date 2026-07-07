@@ -5,6 +5,7 @@ import { aeonium } from './seed/genus/aeonium';
 import { agave } from './seed/genus/agave';
 import { allium } from './seed/genus/allium';
 import { alocasia } from './seed/genus/alocasia';
+import { begonia } from './seed/genus/begonia';
 import { cattleya } from './seed/genus/cattleya';
 import { chlorophytum } from './seed/genus/chlorophytum';
 import { citrus } from './seed/genus/citrus';
@@ -34,9 +35,11 @@ import { narcissus } from './seed/genus/narcissus';
 import { nepenthes } from './seed/genus/nepenthes';
 import { opuntia } from './seed/genus/opuntia';
 import { pelargonium } from './seed/genus/pelargonium';
+import { peperomia } from './seed/genus/peperomia';
 import { persea } from './seed/genus/persea';
 import { phalaenopsis } from './seed/genus/phalaenopsis';
 import { philodendron } from './seed/genus/philodendron';
+import { pilea } from './seed/genus/pilea';
 import { rhaphidophora } from './seed/genus/rhaphidophora';
 import { rosa } from './seed/genus/rosa';
 import { sarracenia } from './seed/genus/sarracenia';
@@ -55,6 +58,7 @@ const genusContent: Omit<Genus, 'createdAt' | 'updatedAt'>[] = [
     agave,
     allium,
     alocasia,
+    begonia,
     cattleya,
     chlorophytum,
     citrus,
@@ -84,9 +88,11 @@ const genusContent: Omit<Genus, 'createdAt' | 'updatedAt'>[] = [
     nepenthes,
     opuntia,
     pelargonium,
+    peperomia,
     persea,
     phalaenopsis,
     philodendron,
+    pilea,
     rhaphidophora,
     rosa,
     sarracenia,

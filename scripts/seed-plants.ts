@@ -60,6 +60,14 @@ import { droseraCapensis } from './seed/drosera-capensis';
 import { dionaeaMuscipula } from './seed/dionaea-muscipula';
 import { sarraceniaPurpurea } from './seed/sarracenia-purpurea';
 import { sarraceniaFlava } from './seed/sarracenia-flava';
+import { peperomiaObtusifolia } from './seed/peperomia-obtusifolia';
+import { peperomiaArgyreia } from './seed/peperomia-argyreia';
+import { peperomiaClusiifoliaGinny } from './seed/peperomia-clusiifolia-ginny';
+import { peperomiaCaperata } from './seed/peperomia-caperata';
+import { pileaCadierei } from './seed/pilea-cadierei';
+import { begoniaSemperflorens } from './seed/begonia-semperflorens';
+import { begoniaRex } from './seed/begonia-rex';
+import { begoniaMaculata } from './seed/begonia-maculata';
 
 process.loadEnvFile('.env.local');
 
@@ -123,6 +131,14 @@ export const plants: Omit<Plant, 'createdAt' | 'updatedAt'>[] = [
     dionaeaMuscipula,
     sarraceniaPurpurea,
     sarraceniaFlava,
+    peperomiaObtusifolia,
+    peperomiaArgyreia,
+    peperomiaClusiifoliaGinny,
+    peperomiaCaperata,
+    pileaCadierei,
+    begoniaSemperflorens,
+    begoniaRex,
+    begoniaMaculata,
 ];
 
 async function main() {
