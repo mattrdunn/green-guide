@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import GreenCard from '@/app/components/GreenCard';
 import { useTranslation } from 'react-i18next';
 import ImageCarousel from './ImageCarousel';
@@ -84,13 +85,16 @@ export default function HeaderCard({
 
                     <div className="space-y-6 pb-2 sm:pb-0">
                         <div>
-                            <p className="text-sm uppercase tracking-[0.6em] text-white/60">
+                            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/80">
                                 {plant.commonNames.join(', ')}
                             </p>
                             <h1 className="mt-2 flex flex-wrap items-end gap-4 font-serif text-4xl leading-tight sm:text-5xl">
-                                <span className="capitalize font-bold">
+                                <Link
+                                    href={`/${genus}`}
+                                    className="capitalize font-bold hover:text-lime-200"
+                                >
                                     {genus}
-                                </span>
+                                </Link>
                                 <span className="capitalize font-light">
                                     {species}
                                 </span>

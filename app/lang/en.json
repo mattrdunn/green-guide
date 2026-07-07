@@ -28,7 +28,8 @@
         "light": "Light",
         "dark": "Dark",
         "speciesList": {
-            "toggle": "Toggle species list"
+            "toggle": "Toggle species list",
+            "genusToggle": "Toggle {{genus}} species list"
         },
         "pestsList": {
             "toggle": "Toggle pests list"
@@ -110,6 +111,9 @@
     },
     "speciesClient": {
         "badge": "Species profile",
+        "breadcrumb": {
+            "home": "Home"
+        },
         "facts": {
             "light": "Light",
             "water": "Water",
@@ -126,6 +130,63 @@
         },
         "tabCopy": {
             "getStarted": "Starter kits, accessory recommendations, and potting guides will live here so you can bring your Monstera home with confidence."
+        }
+    },
+    "genusClient": {
+        "badge": "Genus profile",
+        "familyLine": "{{family}} family · ~{{count}} species",
+        "facts": {
+            "species": "Species",
+            "speciesValue": "~{{count}} documented",
+            "light": "Light",
+            "water": "Water",
+            "difficulty": "Difficulty"
+        },
+        "breadcrumb": {
+            "home": "Home"
+        },
+        "tabs": {
+            "overview": "Overview",
+            "species": "Species & Varieties",
+            "taxonomy": "Taxonomy"
+        },
+        "vitals": {
+            "zone": "USDA Zone",
+            "light": "Light",
+            "watering": "Watering",
+            "toxicity": "Toxicity"
+        },
+        "nativeRange": {
+            "title": "Native range",
+            "mapComing": "Range map coming soon"
+        },
+        "careCadence": {
+            "title": "Care cadence"
+        },
+        "speciesGrid": {
+            "shown_one": "{{count}} shown · click a card to expand",
+            "shown_other": "{{count}} shown · click a card to expand",
+            "filterAll": "All",
+            "filterSpecies": "Species",
+            "filterCultivar": "Cultivars",
+            "badgeSpecies": "Species",
+            "badgeCultivar": "Cultivar",
+            "light": "Light",
+            "water": "Water",
+            "humidity": "Humidity",
+            "zone": "Zone",
+            "origin": "Origin",
+            "viewProfile": "View full profile",
+            "empty": "No species from this genus are in the library yet — check back shortly."
+        },
+        "taxonomy": {
+            "title": "Classification",
+            "kingdom": "Kingdom",
+            "order": "Order",
+            "family": "Family",
+            "genus": "Genus",
+            "relatedTitle": "Related genera",
+            "relatedDescription": "Other climbing aroids sharing this genus's rainforest understory and trellis-loving habit."
         }
     },
     "overview": {

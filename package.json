@@ -10,7 +10,8 @@
         "test": "vitest run",
         "test:watch": "vitest",
         "db:seed": "tsx scripts/seed-plants.ts",
-        "db:seed:pests": "tsx scripts/seed-pests.ts"
+        "db:seed:pests": "tsx scripts/seed-pests.ts",
+        "db:seed:genus": "tsx scripts/seed-genus.ts"
     },
     "dependencies": {
         "@reduxjs/toolkit": "^2.9.2",

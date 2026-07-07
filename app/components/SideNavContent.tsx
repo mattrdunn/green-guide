@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
@@ -12,7 +11,9 @@ import {
     useGetPestSummariesQuery,
     useGetPlantSummariesQuery,
 } from '@/store/api/greenGuideApi';
+import DropdownToggle from './DropdownToggle';
 import NavExpandableList from './NavExpandableList';
+import NavGenusList, { NavGenusGroup } from './NavGenusList';
 import SearchResults from './SearchResults';
 
 const MAX_RESULTS = 8;
@@ -67,54 +68,6 @@ function BugIcon({ className }: { className?: string }) {
     );
 }
 
-function ChevronIcon({ className }: { className?: string }) {
-    return (
-        <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            className={className}
-            aria-hidden="true"
-        >
-            <path
-                d="m7 10 5 5 5-5"
-                stroke="currentColor"
-                strokeWidth={1.8}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-            />
-        </svg>
-    );
-}
-
-/** Chevron that animates its rotation with framer-motion as `open` flips. */
-function DropdownToggle({
-    open,
-    onClick,
-    label,
-}: {
-    open: boolean;
-    onClick: () => void;
-    label: string;
-}) {
-    return (
-        <button
-            type="button"
-            onClick={onClick}
-            aria-expanded={open}
-            aria-label={label}
-            className="flex size-8 shrink-0 items-center justify-center rounded-full text-stone-500 transition hover:bg-stone-100 dark:text-stone-400 dark:hover:bg-zinc-900"
-        >
-            <motion.span
-                animate={{ rotate: open ? 180 : 0 }}
-                transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
-                className="flex"
-            >
-                <ChevronIcon className="size-4" />
-            </motion.span>
-        </button>
-    );
-}
-
 const capitalize = (value: string) =>
     value.charAt(0).toUpperCase() + value.slice(1);
 
@@ -141,6 +94,15 @@ function parseSpeciesRoute(
         species: parts[1],
         variety: parts[2] ?? null,
     };
+}
+
+/** Matches a genus profile URL (`/[genus]`) and pulls out the slug. */
+function parseGenusRoute(pathname: string): string | null {
+    const parts = pathname.split('/').filter(Boolean);
+    if (parts.length !== 1 || RESERVED_TOP_LEVEL_SEGMENTS.has(parts[0])) {
+        return null;
+    }
+    return parts[0];
 }
 
 /** Matches a pest detail URL (`/pests/[slug]`) and pulls out the slug. */
@@ -180,6 +142,7 @@ export default function SideNavContent({
     const [query, setQuery] = useState('');
     const [speciesListOpen, setSpeciesListOpen] = useState(false);
     const [pestsListOpen, setPestsListOpen] = useState(false);
+    const [openGenera, setOpenGenera] = useState<Record<string, boolean>>({});
 
     const { data: plants, isError } = useGetPlantSummariesQuery();
     const { data: pests } = useGetPestSummariesQuery();
@@ -209,17 +172,29 @@ export default function SideNavContent({
         );
     }, [plants, speciesRoute]);
 
-    const speciesItems = useMemo(() => {
+    const currentGenus = useMemo(
+        () => parseGenusRoute(pathname) ?? speciesRoute?.genus ?? null,
+        [pathname, speciesRoute],
+    );
+
+    const genusGroups = useMemo<NavGenusGroup[]>(() => {
         if (!plants) {
             return [];
         }
-        return [...plants]
-            .sort((a, b) =>
-                `${a.genus} ${a.species}`.localeCompare(
-                    `${b.genus} ${b.species}`,
-                ),
-            )
-            .map((plant) => ({
+        const groups = new Map<string, NavGenusGroup>();
+        for (const plant of [...plants].sort((a, b) =>
+            `${a.genus} ${a.species}`.localeCompare(`${b.genus} ${b.species}`),
+        )) {
+            if (!groups.has(plant.genus)) {
+                groups.set(plant.genus, {
+                    genus: plant.genus,
+                    href: `/${plant.genus}`,
+                    label: capitalize(plant.genus),
+                    isCurrent: plant.genus === currentGenus,
+                    items: [],
+                });
+            }
+            groups.get(plant.genus)!.items.push({
                 key: `${plant.genus}-${plant.species}-${plant.variety ?? ''}`,
                 href: plant.variety
                     ? `/${plant.genus}/${plant.species}/${plant.variety}`
@@ -230,8 +205,12 @@ export default function SideNavContent({
                     plant.genus === currentPlant.genus &&
                     plant.species === currentPlant.species &&
                     (plant.variety ?? null) === (currentPlant.variety ?? null),
-            }));
-    }, [plants, currentPlant]);
+            });
+        }
+        return [...groups.values()].sort((a, b) =>
+            a.genus.localeCompare(b.genus),
+        );
+    }, [plants, currentPlant, currentGenus]);
 
     const pestSlug = useMemo(() => parsePestSlug(pathname), [pathname]);
     const currentPest = useMemo(() => {
@@ -260,13 +239,16 @@ export default function SideNavContent({
         setQuery('');
     }, [pathname]);
 
-    // Loading (or navigating between) a species/pest page opens its list
-    // automatically so the currently-viewed entry is visible in it.
+    // Loading (or navigating between) a genus/species/pest page opens its
+    // list automatically so the currently-viewed entry is visible in it.
     useEffect(() => {
-        if (currentPlant) {
+        if (currentGenus) {
             setSpeciesListOpen(true);
+            setOpenGenera((prev) =>
+                prev[currentGenus] ? prev : { ...prev, [currentGenus]: true },
+            );
         }
-    }, [currentPlant]);
+    }, [currentGenus]);
 
     useEffect(() => {
         if (currentPest) {
@@ -277,6 +259,10 @@ export default function SideNavContent({
     const handleNavigate = () => {
         setQuery('');
         onNavigate?.();
+    };
+
+    const handleToggleGenus = (genus: string) => {
+        setOpenGenera((prev) => ({ ...prev, [genus]: !prev[genus] }));
     };
 
     const pestsActive = pathname === '/pests' || pathname.startsWith('/pests/');
@@ -358,10 +344,15 @@ export default function SideNavContent({
                             label={t('speciesList.toggle')}
                         />
                     </div>
-                    <NavExpandableList
+                    <NavGenusList
                         open={speciesListOpen}
-                        items={speciesItems}
+                        groups={genusGroups}
+                        openGenera={openGenera}
+                        onToggleGenus={handleToggleGenus}
                         onNavigate={onNavigate}
+                        genusToggleLabel={(genus) =>
+                            t('speciesList.genusToggle', { genus })
+                        }
                     />
                 </div>
                 <div className="flex flex-col gap-1">

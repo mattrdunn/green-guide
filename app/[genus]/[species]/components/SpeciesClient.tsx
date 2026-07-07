@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { MouseEvent, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useGetPlantQuery } from '@/store/api/greenGuideApi';
@@ -60,7 +61,7 @@ export default function SpeciesClient({
 
     if (isLoading) {
         return (
-            <div className="mx-auto flex w-full max-w-5xl flex-col px-2 pb-12 pt-0 sm:px-6 sm:pb-16 sm:pt-8 lg:px-0">
+            <div className="mx-auto flex w-full max-w-5xl flex-col px-2 pb-12 pt-0 sm:px-6 sm:pb-16 sm:pt-0 lg:px-0">
                 <div className="rounded-3xl border border-dashed border-stone-300 px-6 py-24 text-center text-sm text-stone-500 dark:border-stone-700 dark:text-stone-300">
                     {t('loading')}
                 </div>
@@ -70,7 +71,7 @@ export default function SpeciesClient({
 
     if (isError || !plant) {
         return (
-            <div className="mx-auto flex w-full max-w-5xl flex-col px-2 pb-12 pt-0 sm:px-6 sm:pb-16 sm:pt-8 lg:px-0">
+            <div className="mx-auto flex w-full max-w-5xl flex-col px-2 pb-12 pt-0 sm:px-6 sm:pb-16 sm:pt-0 lg:px-0">
                 <div className="rounded-3xl border border-dashed border-stone-300 px-6 py-24 text-center text-sm text-stone-500 dark:border-stone-700 dark:text-stone-300">
                     {t('loadError')}
                 </div>
@@ -79,7 +80,41 @@ export default function SpeciesClient({
     }
 
     return (
-        <div className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-2 pb-12 pt-0 sm:px-6 sm:pb-16 sm:pt-8 lg:px-0">
+        <div className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-2 pb-12 pt-0 sm:px-6 sm:pb-16 sm:pt-0 lg:px-0">
+            <nav className="flex items-center gap-2 text-xs text-stone-500 dark:text-stone-400">
+                <Link
+                    href="/"
+                    className="hover:text-stone-900 dark:hover:text-white"
+                >
+                    {t('breadcrumb.home')}
+                </Link>
+                <span>/</span>
+                <Link
+                    href={`/${genus}`}
+                    className="capitalize hover:text-stone-900 dark:hover:text-white"
+                >
+                    {genus}
+                </Link>
+                <span>/</span>
+                <span
+                    className={cn(
+                        'capitalize',
+                        !variety &&
+                            'font-semibold text-stone-900 dark:text-white',
+                    )}
+                >
+                    {species.replace(/-/g, ' ')}
+                </span>
+                {variety && (
+                    <>
+                        <span>/</span>
+                        <span className="font-semibold capitalize text-stone-900 dark:text-white">
+                            {variety.replace(/-/g, ' ')}
+                        </span>
+                    </>
+                )}
+            </nav>
+
             <HeaderCard
                 genus={genus}
                 species={species}
