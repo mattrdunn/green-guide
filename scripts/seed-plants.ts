@@ -13,6 +13,11 @@ import { aeoniumArboreum } from './seed/aeonium-arboreum';
 import { senecioRowleyanus } from './seed/senecio-rowleyanus';
 import { euphorbiaTirucalli } from './seed/euphorbia-tirucalli';
 import { dracaenaTrifasciata } from './seed/dracaena-trifasciata';
+import { dracaenaFragrans } from './seed/dracaena-fragrans';
+import { dracaenaMarginata } from './seed/dracaena-marginata';
+import { dracaenaSanderiana } from './seed/dracaena-sanderiana';
+import { dracaenaReflexa } from './seed/dracaena-reflexa';
+import { dracaenaDeremensis } from './seed/dracaena-deremensis';
 import { zamioculcasZamiifolia } from './seed/zamioculcas-zamiifolia';
 import { philodendronHederaceumBrasil } from './seed/philodendron-hederaceum-brasil';
 import { goeppertiaOrbifolia } from './seed/goeppertia-orbifolia';
@@ -68,6 +73,9 @@ import { pileaCadierei } from './seed/pilea-cadierei';
 import { begoniaSemperflorens } from './seed/begonia-semperflorens';
 import { begoniaRex } from './seed/begonia-rex';
 import { begoniaMaculata } from './seed/begonia-maculata';
+import { tradescantiaFluminensis } from './seed/tradescantia-fluminensis';
+import { tradescantiaFluminensisNanouk } from './seed/tradescantia-fluminensis-nanouk';
+import { tradescantiaZebrina } from './seed/tradescantia-zebrina';
 
 process.loadEnvFile('.env.local');
 
@@ -84,6 +92,11 @@ export const plants: Omit<Plant, 'createdAt' | 'updatedAt'>[] = [
     senecioRowleyanus,
     euphorbiaTirucalli,
     dracaenaTrifasciata,
+    dracaenaFragrans,
+    dracaenaMarginata,
+    dracaenaSanderiana,
+    dracaenaReflexa,
+    dracaenaDeremensis,
     zamioculcasZamiifolia,
     philodendronHederaceumBrasil,
     goeppertiaOrbifolia,
@@ -139,6 +152,9 @@ export const plants: Omit<Plant, 'createdAt' | 'updatedAt'>[] = [
     begoniaSemperflorens,
     begoniaRex,
     begoniaMaculata,
+    tradescantiaFluminensis,
+    tradescantiaFluminensisNanouk,
+    tradescantiaZebrina,
 ];
 
 async function main() {

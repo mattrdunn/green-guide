@@ -6,7 +6,13 @@ export const monsteraAdansonii: Omit<Plant, 'createdAt' | 'updatedAt'> = {
     commonNames: ['Swiss Cheese Vine', 'Monkey Mask Monstera'],
     description:
         'A fast-growing vine with delicate, hole-punched leaves — Monstera adansonii delivers the fenestrated look in a compact, shelf-and-trellis-friendly package.',
-    images: [],
+    images: [
+        { url: 'plants/monstera/adansonii/img-1.jpg', alt: '' },
+        { url: 'plants/monstera/adansonii/img-2.jpg', alt: '' },
+        { url: 'plants/monstera/adansonii/img-3.jpg', alt: '' },
+        { url: 'plants/monstera/adansonii/img-4.jpg', alt: '' },
+        { url: 'plants/monstera/adansonii/img-5.jpg', alt: '' },
+    ],
     tags: ['aroid', 'vining', 'beginner-friendly', 'mildly-toxic'],
     highlights: [
         'Native to Central and South America, from Mexico down to Brazil.',
