@@ -261,6 +261,13 @@ export const rosaHybrida: Omit<Plant, 'createdAt' | 'updatedAt'> = {
                 treatment:
                     'Rinse foliage regularly and apply insecticidal soap or a miticide if infestations persist.',
             },
+            {
+                name: 'Earwigs',
+                pestSlug: 'earwigs',
+                signs: 'Ragged holes chewed into petals overnight, with insects hiding in blooms or mulch by day.',
+                treatment:
+                    'Trap overnight with a rolled damp newspaper tube and clear mulch back from the base of the plant.',
+            },
         ],
         stabilityChecklist: [
             'Give it at least 6 hours of direct sun daily.',

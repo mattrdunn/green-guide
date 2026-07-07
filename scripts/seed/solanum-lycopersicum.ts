@@ -239,6 +239,7 @@ export const solanumLycopersicum: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         pests: [
             {
                 name: 'Tomato Hornworm',
+                pestSlug: 'caterpillars',
                 signs: 'Large green caterpillars with a horn-like tail; stripped foliage and dark droppings.',
                 treatment:
                     'Hand-pick and remove; Bacillus thuringiensis (Bt) sprays control heavier infestations.',

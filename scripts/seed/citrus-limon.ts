@@ -248,6 +248,7 @@ export const citrusLimon: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         pests: [
             {
                 name: 'Citrus Leafminer',
+                pestSlug: 'leafminers',
                 signs: 'Silvery, winding trails tunneled through new leaves.',
                 treatment:
                     'Remove and destroy affected leaves; apply horticultural oil to protect new flush growth.',

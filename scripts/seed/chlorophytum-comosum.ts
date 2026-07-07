@@ -269,6 +269,13 @@ export const chlorophytumComosum: Omit<Plant, 'createdAt' | 'updatedAt'> = {
                 treatment:
                     'Hose off light infestations or treat with insecticidal soap every 5-7 days until clear.',
             },
+            {
+                name: 'Root Aphids',
+                pestSlug: 'root-aphids',
+                signs: 'Unexplained yellowing or decline despite normal watering; pale clusters visible on roots at repotting.',
+                treatment:
+                    'Bare-root the plant, rinse the roots clean, and repot into fresh mix after a soap soak.',
+            },
         ],
         stabilityChecklist: [
             'Use filtered or distilled water if tap water causes persistent brown tips.',

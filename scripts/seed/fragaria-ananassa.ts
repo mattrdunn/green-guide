@@ -271,6 +271,13 @@ export const fragariaAnanassa: Omit<Plant, 'createdAt' | 'updatedAt'> = {
                 treatment:
                     'Cover beds with netting once fruit begins to color up.',
             },
+            {
+                name: 'Vine Weevil',
+                pestSlug: 'vine-weevil',
+                signs: 'Notched leaf edges overnight, plus wilting crowns from grubs feeding on roots below.',
+                treatment:
+                    'Hand-pick adults at night and drench the bed with beneficial nematodes in late summer to target larvae.',
+            },
         ],
         stabilityChecklist: [
             'Mulch with straw before fruit sets to keep berries clean and dry.',

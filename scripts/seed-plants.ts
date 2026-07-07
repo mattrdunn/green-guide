@@ -56,6 +56,10 @@ import { jasminumPolyanthum } from './seed/jasminum-polyanthum';
 import { crassulaOvata } from './seed/crassula-ovata';
 import { crassulaOvataGollum } from './seed/crassula-ovata-gollum';
 import { echinocactusGrusonii } from './seed/echinocactus-grusonii';
+import { droseraCapensis } from './seed/drosera-capensis';
+import { dionaeaMuscipula } from './seed/dionaea-muscipula';
+import { sarraceniaPurpurea } from './seed/sarracenia-purpurea';
+import { sarraceniaFlava } from './seed/sarracenia-flava';
 
 process.loadEnvFile('.env.local');
 
@@ -115,6 +119,10 @@ export const plants: Omit<Plant, 'createdAt' | 'updatedAt'>[] = [
     crassulaOvata,
     crassulaOvataGollum,
     echinocactusGrusonii,
+    droseraCapensis,
+    dionaeaMuscipula,
+    sarraceniaPurpurea,
+    sarraceniaFlava,
 ];
 
 async function main() {

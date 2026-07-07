@@ -265,6 +265,13 @@ export const dianthusCaryophyllus: Omit<Plant, 'createdAt' | 'updatedAt'> = {
                 treatment:
                     'Remove affected leaves, improve airflow, and apply a fungicide labeled for rust if it recurs.',
             },
+            {
+                name: 'Broad & Cyclamen Mites',
+                pestSlug: 'broad-mites',
+                signs: 'Stunted, curled, or brittle new growth and deformed buds, with no visible webbing.',
+                treatment:
+                    'Remove distorted growth and treat with a sulfur-based miticide labeled for these mites.',
+            },
         ],
         stabilityChecklist: [
             'Plant in full sun with lean, sharp-draining, slightly alkaline soil.',

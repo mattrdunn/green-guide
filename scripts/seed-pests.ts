@@ -10,6 +10,12 @@ import { scale } from './seed/pests/scale';
 import { mealybugs } from './seed/pests/mealybugs';
 import { fungusGnats } from './seed/pests/fungus-gnats';
 import { slugsAndSnails } from './seed/pests/slugs-and-snails';
+import { leafminers } from './seed/pests/leafminers';
+import { caterpillars } from './seed/pests/caterpillars';
+import { vineWeevil } from './seed/pests/vine-weevil';
+import { rootAphids } from './seed/pests/root-aphids';
+import { broadMites } from './seed/pests/broad-mites';
+import { earwigs } from './seed/pests/earwigs';
 
 process.loadEnvFile('.env.local');
 
@@ -22,6 +28,12 @@ const pestContent: Omit<Pest, 'createdAt' | 'updatedAt' | 'affects'>[] = [
     mealybugs,
     fungusGnats,
     slugsAndSnails,
+    leafminers,
+    caterpillars,
+    vineWeevil,
+    rootAphids,
+    broadMites,
+    earwigs,
 ];
 
 /**
