@@ -45,3 +45,6 @@
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+# image sourcing tool — downloaded candidates awaiting manual review/upload
+/scripts/tools/image-review/

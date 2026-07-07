@@ -38,6 +38,39 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 Under construction: http://localhost:3000/monstera/deliciosa
 
+### Sourcing plant images
+
+Species photos are stored in a Cloudflare R2 bucket (see `AGENTS.md`'s Image Assets section for the object-key convention) and referenced by key from each seed module in `scripts/seed/`. Two scripts in `scripts/tools/` automate finding and uploading candidates:
+
+**1. Find candidates** — searches Wikimedia Commons for a species, keeping only results that are at least 500x500px and under a permissive license (public domain, CC0, CC BY, or CC BY-SA):
+
+```bash
+npm run images:find -- <genus> <species> [--query "search terms"] [--limit 20] [--variety slug]
+```
+
+This downloads full-resolution originals into `scripts/tools/image-review/<genus>-<species>[-<variety>]/` (git-ignored — nothing here is committed) along with a `manifest.json` recording each candidate's license, artist/credit, and source URL. Review the images in that folder — or ask Claude Code to do the visual quality pass and shortlist a few — and note the index numbers (`[1]`, `[2]`, …) of the ones you want.
+
+Use `--query` for cultivars/varieties that don't search well under the scientific name alone (e.g. a specific cultivar name), and `--variety` to keep the review folder consistent with the seed module's `variety` slug.
+
+**2. Upload the picks** — uploads chosen candidates to R2 and writes them straight into that species' seed module:
+
+```bash
+npm run images:upload -- <genus> <species> <candidateIndex...> [--variety slug] [--start N]
+```
+
+For example, `npm run images:upload -- begonia rex 3 4 6` uploads candidates 3, 4, and 6 from that species' `manifest.json` as `plants/begonia/rex/img-1.jpg`, `img-2.jpg`, `img-3.jpg`, then appends those keys to the `images` array in `scripts/seed/begonia-rex.ts` and runs Prettier on it. Numbering picks up automatically after whatever images already exist in that array (pass `--start` to override). It requires the seed module to already exist — create it first if you haven't (see AGENTS.md's "Adding a plant cultivar/variety" section for the cultivar case).
+
+The new entries land with an empty `alt: ''` — fill in a real description for each before committing. The script also prints an attribution block (license, artist, source URL) to keep on record, since most Commons images are CC BY or CC BY-SA and require credit.
+
+Uploading requires an R2 API token: in the Cloudflare dashboard, go to **R2 > Manage API Tokens > Create API Token**, scope it to **Object Read & Write** on the `green-guide-images` bucket only (not an account-wide admin token), and set the resulting values in `.env.local`:
+
+```
+R2_ACCOUNT_ID=
+R2_ACCESS_KEY_ID=
+R2_SECRET_ACCESS_KEY=
+R2_BUCKET_NAME=green-guide-images
+```
+
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 npm

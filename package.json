@@ -12,7 +12,9 @@
         "db:seed": "npm run db:seed:plants && npm run db:seed:genus && npm run db:seed:pests",
         "db:seed:plants": "tsx scripts/seed-plants.ts",
         "db:seed:pests": "tsx scripts/seed-pests.ts",
-        "db:seed:genus": "tsx scripts/seed-genus.ts"
+        "db:seed:genus": "tsx scripts/seed-genus.ts",
+        "images:find": "tsx scripts/tools/find-images.ts",
+        "images:upload": "tsx scripts/tools/upload-images.ts"
     },
     "dependencies": {
         "@reduxjs/toolkit": "^2.9.2",
@@ -27,6 +29,7 @@
         "react-redux": "^9.2.0"
     },
     "devDependencies": {
+        "@aws-sdk/client-s3": "^3.1080.0",
         "@tailwindcss/postcss": "^4",
         "@types/node": "^24",
         "@types/react": "^19",
@@ -38,5 +41,15 @@
         "tsx": "^4.23.0",
         "typescript": "^6.0.3",
         "vitest": "^4.1.9"
+    },
+    "allowScripts": {
+        "esbuild@0.28.1": true,
+        "fsevents@2.3.3": true,
+        "sharp@0.34.5": true
+    },
+    "overrides": {
+        "next": {
+            "postcss": "^8.5.10"
+        }
     }
 }

@@ -6,7 +6,28 @@ export const begoniaRex: Omit<Plant, 'createdAt' | 'updatedAt'> = {
     commonNames: ['Rex Begonia', 'King Begonia', 'Painted-Leaf Begonia'],
     description:
         'Grown entirely for its foliage, rex begonia produces swirling, metallic-sheened leaves in patterns of silver, maroon, and green that no two plants quite repeat — the flowers are so minor most growers pinch them off to keep energy in the leaves.',
-    images: [],
+    images: [
+        {
+            url: 'plants/begonia/rex/img-1.jpg',
+            alt: 'Close-up of rex begonia leaves with metallic silver patterning, dark green centers, and red-fringed edges.',
+        },
+        {
+            url: 'plants/begonia/rex/img-2.jpg',
+            alt: 'A rex begonia clump with spiraled, silver-spotted dark green leaves and small pink flowers rising above the foliage.',
+        },
+        {
+            url: 'plants/begonia/rex/img-3.jpg',
+            alt: 'Star-shaped rex begonia leaves speckled with silver spots against deep green foliage.',
+        },
+        {
+            url: 'plants/begonia/rex/img-4.jpg',
+            alt: "Rex begonia 'Savannah Bay' with bold silver-and-green star-shaped leaves and a plant tag among the foliage.",
+        },
+        {
+            url: 'plants/begonia/rex/img-5.jpg',
+            alt: "Rex begonia 'Spitfire' with maroon-and-silver swirled leaves and small white flowers with yellow centers.",
+        },
+    ],
     tags: [
         'foliage',
         'rhizomatous',
@@ -22,7 +43,8 @@ export const begoniaRex: Omit<Plant, 'createdAt' | 'updatedAt'> = {
     vitals: {
         hardinessZone: {
             value: '10-11',
-            caption: 'Frost-tender; grown strictly as a houseplant outside the tropics.',
+            caption:
+                'Frost-tender; grown strictly as a houseplant outside the tropics.',
             zoneMin: 10,
             zoneMax: 11,
         },
