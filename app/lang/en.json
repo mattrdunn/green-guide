@@ -19,6 +19,12 @@
             "close": "Close search"
         }
     },
+    "imageLightbox": {
+        "close": "Close image",
+        "previous": "Previous image",
+        "next": "Next image",
+        "counter": "{{current}} of {{total}}"
+    },
     "sideNav": {
         "brand": "GREEN GUIDE",
         "browse": "Browse",

@@ -1,9 +1,11 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 import { useTranslation } from 'react-i18next';
 import GreenCard from '@/app/components/GreenCard';
 import VitalMeter from '@/app/components/VitalMeter';
+import ImageLightbox from '@/app/components/ImageLightbox';
 import imageUrl from '@/app/lib/imageUrl';
 import globeIcon from '@/public/icons/globe.svg';
 import waterDropIcon from '@/public/icons/water-drop.svg';
@@ -15,8 +17,9 @@ import type { GenusSpeciesItem } from './types';
 const capitalize = (value: string) =>
     value.charAt(0).toUpperCase() + value.slice(1);
 
-/** Up to 3 hero photo slots — real genus photography first, then a designed
- * fallback tile per lead species so the strip is never empty. */
+/** Up to 3 hero photo slots — real genus photography first, falling back to a
+ * lead species' own photo when the genus has none, then a designed initial
+ * tile so the strip is never empty. */
 function usePhotoSlots(
     images: GenusDetailDoc['images'],
     species: GenusSpeciesItem[],
@@ -26,10 +29,12 @@ function usePhotoSlots(
     for (let i = 0; i < 3; i += 1) {
         const image = images[i];
         const lead = species[i];
+        const imageKey = image?.url ?? lead?.imageKey ?? undefined;
+        const alt = image?.url ? image.alt : (lead?.imageAlt ?? lead?.commonName ?? lead?.species);
         slots.push({
-            key: image?.url ?? `${lead?.species ?? 'slot'}-${i}`,
-            imageKey: image?.url,
-            alt: image?.alt,
+            key: imageKey ?? `${lead?.species ?? 'slot'}-${i}`,
+            imageKey,
+            alt,
             initial: (lead?.species ?? lead?.commonName ?? '?')
                 .charAt(0)
                 .toUpperCase(),
@@ -49,6 +54,8 @@ export default function GenusHero({
     const { t } = useTranslation('translation', { keyPrefix: 'genusClient' });
 
     const photoSlots = usePhotoSlots(genus.images, species);
+    const photos = photoSlots.filter((slot) => slot.imageKey);
+    const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
     const quickFacts = [
         {
@@ -86,31 +93,44 @@ export default function GenusHero({
                     </div>
 
                     <div className="flex gap-4 overflow-hidden">
-                        {photoSlots.map((slot) => (
-                            <div
-                                key={slot.key}
-                                className="relative aspect-10/9 w-full max-w-80 shrink-0 overflow-hidden rounded-3xl border border-white/25 bg-linear-to-br from-emerald-950 via-emerald-900 to-zinc-950 shadow-lg"
-                            >
-                                {slot.imageKey ? (
-                                    <Image
-                                        src={imageUrl(slot.imageKey)}
-                                        alt={slot.alt ?? ''}
-                                        fill
-                                        sizes="320px"
-                                        className="object-cover"
-                                    />
-                                ) : (
-                                    <div className="flex h-full items-center justify-center">
-                                        <span
-                                            aria-hidden="true"
-                                            className="font-serif text-6xl text-emerald-200/40"
+                        {photoSlots.map((slot) => {
+                            const photoIndex = slot.imageKey
+                                ? photos.findIndex((p) => p.key === slot.key)
+                                : -1;
+                            return (
+                                <div
+                                    key={slot.key}
+                                    className="relative aspect-10/9 w-full max-w-80 shrink-0 overflow-hidden rounded-3xl border border-white/25 bg-linear-to-br from-emerald-950 via-emerald-900 to-zinc-950 shadow-lg"
+                                >
+                                    {slot.imageKey ? (
+                                        <button
+                                            type="button"
+                                            onClick={() =>
+                                                setLightboxIndex(photoIndex)
+                                            }
+                                            className="absolute inset-0 cursor-zoom-in"
                                         >
-                                            {slot.initial}
-                                        </span>
-                                    </div>
-                                )}
-                            </div>
-                        ))}
+                                            <Image
+                                                src={imageUrl(slot.imageKey)}
+                                                alt={slot.alt ?? ''}
+                                                fill
+                                                sizes="320px"
+                                                className="object-cover"
+                                            />
+                                        </button>
+                                    ) : (
+                                        <div className="flex h-full items-center justify-center">
+                                            <span
+                                                aria-hidden="true"
+                                                className="font-serif text-6xl text-emerald-200/40"
+                                            >
+                                                {slot.initial}
+                                            </span>
+                                        </div>
+                                    )}
+                                </div>
+                            );
+                        })}
                     </div>
 
                     <div>
@@ -164,6 +184,16 @@ export default function GenusHero({
                     </li>
                 ))}
             </ul>
+
+            <ImageLightbox
+                images={photos.map((photo) => ({
+                    src: imageUrl(photo.imageKey!),
+                    alt: photo.alt ?? '',
+                }))}
+                index={lightboxIndex}
+                onClose={() => setLightboxIndex(null)}
+                onIndexChange={setLightboxIndex}
+            />
         </div>
     );
 }

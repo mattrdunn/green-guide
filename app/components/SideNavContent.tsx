@@ -199,7 +199,9 @@ export default function SideNavContent({
                 href: plant.variety
                     ? `/${plant.genus}/${plant.species}/${plant.variety}`
                     : `/${plant.genus}/${plant.species}`,
-                label: `${capitalize(plant.genus)} ${plant.species.replace(/-/g, ' ')}`,
+                label: plant.variety
+                    ? `${capitalize(plant.genus)} ${plant.species.replace(/-/g, ' ')} '${capitalize(plant.variety.replace(/-/g, ' '))}'`
+                    : `${capitalize(plant.genus)} ${plant.species.replace(/-/g, ' ')}`,
                 isCurrent:
                     currentPlant != null &&
                     plant.genus === currentPlant.genus &&
