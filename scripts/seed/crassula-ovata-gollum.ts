@@ -4,10 +4,15 @@ export const crassulaOvataGollum: Omit<Plant, 'createdAt' | 'updatedAt'> = {
     genus: 'crassula',
     species: 'ovata',
     variety: 'gollum',
-    commonNames: ["Golem Jade", "Gollum Jade", "E.T.'s Fingers"],
+    commonNames: ['Golem Jade', 'Gollum Jade', "E.T.'s Fingers"],
     description:
         'A curled, tubular-leafed sport of the common Jade Plant, Golem Jade swaps flat paddles for suction-cup-tipped "fingers" — the same tough, water-storing shrub underneath, styled for whimsical bonsai and novelty pots.',
-    images: [],
+    images: [
+        { url: 'plants/crassula/ovata/gollum/img-1.jpg', alt: '' },
+        { url: 'plants/crassula/ovata/gollum/img-2.jpg', alt: '' },
+        { url: 'plants/crassula/ovata/gollum/img-3.jpg', alt: '' },
+        { url: 'plants/crassula/ovata/gollum/img-4.jpg', alt: '' },
+    ],
     tags: ['succulent', 'beginner-friendly', 'mildly-toxic'],
     highlights: [
         'A naturally occurring mutation of Crassula ovata, prized for its tubular, trumpet-shaped leaves.',
@@ -30,12 +35,14 @@ export const crassulaOvataGollum: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         watering: {
             score: 1,
             value: 'Sparse & deep',
-            caption: 'Every 2-3 weeks; let the mix dry out fully between drinks.',
+            caption:
+                'Every 2-3 weeks; let the mix dry out fully between drinks.',
         },
         difficulty: {
             score: 1,
             value: 'Easy',
-            caption: 'Just as forgiving as the plain species, given enough light.',
+            caption:
+                'Just as forgiving as the plain species, given enough light.',
             level: 'easy',
         },
         toxicity: {

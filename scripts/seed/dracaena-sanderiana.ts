@@ -5,8 +5,13 @@ export const dracaenaSanderiana: Omit<Plant, 'createdAt' | 'updatedAt'> = {
     species: 'sanderiana',
     commonNames: ['Lucky Bamboo', "Sander's Dracaena", 'Ribbon Dracaena'],
     description:
-        "Jointed, cane-like stems that mimic true bamboo (though unrelated) make Dracaena sanderiana — better known as lucky bamboo — a feng shui staple, commonly grown curled or braided in nothing more than a few inches of water and pebbles.",
-    images: [],
+        'Jointed, cane-like stems that mimic true bamboo (though unrelated) make Dracaena sanderiana — better known as lucky bamboo — a feng shui staple, commonly grown curled or braided in nothing more than a few inches of water and pebbles.',
+    images: [
+        { url: 'plants/dracaena/sanderiana/img-1.jpg', alt: '' },
+        { url: 'plants/dracaena/sanderiana/img-2.jpg', alt: '' },
+        { url: 'plants/dracaena/sanderiana/img-3.jpg', alt: '' },
+        { url: 'plants/dracaena/sanderiana/img-4.jpg', alt: '' },
+    ],
     tags: ['low-light', 'beginner-friendly', 'water-grown', 'toxic'],
     highlights: [
         'Not a true bamboo — a member of the asparagus family (Asparagaceae) native to Central Africa.',

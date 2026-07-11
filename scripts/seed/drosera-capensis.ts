@@ -6,7 +6,13 @@ export const droseraCapensis: Omit<Plant, 'createdAt' | 'updatedAt'> = {
     commonNames: ['Cape Sundew'],
     description:
         'A fast-growing, forgiving carnivorous plant from South Africa whose strap-like leaves are covered in sticky, glistening tentacles that curl around trapped gnats and fruit flies within minutes. Its ease of care, rapid growth, and constant seed production make it the most commonly recommended first sundew.',
-    images: [],
+    images: [
+        { url: 'plants/drosera/capensis/img-1.jpg', alt: '' },
+        { url: 'plants/drosera/capensis/img-2.jpg', alt: '' },
+        { url: 'plants/drosera/capensis/img-3.jpg', alt: '' },
+        { url: 'plants/drosera/capensis/img-4.jpg', alt: '' },
+        { url: 'plants/drosera/capensis/img-5.jpg', alt: '' },
+    ],
     tags: [
         'carnivorous',
         'sundew',
@@ -98,7 +104,8 @@ export const droseraCapensis: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             detail: 'Growth slows only slightly in winter under stable indoor conditions; outdoors it tracks the local growing season.',
         },
         dailyRhythm: {
-            heading: 'A dew-covered leaf factory that never really stops growing.',
+            heading:
+                'A dew-covered leaf factory that never really stops growing.',
             body: "Cape Sundew's whole rhythm centers on light and moisture — keep both strong and it churns out new sticky leaves, flower stalks, and pups with little else required.",
             highlights: [
                 'Dry, dull leaf tips (instead of glistening dew) are the first sign light or moisture has dropped too low.',

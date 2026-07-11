@@ -6,7 +6,11 @@ export const echinopsisPachanoi: Omit<Plant, 'createdAt' | 'updatedAt'> = {
     commonNames: ['San Pedro Cactus'],
     description:
         'A fast-growing columnar cactus from the Andes, Echinopsis pachanoi rewards full sun and a surprisingly generous summer watering can with feet of blue-green growth — one of the easiest large cacti to keep happy.',
-    images: [],
+    images: [
+        { url: 'plants/echinopsis/pachanoi/img-1.jpg', alt: '' },
+        { url: 'plants/echinopsis/pachanoi/img-2.jpg', alt: '' },
+        { url: 'plants/echinopsis/pachanoi/img-3.jpg', alt: '' },
+    ],
     tags: ['cactus', 'columnar', 'full-sun', 'fast-growing', 'toxic'],
     highlights: [
         'Native to the Andean slopes of Ecuador and Peru at 6,500-9,800 ft.',

@@ -10,7 +10,12 @@ export const echinocactusGrusonii: Omit<Plant, 'createdAt' | 'updatedAt'> = {
     ],
     description:
         'A near-perfect sphere of ribbed green flesh bristling with golden spines, Golden Barrel Cactus is one of the most iconic desert cacti — slow, sculptural, and almost entirely indifferent to neglect once established.',
-    images: [],
+    images: [
+        { url: 'plants/echinocactus/grusonii/img-1.jpg', alt: '' },
+        { url: 'plants/echinocactus/grusonii/img-2.jpg', alt: '' },
+        { url: 'plants/echinocactus/grusonii/img-3.jpg', alt: '' },
+        { url: 'plants/echinocactus/grusonii/img-4.jpg', alt: '' },
+    ],
     tags: ['cactus', 'full-sun', 'drought-tolerant', 'non-toxic'],
     highlights: [
         'Endemic to a small region of central Mexico and now rare in the wild, though common in cultivation.',
@@ -27,7 +32,8 @@ export const echinocactusGrusonii: Omit<Plant, 'createdAt' | 'updatedAt'> = {
         light: {
             score: 5,
             value: 'Full sun',
-            caption: '6-8 hours direct — the sunniest windowsill or patio spot available.',
+            caption:
+                '6-8 hours direct — the sunniest windowsill or patio spot available.',
         },
         watering: {
             score: 1,

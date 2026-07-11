@@ -5,8 +5,13 @@ export const dionaeaMuscipula: Omit<Plant, 'createdAt' | 'updatedAt'> = {
     species: 'muscipula',
     commonNames: ['Venus Flytrap'],
     description:
-        "The single wild species in its genus, native to a small stretch of North and South Carolina bogs. Its hinged, tooth-fringed lobes snap shut in a fraction of a second when triggered by prey — the most famous carnivorous plant, but also one of the more demanding, since it needs a genuine winter dormancy and steady full sun to stay healthy for more than a season.",
-    images: [],
+        'The single wild species in its genus, native to a small stretch of North and South Carolina bogs. Its hinged, tooth-fringed lobes snap shut in a fraction of a second when triggered by prey — the most famous carnivorous plant, but also one of the more demanding, since it needs a genuine winter dormancy and steady full sun to stay healthy for more than a season.',
+    images: [
+        { url: 'plants/dionaea/muscipula/img-1.jpg', alt: '' },
+        { url: 'plants/dionaea/muscipula/img-2.jpg', alt: '' },
+        { url: 'plants/dionaea/muscipula/img-3.jpg', alt: '' },
+        { url: 'plants/dionaea/muscipula/img-4.jpg', alt: '' },
+    ],
     tags: [
         'carnivorous',
         'flytrap',
@@ -97,7 +102,8 @@ export const dionaeaMuscipula: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             detail: 'Active growth and new trap production run spring through fall; the plant then dies back to a small winter bud and rests for roughly three months before regrowing in spring.',
         },
         dailyRhythm: {
-            heading: 'An intense-sun, seasonal plant more than a daily-fuss one.',
+            heading:
+                'An intense-sun, seasonal plant more than a daily-fuss one.',
             body: "Once light, water, and the yearly dormancy cycle are dialed in, Venus Flytrap needs little day-to-day intervention — its rhythm is seasonal, not daily, and most problems come from fighting that cycle rather than from any single day's care.",
             highlights: [
                 'A trap that blackens after closing a few times has simply reached the end of its natural lifespan — new traps replace it.',
@@ -140,11 +146,12 @@ export const dionaeaMuscipula: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             {
                 label: 'Feeding',
                 stat: '1-2 traps/month, growing season only',
-                detail: "Outdoor plants rarely need supplemental feeding at all — they catch their own prey.",
+                detail: 'Outdoor plants rarely need supplemental feeding at all — they catch their own prey.',
             },
         ],
         wateringRhythm: {
-            heading: 'Tray method through the growing season, drier during dormancy.',
+            heading:
+                'Tray method through the growing season, drier during dormancy.',
             body: 'Spring through fall, keep the pot standing in a half-inch to an inch of distilled, reverse-osmosis, or rainwater at all times. During winter dormancy, let the tray run nearly dry between light waterings — the resting bud tolerates far less moisture than the active summer plant.',
             tips: [
                 'Never use tap, bottled mineral, or softened water — even occasional use accumulates salts over years.',
@@ -209,10 +216,10 @@ export const dionaeaMuscipula: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             {
                 title: 'Weak, Floppy, Dark-Green Traps',
                 description:
-                    "Traps that stay small, pale-throated, or floppy instead of upright and red-lined almost always mean insufficient light.",
+                    'Traps that stay small, pale-throated, or floppy instead of upright and red-lined almost always mean insufficient light.',
                 actions: [
                     'Move outdoors into full sun where climate allows, or add a strong full-spectrum grow light.',
-                    "Increase daily light duration gradually rather than moving the plant into intense sun all at once.",
+                    'Increase daily light duration gradually rather than moving the plant into intense sun all at once.',
                 ],
             },
             {
@@ -261,7 +268,7 @@ export const dionaeaMuscipula: Omit<Plant, 'createdAt' | 'updatedAt'> = {
             'Water only with distilled, reverse-osmosis, or rainwater — never tap.',
             'Give it the strongest light available — full outdoor sun whenever climate allows.',
             'Provide a genuine cold winter dormancy every year without exception.',
-            "Let traps trigger only on real prey — resist poking them for show.",
+            'Let traps trigger only on real prey — resist poking them for show.',
         ],
     },
 };

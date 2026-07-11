@@ -6,7 +6,13 @@ export const dianthusCaryophyllus: Omit<Plant, 'createdAt' | 'updatedAt'> = {
     commonNames: ['Carnation', 'Clove Pink', 'Dianthus'],
     description:
         'Ruffled, spice-scented blooms in shades of pink, white, and red top slim, silvery-blue stems — a classic cottage-garden and cut-flower perennial that rewards full sun and lean soil with months of repeat flowering.',
-    images: [],
+    images: [
+        { url: 'plants/dianthus/caryophyllus/img-1.jpg', alt: '' },
+        { url: 'plants/dianthus/caryophyllus/img-2.jpg', alt: '' },
+        { url: 'plants/dianthus/caryophyllus/img-3.jpg', alt: '' },
+        { url: 'plants/dianthus/caryophyllus/img-4.jpg', alt: '' },
+        { url: 'plants/dianthus/caryophyllus/img-5.jpg', alt: '' },
+    ],
     tags: [
         'perennial',
         'full-sun',
