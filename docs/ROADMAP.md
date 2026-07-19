@@ -9,6 +9,13 @@ Directional, not committed. Ordered roughly by priority — not a promise of seq
 - User-created lists, public or private (e.g. "Easiest Houseplants for Beginners")
 - Order/reorder history if a product surface ships (see Monetization below)
 
+## Plant Care Tracking & Reminders
+
+- Per-user plant catalog: instances of species/varieties tied to an account (nickname, location in home, date acquired), distinct from the reference species database
+- Due dates derived from each species' care cadence, offset against last-logged action (watered, fed, repotted) per instance
+- Weekly digest (email/push) summarizing due and overdue chores across a user's whole catalog
+- Symptom/photo history per instance, giving Anys continuity across visits (e.g. recognizing a recurring issue rather than answering cold each time)
+
 ## Layout Planners
 
 - **Outdoor:** map land dimensions, home outline, retaining walls, and plantable areas; account for location (zone, daylight hours) and per-section sunlight exposure; recommend suitable plants and care products
