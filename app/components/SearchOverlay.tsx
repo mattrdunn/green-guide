@@ -2,11 +2,16 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { pestMatchesQuery } from '@/app/lib/searchPests';
 import { plantMatchesQuery } from '@/app/lib/searchPlants';
-import { useGetPlantSummariesQuery } from '@/store/api/greenGuideApi';
+import {
+    useGetPestSummariesQuery,
+    useGetPlantSummariesQuery,
+} from '@/store/api/greenGuideApi';
 import SearchResults from './SearchResults';
 
-const MAX_RESULTS = 8;
+const MAX_PLANT_RESULTS = 5;
+const MAX_PEST_RESULTS = 3;
 
 /**
  * Drop-down search panel for pages without the hero search bar. Sits just
@@ -24,6 +29,9 @@ export default function SearchOverlay({
     const [query, setQuery] = useState('');
     const inputRef = useRef<HTMLInputElement>(null);
     const { data: plants, isError } = useGetPlantSummariesQuery(undefined, {
+        skip: !open,
+    });
+    const { data: pests } = useGetPestSummariesQuery(undefined, {
         skip: !open,
     });
 
@@ -54,14 +62,22 @@ export default function SearchOverlay({
     }, [open, onClose]);
 
     const needle = query.trim().toLowerCase();
-    const matches = useMemo(() => {
+    const plantMatches = useMemo(() => {
         if (!plants || !needle) {
             return [];
         }
         return plants
             .filter((plant) => plantMatchesQuery(plant, needle))
-            .slice(0, MAX_RESULTS);
+            .slice(0, MAX_PLANT_RESULTS);
     }, [plants, needle]);
+    const pestMatches = useMemo(() => {
+        if (!pests || !needle) {
+            return [];
+        }
+        return pests
+            .filter((pest) => pestMatchesQuery(pest, needle))
+            .slice(0, MAX_PEST_RESULTS);
+    }, [pests, needle]);
 
     if (!open) {
         return null;
@@ -102,8 +118,9 @@ export default function SearchOverlay({
                     {needle && (
                         <SearchResults
                             query={query.trim()}
-                            matches={matches}
-                            isError={isError}
+                            plantMatches={plantMatches}
+                            pestMatches={pestMatches}
+                            isError={Boolean(isError)}
                             onNavigate={onClose}
                         />
                     )}

@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import cn from '@/app/lib/cn';
+import { pestMatchesQuery } from '@/app/lib/searchPests';
 import { plantMatchesQuery } from '@/app/lib/searchPlants';
 import { useThemeMode } from '@/app/lib/useThemeMode';
 import {
@@ -16,7 +17,8 @@ import NavExpandableList from './NavExpandableList';
 import NavGenusList, { NavGenusGroup } from './NavGenusList';
 import SearchResults from './SearchResults';
 
-const MAX_RESULTS = 8;
+const MAX_PLANT_RESULTS = 5;
+const MAX_PEST_RESULTS = 3;
 
 function LeafIcon({ className }: { className?: string }) {
     return (
@@ -148,14 +150,22 @@ export default function SideNavContent({
     const { data: pests } = useGetPestSummariesQuery();
 
     const needle = query.trim().toLowerCase();
-    const matches = useMemo(() => {
+    const plantMatches = useMemo(() => {
         if (!plants || !needle) {
             return [];
         }
         return plants
             .filter((plant) => plantMatchesQuery(plant, needle))
-            .slice(0, MAX_RESULTS);
+            .slice(0, MAX_PLANT_RESULTS);
     }, [plants, needle]);
+    const pestMatches = useMemo(() => {
+        if (!pests || !needle) {
+            return [];
+        }
+        return pests
+            .filter((pest) => pestMatchesQuery(pest, needle))
+            .slice(0, MAX_PEST_RESULTS);
+    }, [pests, needle]);
 
     const speciesRoute = useMemo(() => parseSpeciesRoute(pathname), [pathname]);
     const currentPlant = useMemo(() => {
@@ -315,7 +325,8 @@ export default function SideNavContent({
                         <div className="absolute inset-x-0 top-full z-40 mt-2 max-h-[60vh] overflow-y-auto">
                             <SearchResults
                                 query={query.trim()}
-                                matches={matches}
+                                plantMatches={plantMatches}
+                                pestMatches={pestMatches}
                                 isError={Boolean(isError)}
                                 onNavigate={handleNavigate}
                             />
@@ -340,9 +351,7 @@ export default function SideNavContent({
                         </Link>
                         <DropdownToggle
                             open={speciesListOpen}
-                            onClick={() =>
-                                setSpeciesListOpen((prev) => !prev)
-                            }
+                            onClick={() => setSpeciesListOpen((prev) => !prev)}
                             label={t('speciesList.toggle')}
                         />
                     </div>

@@ -13,10 +13,12 @@
             "close": "Close menu"
         },
         "search": {
-            "placeholder": "Search plants by name, e.g. \"monstera\"",
-            "noResults": "No plants match “{{query}}” yet — try another name.",
+            "placeholder": "Search plants, pests, e.g. \"monstera\"",
+            "noResults": "Nothing matches “{{query}}” yet — try another name.",
             "error": "Search is unavailable right now — try again shortly.",
-            "close": "Close search"
+            "close": "Close search",
+            "sectionPlants": "Plants",
+            "sectionPests": "Pests"
         }
     },
     "imageLightbox": {
